@@ -18,7 +18,7 @@ const BlogFeaturedSection = () => {
       description2: 'To create a marketplace and directory that empowers both customers and businesses, making every experience smooth, transparent, and delightful.',
       image: '/service-img/Rectangle 4457.png',
       isReversed: true,
-      badge: 'Featured Collection'
+     
     }
   ];
 
@@ -35,11 +35,7 @@ const BlogFeaturedSection = () => {
           >
             {/* Image Container */}
             <div className="w-full md:w-1/2 relative h-[400px] md:h-[500px]">
-              {post.badge && (
-                <span className="absolute top-6 left-1/2 -translate-x-1/2 z-20 text-lg font-serif italic text-[#4A4A4A] tracking-wide">
-                  {post.badge}
-                </span>
-              )}
+              
               <Image
                 src={post.image}
                 alt={post.title}
