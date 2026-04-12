@@ -2,11 +2,11 @@ import Image from 'next/image';
 
 const InstagramFeed = () => {
   const feedImages = [
-    { src: '/social-img/Rectangle 4467.png', rotate: '-rotate-0', translate: 'translate-y-8', z: 'z-0' },
+    { src: '/social-img/Rectangle 4467.png', rotate: '-rotate-0', translate: 'translate-y-5 md:translate-y-8', z: 'z-0' },
     { src: '/social-img/Rectangle 4468.png', rotate: 'rotate-0', translate: 'translate-y-2', z: 'z-10' },
-    { src: '/social-img/Rectangle 4469.png', rotate: '-rotate-0', translate: '-translate-y-4', z: 'z-20' },
+    { src: '/social-img/Rectangle 4469.png', rotate: '-rotate-0', translate: '-translate-y-4 md:-translate-y-6', z: 'z-20' },
     { src: '/social-img/Rectangle 4470.png', rotate: 'rotate-0', translate: 'translate-y-2', z: 'z-10' },
-    { src: '/social-img/Rectangle 4471.png', rotate: '-rotate-0', translate: 'translate-y-8', z: 'z-0' },
+    { src: '/social-img/Rectangle 4471.png', rotate: '-rotate-0', translate: 'translate-y-5 md:translate-y-8', z: 'z-0' },
   ];
 
   return (
@@ -24,11 +24,11 @@ const InstagramFeed = () => {
         </div>
 
         {/* Scattered/Overlapping Image Feed */}
-        <div className="flex justify-center items-center -space-x-8 md:-space-x-12 lg:-space-x-5 mb-20 lg:px-0 md:px-4 px-2 cursor-pointer">
+        <div className="flex justify-center items-center -space-x-8 sm:-space-x-12 md:-space-x-12 lg:-space-x-5 mb-20 lg:px-0 md:px-4 px-2 cursor-pointer">
           {feedImages.map((img, index) => (
             <div 
               key={index} 
-              className={`relative w-36 h-36 sm:w-48 sm:h-48 md:w-64 lg:w-[264px] md:h-64 lg:h-[264px] border-[6px] md:border-[10px] border-white shadow-2xl transition-all hover:scale-110 hover:z-30 
+              className={`relative w-24 sm:w-48 md:w-64 lg:w-[264px] aspect-square border-[3px] md:border-[10px] border-white shadow-xl md:shadow-2xl transition-all hover:scale-110 hover:z-30 
               ${img.rotate} ${img.translate} ${img.z} overflow-hidden`}
             >
               <Image
@@ -47,7 +47,7 @@ const InstagramFeed = () => {
         </p>
 
         {/* Follow Button */}
-        <button className="bg-[#EAE5DB] text-black px-12 py-3 text-sm font-medium uppercase tracking-[0.2em] hover:bg-[#D9D7CB] transition-all border border-gray-300">
+        <button className="bg-[#EAE0D1] text-black px-12 py-3 text-sm font-medium uppercase tracking-[0.2em] hover:bg-[#D9D0C1] transition-all border border-gray-400">
           FOLLOW US
         </button>
 
