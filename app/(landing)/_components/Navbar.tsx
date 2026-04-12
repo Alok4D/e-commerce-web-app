@@ -161,7 +161,7 @@ const Navbar = () => {
       )}
 
       {/* Desktop Navbar (Original Structure) */}
-      <div className="hidden md:block w-full bg-white border-b border-gray-200 py-4 px-6 md:px-12 flex items-center justify-between max-w-[1239px] mx-auto">
+      <div className="hidden md:flex w-full bg-white border-b border-gray-200 py-4 px-6 md:px-12 items-center justify-between max-w-[1239px] mx-auto">
         <div className="flex-1">
           <a href="#" className="hover:opacity-60 transition-all">
             <Search size={22} className="text-gray-900" />
