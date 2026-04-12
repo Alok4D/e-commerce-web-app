@@ -1,18 +1,17 @@
-
 import Image from 'next/image';
 
 const InstagramFeed = () => {
   const feedImages = [
-    { src: '/social-img/Rectangle 4467.png', rotate: '-rotate-6', translate: 'translate-y-8', z: 'z-0' },
-    { src: '/social-img/Rectangle 4468.png', rotate: 'rotate-6', translate: 'translate-y-2', z: 'z-10' },
-    { src: '/social-img/Rectangle 4469.png', rotate: '-rotate-3', translate: '-translate-y-4', z: 'z-20' },
-    { src: '/social-img/Rectangle 4470.png', rotate: 'rotate-6', translate: 'translate-y-2', z: 'z-10' },
-    { src: '/social-img/Rectangle 4471.png', rotate: '-rotate-6', translate: 'translate-y-8', z: 'z-0' },
+    { src: '/social-img/Rectangle 4467.png', rotate: '-rotate-0', translate: 'translate-y-8', z: 'z-0' },
+    { src: '/social-img/Rectangle 4468.png', rotate: 'rotate-0', translate: 'translate-y-2', z: 'z-10' },
+    { src: '/social-img/Rectangle 4469.png', rotate: '-rotate-0', translate: '-translate-y-4', z: 'z-20' },
+    { src: '/social-img/Rectangle 4470.png', rotate: 'rotate-0', translate: 'translate-y-2', z: 'z-10' },
+    { src: '/social-img/Rectangle 4471.png', rotate: '-rotate-0', translate: 'translate-y-8', z: 'z-0' },
   ];
 
   return (
     <section className="w-full bg-[#F5F3F0] py-24 px-4 overflow-hidden">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="max-w-[1240px] mx-auto text-center">
         
         {/* Header Title */}
         <div className="mb-16">
@@ -25,11 +24,11 @@ const InstagramFeed = () => {
         </div>
 
         {/* Scattered/Overlapping Image Feed */}
-        <div className="flex justify-center items-center -space-x-8 md:-space-x-12 mb-20 px-10">
+        <div className="flex justify-center items-center -space-x-8 md:-space-x-12 lg:-space-x-5 mb-20 lg:px-0 md:px-4 px-2 cursor-pointer">
           {feedImages.map((img, index) => (
             <div 
               key={index} 
-              className={`relative w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 border-[6px] md:border-10 border-white shadow-2xl transition-all hover:scale-110 hover:z-30 
+              className={`relative w-36 h-36 sm:w-48 sm:h-48 md:w-64 lg:w-[264px] md:h-64 lg:h-[264px] border-[6px] md:border-[10px] border-white shadow-2xl transition-all hover:scale-110 hover:z-30 
               ${img.rotate} ${img.translate} ${img.z} overflow-hidden`}
             >
               <Image
