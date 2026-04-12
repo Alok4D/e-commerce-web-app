@@ -42,14 +42,18 @@ const Navbar = () => {
   return (
     <div className="relative">
       {/* Mobile Header (Image 6 structure) */}
-      <div className="md:hidden w-full bg-white border-b border-gray-200 py-3 px-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <button onClick={() => setIsMenuOpen(true)} className="text-gray-900">
+      <div className="md:hidden w-full bg-white border-b border-gray-200 py-3 px-4 grid grid-cols-3 items-center">
+        <div className="flex items-center justify-start">
+          <button 
+            onClick={() => setIsMenuOpen(true)} 
+            className="text-gray-900 p-1 relative z-10"
+            aria-label="Open Menu"
+          >
             <Menu size={24} />
           </button>
         </div>
 
-        <div className="flex justify-center flex-grow -ml-8">
+        <div className="flex justify-center">
           <a href="/">
             <Image
               src="/logo/logo.png"
@@ -62,7 +66,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-end gap-3">
           <Gift size={22} className="text-gray-900" />
           <ShoppingCart size={22} className="text-gray-900" />
         </div>
@@ -78,7 +82,8 @@ const Navbar = () => {
           <div className="fixed inset-y-0 left-0 w-[280px] bg-[#D5D0C9] z-50 p-6 flex flex-col shadow-2xl overflow-y-auto">
             <div className="flex flex-col items-center mb-10">
               <div className="flex justify-between items-center w-full mb-8">
-                <div className="w-6"></div> {/* Spacer to help center logo */}
+                <div className="w-6"></div> 
+                {/* Spacer to help center logo */}
                 <Image
                   src="/logo/logo.png"
                   alt="Findea Logo"
