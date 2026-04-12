@@ -8,14 +8,8 @@ const ChristmasCollection = () => {
       <div className="relative h-[450px] md:h-full w-full overflow-hidden flex md:block">
         {/* Mobile: 3-Image Display */}
         <div className="flex w-full h-full md:hidden">
-          <div className="w-[15%] relative h-full">
-            <Image src="/service-img/Rectangle 4455.png" alt="Side Image" fill className="object-cover opacity-80" />
-          </div>
-          <div className="w-[70%] relative h-full border-x border-white/10">
+          <div className="w-[100%] relative h-full border-x border-white/10">
             <Image src="/service-img/Gemini_Generated_Image_oi9zpaoi9zpaoi9z.png" alt="Main Image" fill className="object-cover" />
-          </div>
-          <div className="w-[15%] relative h-full">
-            <Image src="/service-img/Rectangle 4457.png" alt="Side Image" fill className="object-cover opacity-80" />
           </div>
         </div>
 
