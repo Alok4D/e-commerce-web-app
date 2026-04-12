@@ -63,18 +63,18 @@ const HeroSection = () => {
       </div>
 
       {/* Bottom Part: Mobile Action Buttons (Visible only on mobile) */}
-      <div className="md:hidden w-full py-10 px-6 bg-[#F7F5F2] flex flex-col gap-4">
+      <div className="md:hidden w-full py-8 px-4 bg-[#F7F5F2] flex flex-row gap-3">
         <a
           href="#"
-          className="w-full bg-[#f0e4cf] py-4 px-6 flex items-center justify-between text-[#1A1A1A] font-serif italic text-lg shadow-sm border border-black/5"
+          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-serif text-[15px] shadow-sm border border-black/5"
         >
-          Explore Products <MoveRight size={20} strokeWidth={1.2} />
+          Explore Products <MoveRight size={18} strokeWidth={1.2} />
         </a>
         <a
           href="#"
-          className="w-full bg-[#f0e4cf] py-4 px-6 flex items-center justify-between text-[#1A1A1A] font-serif italic text-lg shadow-sm border border-black/5"
+          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-serif text-[15px] shadow-sm border border-black/5"
         >
-          Explore Services <MoveRight size={20} strokeWidth={1.2} />
+          Explore Services <MoveRight size={18} strokeWidth={1.2} />
         </a>
       </div>
     </div>
