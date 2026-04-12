@@ -199,18 +199,36 @@ const Navbar = () => {
 
       <nav className="hidden md:block w-full bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-center">
-          <ul className="flex items-center space-x-8">
+          <ul className="flex items-center space-x-8 h-full">
             {navLinks.map((link) => (
-              <li key={link.name}>
+              <li key={link.name} className="relative group h-full flex items-center">
                 <a
                   href="#"
-                  className="flex items-center gap-1 text-[13px] font-medium tracking-[0.1em] text-gray-800 hover:text-gray-500 transition-colors uppercase"
+                  className="flex items-center gap-1 text-[13px] font-medium tracking-[0.1em] text-gray-800 hover:text-gray-500 transition-colors uppercase cursor-pointer"
                 >
                   {link.name}
                   {link.hasDropdown && (
-                    <ChevronDown size={14} strokeWidth={1.5} className="text-gray-400" />
+                    <ChevronDown size={14} strokeWidth={1.5} className="text-gray-400 group-hover:rotate-180 transition-transform" />
                   )}
                 </a>
+
+                {/* Dropdown Menu */}
+                {link.hasDropdown && (
+                  <div className="absolute top-full left-0 w-56 bg-white border border-gray-100 shadow-xl py-4 px-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                    <ul className="space-y-1">
+                      {link.items?.map((item) => (
+                        <li key={item}>
+                          <a
+                            href="#"
+                            className="block px-4 py-2 text-[13px] text-gray-600 hover:bg-[#F7F5F2] hover:text-black transition-colors"
+                          >
+                            {item}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
