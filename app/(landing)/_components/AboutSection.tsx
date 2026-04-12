@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 
 const AboutSection = () => {
@@ -6,9 +5,9 @@ const AboutSection = () => {
     <section className="w-full bg-[#F5F3F0] py-16 px-6 md:px-12 lg:px-0">
       <div className="max-w-[1239px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         
-        {/* বাম দিকের ইমেজ গ্রিড (Overlap Layout) */}
+        {/* Left side image grid (Overlap Layout) */}
         <div className="relative w-full lg:w-1/2 h-[500px] md:h-[600px]">
-          {/* মেইন বড় ইমেজ (মাঝখানে) */}
+          {/* Main large image (Center) */}
           <div className="absolute inset-0 z-10 w-[85%] h-[85%] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <Image
               src="/banner-img/main-img.png"
@@ -18,7 +17,7 @@ const AboutSection = () => {
             />
           </div>
 
-          {/* বামের ছোট ইমেজ (ওভারল্যাপ) */}
+          {/* Left small image (Overlap) */}
           <div className="absolute left-0 bottom-30 z-20 w-48 h-60 hidden md:block">
             <Image
               src="/banner-img/buttom-img.png"
@@ -28,7 +27,7 @@ const AboutSection = () => {
             />
           </div>
 
-          {/* ডানের ছোট ইমেজ (ওভারল্যাপ) */}
+          {/* Right small image (Overlap) */}
           <div className="absolute right-0 top-30 z-20 w-40 h-52 hidden md:block">
             <Image
               src="/banner-img/right-img.png"
@@ -39,7 +38,7 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* ডান দিকের টেক্সট কন্টেন্ট */}
+        {/* Right side text content */}
         <div className="w-full lg:w-1/2 flex flex-col items-start">
           <h2 className="text-4xl md:text-5xl font-serif text-[#1A1A1A] mb-8">
             Qui sommes-nous
@@ -65,7 +64,7 @@ const AboutSection = () => {
             </p>
           </div>
 
-          {/* কন্টাক্ট বাটন */}
+          {/* Contact button */}
           <button className="mt-10 bg-[#F1E1C2] text-black px-10 py-3 text-sm font-medium hover:bg-[#e5d8c1] transition-all shadow-sm">
             Contact Us
           </button>

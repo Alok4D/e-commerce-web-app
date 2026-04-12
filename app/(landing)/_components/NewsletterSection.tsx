@@ -7,10 +7,10 @@ const NewsletterSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/social-img/cta (1).png" // আপনার ইমেজের পাথ
+          src="/social-img/cta (1).png" 
           alt="Newsletter Background"
           fill
-          className="object-cover brightness-50" // ইমেজটি ডার্ক করার জন্য brightness-50 ব্যবহার করা হয়েছে
+          className="object-cover brightness-50" 
         />
       </div>
 

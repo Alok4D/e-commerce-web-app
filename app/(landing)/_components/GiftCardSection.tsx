@@ -6,7 +6,7 @@ const GiftCardSection = () => {
     <section className="w-full bg-[#D1CDC3] py-20 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-6xl mx-auto relative h-[500px] md:h-[600px] flex items-center justify-center">
         
-        {/* বাম দিকের ওভারল্যাপ ইমেজ */}
+        {/* Left side overlap image */}
         <div className="absolute left-0 top-0 w-[55%] h-[70%] md:h-[80%] border-10 border-white shadow-2xl z-10">
           <Image
             src="/gift-img/Rectangle 4464.png"
@@ -16,7 +16,7 @@ const GiftCardSection = () => {
           />
         </div>
 
-        {/* ডান দিকের ওভারল্যাপ ইমেজ */}
+        {/* Right side overlap image */}
         <div className="absolute right-0 bottom-0 w-[55%] h-[70%] md:h-[80%] border-10 border-white shadow-2xl z-10">
           <Image
             src="/gift-img/Rectangle 4479.png"
@@ -26,7 +26,7 @@ const GiftCardSection = () => {
           />
         </div>
 
-        {/* মাঝখানের গ্লাস-মর্ফিজম বক্স */}
+        {/* Central glassmorphism box */}
         <div className="relative z-30 w-full max-w-md py-12 px-8 bg-white/30 backdrop-blur-lg border border-white/20 text-center shadow-xl">
           <h2 className="text-2xl md:text-3xl font-serif text-[#1A1A1A] mb-4">
             Offrez la liberté du choix
