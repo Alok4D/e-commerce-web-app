@@ -16,7 +16,7 @@ const InstagramFeed = () => {
         {/* Header Title */}
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl font-serif text-[#1A1A1A] tracking-tight">
-            <span className="italic font-light">Let's</span> COLLECT
+            <span className="italic font-light">Let&apos;s</span> COLLECT
           </h2>
           <p className="text-xl md:text-2xl font-serif uppercase tracking-[0.2em] mt-2">
             ON INSTAGRAM

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { Search, User, Heart, ShoppingCart, Gift, ChevronDown, Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,7 +55,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex justify-center">
-          <a href="/">
+          <Link href="/">
             <Image
               src="/logo/logo.png"
               alt="Findea Logo"
@@ -63,7 +64,7 @@ const Navbar = () => {
               className="h-7 w-auto object-contain"
               priority
             />
-          </a>
+          </Link>
         </div>
 
         <div className="flex items-center justify-end gap-3">
@@ -169,7 +170,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex-1 flex justify-center">
-          <a href="/" className="hover:opacity-90 transition-all">
+          <Link href="/" className="hover:opacity-90 transition-all">
             <Image
               src="/logo/logo.png"
               alt="Findea Logo"
@@ -178,7 +179,7 @@ const Navbar = () => {
               className="h-8 md:h-10 w-auto object-contain"
               priority
             />
-          </a>
+          </Link>
         </div>
 
         <div className="flex-1 flex justify-end items-center gap-5 md:gap-7">

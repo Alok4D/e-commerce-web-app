@@ -46,11 +46,11 @@ const AboutSection = () => {
           
           <div className="space-y-6 text-[#4A4A4A] leading-relaxed text-[15px] font-light max-w-xl">
             <p>
-              Findéa est née d'une envie simple : rassembler le beau, le sens
-              et l'humain en un seul lieu.
+              Findéa est née d&apos;une envie simple : rassembler le beau, le sens
+              et l&apos;humain en un seul lieu.
             </p>
             <p>
-              Au cœur d'Abidjan, entre créativité, chaleur et énergie locale,
+              Au cœur d&apos;Abidjan, entre créativité, chaleur et énergie locale,
               nous mettons en lumière des boutiques, des créateurs et des
               talents à travers des sélections choisies avec soin — produits,
               savoir-faire et services. Nous accompagnons aussi vos plus
@@ -59,7 +59,7 @@ const AboutSection = () => {
               découverte a une histoire, chaque détail a une intention.
             </p>
             <p className="font-medium">
-              Plus qu'une plateforme, Findéa est un espace d'inspiration, de
+              Plus qu&apos;une plateforme, Findéa est un espace d&apos;inspiration, de
               confiance et de découvertes.
             </p>
           </div>
