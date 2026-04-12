@@ -12,7 +12,7 @@ const ChristmasCollection = () => {
             <Image src="/service-img/Rectangle 4455.png" alt="Side Image" fill className="object-cover opacity-80" />
           </div>
           <div className="w-[70%] relative h-full border-x border-white/10">
-            <Image src="/service-img/image.png" alt="Main Image" fill className="object-cover" />
+            <Image src="/service-img/Gemini_Generated_Image_oi9zpaoi9zpaoi9z.png" alt="Main Image" fill className="object-cover" />
           </div>
           <div className="w-[15%] relative h-full">
             <Image src="/service-img/Rectangle 4457.png" alt="Side Image" fill className="object-cover opacity-80" />
@@ -21,7 +21,7 @@ const ChristmasCollection = () => {
 
         {/* Desktop: Single Background Image */}
         <div className="hidden md:block absolute inset-0">
-          <Image src="/service-img/image.png" alt="Christmas Background" fill className="object-cover" priority />
+          <Image src="/service-img/Gemini_Generated_Image_oi9zpaoi9zpaoi9z.png" alt="Christmas Background" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-black/5"></div>
         </div>
 
