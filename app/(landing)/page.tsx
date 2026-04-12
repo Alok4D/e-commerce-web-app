@@ -13,12 +13,12 @@ import ProductGridLanding from "./_components/ProductGridLanding";
 import RegistrySection from "./_components/RegistrySection";
 import ServicesSection from "./_components/ServicesSection";
 import TestimonialSection from "./_components/TestimonialSection";
-import TopHeader from "./_components/TopHeader";
+import LandingTopAnnouncementBar from "./_components/LandingTopAnnouncementBar";
 
 export default function page() {
   return (
     <main className="min-h-screen bg-white">
-      <TopHeader />
+      <LandingTopAnnouncementBar />
       <Navbar />
       <HeroSection />
       <Blog />
