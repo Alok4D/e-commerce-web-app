@@ -38,9 +38,11 @@ const HeroSection = () => {
           
           {/* Search Bar */}
           <div className="w-full max-w-2xl bg-[#F7F5F2]/95 md:bg-white text-black py-4 px-6 flex items-center justify-between shadow-2xl rounded-sm md:rounded-full">
-            <span className="text-[13px] md:text-sm font-normal text-gray-700">
-              Search a product, a boutique or a service....
-            </span>
+            <input 
+              type="text"
+              placeholder="Search a product, a boutique or a service...."
+              className="w-full bg-transparent border-none outline-none text-[13px] md:text-sm font-normal text-gray-700 placeholder:text-gray-500"
+            />
             <Search size={20} className="text-gray-900" />
           </div>
 
