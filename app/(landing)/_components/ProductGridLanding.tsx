@@ -1,23 +1,45 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const ProductGridLanding = () => {
   const products = [
-    { name: 'Ajami Njoya', brand: 'Ateliers Ifé', price: 'CFA 22,500', image: '/product-img/Rectangle 4448 (10).png' },
-    { name: 'Ajami Njoya', brand: 'Ateliers Ifé', price: 'CFA 22,500', image: '/product-img/Rectangle 4448 (11).png' },
-    { name: 'Ajami Njoya', brand: 'Ateliers Ifé', price: 'CFA 22,500', image: '/product-img/Rectangle 4448 (12).png' },
-    { name: 'Ajami Njoya', brand: 'Ateliers Ifé', price: 'CFA 22,500', image: '/product-img/Rectangle 4448 (13).png' },
+    {
+      name: "Ajami Njoya",
+      brand: "Ateliers Ifé",
+      price: "CFA 22,500",
+      image: "/product-img/Rectangle 4448 (10).png",
+    },
+    {
+      name: "Ajami Njoya",
+      brand: "Ateliers Ifé",
+      price: "CFA 22,500",
+      image: "/product-img/Rectangle 4448 (11).png",
+    },
+    {
+      name: "Ajami Njoya",
+      brand: "Ateliers Ifé",
+      price: "CFA 22,500",
+      image: "/product-img/Rectangle 4448 (12).png",
+    },
+    {
+      name: "Ajami Njoya",
+      brand: "Ateliers Ifé",
+      price: "CFA 22,500",
+      image: "/product-img/Rectangle 4448 (13).png",
+    },
   ];
 
   return (
     <section className="w-full bg-[#D1CDC3] py-16 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
-        
         {/* Header: Title and See All link */}
         <div className="flex justify-between items-end mb-10">
-          <h2 className="text-xl md:text-2xl font-serif text-[#1A1A1A] uppercase tracking-wider">
+          <h2 className="text-md md:text-2xl font-playfair text-[#1A1A1A] uppercase tracking-wider">
             ACTUELLEMENT ADORÉ SUR FINDÉA
           </h2>
-          <a href="#" className="text-md font-serif text-[#1A1A1A] hover:opacity-60 transition-opacity font-medium">
+          <a
+            href="#"
+            className="text-md font-serif text-[#1A1A1A] hover:opacity-60 transition-opacity font-medium"
+          >
             See All
           </a>
         </div>
@@ -51,7 +73,6 @@ const ProductGridLanding = () => {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
