@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 const LandingTopAnnouncementBar = () => {
   return (
@@ -8,7 +8,7 @@ const LandingTopAnnouncementBar = () => {
         <div className="hidden md:block flex-1"></div>
 
         <div className="flex-1 text-center">
-          <span className="text-[14px] md:text-[15px] text-gray-800 font-normal">
+          <span className="text-[10px] md:text-[13px] lg:text-[14px] xl:text-[16px] text-gray-800 font-normal">
             Free Shipping on all Orders over $250
           </span>
         </div>
@@ -28,11 +28,8 @@ const LandingTopAnnouncementBar = () => {
           </a>
         </div>
       </div>
-
-   
     </header>
   );
 };
-
 
 export default LandingTopAnnouncementBar;

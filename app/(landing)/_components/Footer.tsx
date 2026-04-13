@@ -12,7 +12,7 @@ const XIcon = () => (
 const Footer: FC = () => {
   return (
     <footer className="w-full bg-[#f5f3ee] pt-20 font-playfair">
-      <div className="max-w-[1239px] mx-auto px-6 md:px-12 lg:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-20 text-[#1A1A1A]">
+      <div className="max-w-[1239px] mx-auto px-4 sm:px-6 md:px-12 lg:px-5 xl:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-20 text-[#1A1A1A]">
         {/* Column 1: Logo & About */}
         <div className="flex flex-col gap-6">
           <div className="relative">
