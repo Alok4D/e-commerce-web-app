@@ -26,7 +26,7 @@ const ExploreProduct = () => {
           <div className="flex flex-col items-center">
             <div className="relative w-full h-[315px] overflow-hidden mb-4">
               <Image
-                src="/blog-img/Rectangle 4448 (4).png"
+                src="/blog-img/image.png"
                 alt="Boutique"
                 fill
                 className="object-cover"
@@ -39,7 +39,7 @@ const ExploreProduct = () => {
           <div className="flex flex-col items-center">
             <div className="relative w-full h-[315px] overflow-hidden mb-4">
               <Image
-                src="/blog-img/Rectangle 4448 (5).png"
+                src="/banner-img/Gemini_Generated_Image_2tv8hi2tv8hi2tv8.png"
                 alt="Creators"
                 fill
                 className="object-cover"
