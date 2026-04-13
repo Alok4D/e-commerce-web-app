@@ -46,14 +46,14 @@ const BlogFeaturedSection = () => {
 
             {/* Content Container */}
             <div className="w-full md:w-1/2 flex flex-col items-start">
-              <span className="text-sm font-serif font-bold text-[#1A1A1A] mb-3">
+              <span className="text-sm font-playfair font-bold text-[#1A1A1A] mb-3">
                 {post.label}
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif text-[#1A1A1A] mb-8">
+              <h2 className="text-4xl md:text-5xl font-playfair text-[#1A1A1A] mb-8">
                 {post.title}
               </h2>
               
-              <div className="space-y-6 text-[#4A4A4A] leading-relaxed text-[15px] font-serif max-w-lg mb-10">
+              <div className="space-y-6 text-[#4A4A4A] leading-relaxed text-[15px] font-playfair max-w-lg mb-10">
                 <p>{post.description1}</p>
                 <p>{post.description2}</p>
               </div>

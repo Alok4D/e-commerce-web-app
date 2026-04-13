@@ -30,7 +30,7 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto">
         
         {/* Section Title */}
-        <h2 className="text-2xl md:text-3xl font-serif font-medium text-[#1A1A1A] tracking-wider mb-12 uppercase">
+        <h2 className="text-2xl md:text-3xl font-playfair font-medium text-[#1A1A1A] tracking-wider mb-12 uppercase">
           SERVICES PROPOSÉS PAR DES TALENTS LOCAUX
         </h2>
 
@@ -49,10 +49,10 @@ const ServicesSection = () => {
               </div>
               
               {/* Text Content */}
-              <h3 className="text-lg font-serif font-bold text-[#1A1A1A] mb-2">
+              <h3 className="text-lg font-playfair font-bold text-[#1A1A1A] mb-2">
                 {service.title}
               </h3>
-              <p className="text-md font-serif text-[#4A4A4A] leading-relaxed">
+              <p className="text-md font-playfair text-[#4A4A4A] leading-relaxed">
                 {service.description}
               </p>
             </div>

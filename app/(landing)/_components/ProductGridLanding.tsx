@@ -38,7 +38,7 @@ const ProductGridLanding = () => {
           </h2>
           <a
             href="#"
-            className="text-md font-serif text-[#1A1A1A] hover:opacity-60 transition-opacity font-medium"
+            className="text-md font-playfair text-[#1A1A1A] hover:opacity-60 transition-opacity font-medium"
           >
             See All
           </a>
@@ -60,13 +60,13 @@ const ProductGridLanding = () => {
 
               {/* Product Info Box */}
               <div className="bg-[#EAE5DB] py-6 px-4 text-center">
-                <h3 className="text-sm font-serif font-bold text-[#1A1A1A] mb-1 uppercase tracking-tight">
+                <h3 className="text-sm font-playfair font-bold text-[#1A1A1A] mb-1 uppercase tracking-tight">
                   {product.name}
                 </h3>
-                <p className="text-xs font-serif text-gray-600 mb-2 italic">
+                <p className="text-xs font-playfair text-gray-600 mb-2 italic">
                   {product.brand}
                 </p>
-                <p className="text-xs font-serif text-[#1A1A1A] font-medium">
+                <p className="text-xs font-playfair text-[#1A1A1A] font-medium">
                   {product.price}
                 </p>
               </div>

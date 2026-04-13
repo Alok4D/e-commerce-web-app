@@ -13,7 +13,7 @@ const Blog = () => {
     <section className="w-full bg-[#D1CDC3] py-16 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
-        <h2 className="text-2xl md:text-3xl font-serif text-[#1A1A1A] tracking-wider mb-12 uppercase">
+        <h2 className="text-2xl md:text-3xl font-playfair text-[#1A1A1A] tracking-wider mb-12 uppercase">
           PARCOUREZ AVEC INTENTION
         </h2>
 
@@ -32,7 +32,7 @@ const Blog = () => {
               </div>
               
               {/* Category Label */}
-              <h3 className="text-lg font-serif text-[#1A1A1A] tracking-wide">
+              <h3 className="text-lg font-playfair text-[#1A1A1A] tracking-wide">
                 {category.title}
               </h3>
             </div>

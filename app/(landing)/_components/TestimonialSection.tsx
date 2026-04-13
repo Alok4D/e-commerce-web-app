@@ -30,7 +30,7 @@ const TestimonialSection = () => {
       <div className="max-w-7xl mx-auto">
         
         {/* Section Title */}
-        <h2 className="text-2xl md:text-4xl font-serif text-[#1A1A1A] mb-16 uppercase tracking-wider">
+        <h2 className="text-2xl md:text-4xl font-playfair text-[#1A1A1A] mb-16 uppercase tracking-wider">
           WORDS FROM OUR COMMUNITY
         </h2>
 
@@ -59,12 +59,12 @@ const TestimonialSection = () => {
               </div>
 
               {/* User Name */}
-              <h3 className="text-lg font-serif font-bold text-[#1A1A1A] mb-3 uppercase tracking-tight">
+              <h3 className="text-lg font-playfair font-bold text-[#1A1A1A] mb-3 uppercase tracking-tight">
                 {item.name}
               </h3>
 
               {/* Review Text */}
-              <p className="text-[13px] font-serif text-[#4A4A4A] leading-relaxed italic">
+              <p className="text-[13px] font-playfair text-[#4A4A4A] leading-relaxed italic">
                 {item.review}
               </p>
             </div>

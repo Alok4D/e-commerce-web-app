@@ -6,11 +6,11 @@ const RegistrySection = () => {
       
      
       <div className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16">
-        <h2 className="text-3xl md:text-4xl font-serif text-[#1A1A1A] leading-tight mb-8 uppercase tracking-wide">
+        <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] leading-tight mb-8 uppercase tracking-wide">
           CREATE YOUR WEDDING OR <br /> BABY REGISTRY
         </h2>
         
-        <p className="text-lg font-serif text-[#4A4A4A] leading-relaxed mb-10 max-w-md">
+        <p className="text-lg font-playfair text-[#4A4A4A] leading-relaxed mb-10 max-w-md">
           Créez une liste à partir de plusieurs boutiques sur Findéa, 
           partagez-la avec vos proches et laissez-la se mettre à jour automatiquement.
         </p>

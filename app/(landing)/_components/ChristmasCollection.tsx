@@ -22,8 +22,8 @@ const ChristmasCollection = () => {
         {/* Desktop Central Box */}
         <div className="hidden md:flex absolute inset-0 items-center justify-center z-10">
           <div className="w-[450px] py-16 px-10 bg-white/20 backdrop-blur-xs border border-white/30 text-center shadow-2xl">
-            <h2 className="text-3xl font-serif text-[#1A1A1A] mb-4 uppercase tracking-[0.2em]">CHRISTMAS COLLECTION</h2>
-            <p className="text-lg font-serif italic text-[#1A1A1A] mb-8">High Quality Gifts Just For You</p>
+            <h2 className="text-3xl font-playfair text-[#1A1A1A] mb-4 uppercase tracking-[0.2em]">CHRISTMAS COLLECTION</h2>
+            <p className="text-lg font-playfair italic text-[#1A1A1A] mb-8">High Quality Gifts Just For You</p>
             <button className="bg-[#f0e4cf] text-black px-12 py-4 text-sm font-medium hover:bg-[#e5d8bc] transition-all tracking-[0.1em] shadow-sm uppercase">Discover Now</button>
           </div>
         </div>
@@ -31,13 +31,13 @@ const ChristmasCollection = () => {
 
       {/* Bottom Part: Content (Visible only on Mobile) */}
       <div className="md:hidden w-full py-12 px-6 bg-[#F7F5F2] text-center">
-        <h2 className="text-2xl font-serif text-[#1A1A1A] mb-3 uppercase tracking-[0.1em] leading-tight">
+        <h2 className="text-2xl font-playfair text-[#1A1A1A] mb-3 uppercase tracking-[0.1em] leading-tight">
           CHRISTMAS COLLECTION
         </h2>
-        <p className="text-sm font-serif text-gray-700 mb-8 italic">
+        <p className="text-sm font-playfair text-gray-700 mb-8 italic">
           High Quality Gifts Just For You
         </p>
-        <button className="bg-[#f0e4cf] text-black px-14 py-4 text-sm font-serif shadow-sm hover:brightness-95 transition-all">
+        <button className="bg-[#f0e4cf] text-black px-14 py-4 text-sm font-playfair shadow-sm hover:brightness-95 transition-all">
           Discover Now
         </button>
       </div>

@@ -114,7 +114,7 @@ const Navbar = () => {
                 <input
                   type="text"
                   placeholder="Type here..."
-                  className="w-full bg-white text-gray-800 placeholder:text-gray-400 rounded-none px-4 py-3 text-sm outline-none font-serif"
+                  className="w-full bg-white text-gray-800 placeholder:text-gray-400 rounded-none px-4 py-3 text-sm outline-none font-playfair"
                 />
                 <Search
                   size={18}
@@ -133,7 +133,7 @@ const Navbar = () => {
                       link.hasDropdown && toggleAccordion(link.name)
                     }
                   >
-                    <span className="text-lg font-serif tracking-widest text-[#1A1A1A] uppercase">
+                    <span className="text-lg font-playfair tracking-widest text-[#1A1A1A] uppercase">
                       {link.name}
                     </span>
                     {link.hasDropdown && (
@@ -152,7 +152,7 @@ const Navbar = () => {
                         <li key={item}>
                           <a
                             href="#"
-                            className="text-[15px] font-serif text-[#333] hover:text-black transition-colors"
+                            className="text-[15px] font-playfair text-[#333] hover:text-black transition-colors"
                           >
                             {item}
                           </a>
@@ -165,7 +165,7 @@ const Navbar = () => {
               <li className="pt-4">
                 <a
                   href="#"
-                  className="text-lg font-serif tracking-widest text-[#1A1A1A]"
+                  className="text-lg font-playfair tracking-widest text-[#1A1A1A]"
                 >
                   Sign Up
                 </a>

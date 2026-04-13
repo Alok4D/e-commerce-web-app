@@ -15,10 +15,10 @@ const InstagramFeed = () => {
         
         {/* Header Title */}
         <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif text-[#1A1A1A] tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] tracking-tight">
             <span className="italic font-light">Let&apos;s</span> COLLECT
           </h2>
-          <p className="text-xl md:text-2xl font-serif uppercase tracking-[0.2em] mt-2">
+          <p className="text-xl md:text-2xl font-playfair uppercase tracking-[0.2em] mt-2">
             ON INSTAGRAM
           </p>
         </div>
@@ -42,7 +42,7 @@ const InstagramFeed = () => {
         </div>
 
         {/* Instagram Handle */}
-        <p className="text-2xl md:text-3xl font-serif italic mb-10 tracking-wide font-medium">
+        <p className="text-2xl md:text-3xl font-playfair italic mb-10 tracking-wide font-medium">
           @username.here
         </p>
 

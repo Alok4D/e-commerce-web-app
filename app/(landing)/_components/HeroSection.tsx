@@ -68,13 +68,13 @@ const HeroSection = () => {
       <div className="md:hidden w-full py-8 px-4 bg-[#F7F5F2] flex flex-row gap-3">
         <a
           href="#"
-          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-serif text-[15px] shadow-sm border border-black/5"
+          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-playfair text-[15px] shadow-sm border border-black/5"
         >
           Explore Products <MoveRight size={18} strokeWidth={1.2} />
         </a>
         <a
           href="#"
-          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-serif text-[15px] shadow-sm border border-black/5"
+          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-playfair text-[15px] shadow-sm border border-black/5"
         >
           Explore Services <MoveRight size={18} strokeWidth={1.2} />
         </a>

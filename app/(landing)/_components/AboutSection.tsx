@@ -40,7 +40,7 @@ const AboutSection = () => {
 
         {/* Right side text content */}
         <div className="w-full lg:w-1/2 flex flex-col items-start">
-          <h2 className="text-4xl md:text-5xl font-serif text-[#1A1A1A] mb-8">
+          <h2 className="text-4xl md:text-5xl font-playfair text-[#1A1A1A] mb-8">
             Qui sommes-nous
           </h2>
           

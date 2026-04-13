@@ -16,11 +16,11 @@ const NewsletterSection = () => {
 
       {/* Content Overlay */}
       <div className="relative z-10 w-full max-w-4xl px-6 text-center text-white">
-        <h2 className="text-3xl md:text-4xl font-serif uppercase tracking-[0.2em] mb-4">
+        <h2 className="text-3xl md:text-4xl font-playfair uppercase tracking-[0.2em] mb-4">
           ENTREZ DANS NOTRE UNIVERS
         </h2>
         
-        <p className="text-base md:text-lg font-serif italic mb-10 opacity-90">
+        <p className="text-base md:text-lg font-playfair italic mb-10 opacity-90">
           Découvrez En Avant-Première Nos Nouvelles Collections Et Nos Trésors Exclusifs.
         </p>
 
@@ -30,7 +30,7 @@ const NewsletterSection = () => {
             <input
               type="email"
               placeholder="Your Email"
-              className="w-full bg-transparent border border-white/60 py-3 px-4 text-white placeholder:text-white/70 focus:outline-none focus:border-white transition-colors font-serif"
+              className="w-full bg-transparent border border-white/60 py-3 px-4 text-white placeholder:text-white/70 focus:outline-none focus:border-white transition-colors font-playfair"
               required
             />
           </div>
