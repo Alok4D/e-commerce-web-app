@@ -1,6 +1,5 @@
-
-import { Search, MoveRight } from 'lucide-react';
-import Image from 'next/image';
+import { Search, MoveRight } from "lucide-react";
+import Image from "next/image";
 
 const HeroSection = () => {
   return (
@@ -35,10 +34,10 @@ const HeroSection = () => {
           <h1 className="hidden md:block text-7xl font-playfair font-medium tracking-wide mb-10 text-white">
             Findéa
           </h1>
-          
+
           {/* Search Bar */}
           <div className="w-full max-w-2xl bg-[#F7F5F2]/95 md:bg-white text-black py-4 px-6 flex items-center justify-between shadow-2xl rounded-sm md:rounded-full">
-            <input 
+            <input
               type="text"
               placeholder="Search a product, a boutique or a service...."
               className="w-full bg-transparent border-none outline-none text-[13px] md:text-sm font-normal text-gray-700 placeholder:text-gray-500"
@@ -68,13 +67,13 @@ const HeroSection = () => {
       <div className="md:hidden w-full py-8 px-4 bg-[#F7F5F2] flex flex-row gap-3">
         <a
           href="#"
-          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-playfair text-[15px] shadow-sm border border-black/5"
+          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-playfair text-[18px] shadow-sm border border-black/5"
         >
           Explore Products <MoveRight size={18} strokeWidth={1.2} />
         </a>
         <a
           href="#"
-          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-playfair text-[15px] shadow-sm border border-black/5"
+          className="flex-1 bg-[#f0e4cf] py-4 px-2 flex items-center justify-center gap-2 text-[#1A1A1A] font-playfair text-[18px] shadow-sm border border-black/5"
         >
           Explore Services <MoveRight size={18} strokeWidth={1.2} />
         </a>
