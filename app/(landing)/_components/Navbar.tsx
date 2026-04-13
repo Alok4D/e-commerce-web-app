@@ -1,39 +1,48 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useState } from 'react';
-import { Search, User, Heart, ShoppingCart, Gift, ChevronDown, Menu, X } from 'lucide-react';
-import Link from 'next/link';
+import Image from "next/image";
+import { useState } from "react";
+import {
+  Search,
+  User,
+  Heart,
+  ShoppingCart,
+  Gift,
+  ChevronDown,
+  Menu,
+  X,
+} from "lucide-react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
 
   const navLinks = [
-    { name: 'HOME', hasDropdown: false },
-    { name: 'ABOUT', hasDropdown: false },
+    { name: "HOME", hasDropdown: false },
+    { name: "ABOUT", hasDropdown: false },
     {
-      name: 'PRODUCTS',
+      name: "PRODUCTS",
       hasDropdown: true,
-      items: ['Featured', 'New Arrivals', 'Best Sellers', 'Collection'],
+      items: ["Featured", "New Arrivals", "Best Sellers", "Collection"],
     },
     {
-      name: 'REGISTRIES',
+      name: "REGISTRIES",
       hasDropdown: true,
-      items: ['Wedding Registry', 'Baby Registry', 'Find a Registry'],
+      items: ["Wedding Registry", "Baby Registry", "Find a Registry"],
     },
     {
-      name: 'SERVICES',
+      name: "SERVICES",
       hasDropdown: true,
       items: [
-        'Wedding Services',
-        'Baby & Family',
-        'Home & Lifestyle',
-        'Wellness & Beauty',
-        'Photography',
+        "Wedding Services",
+        "Baby & Family",
+        "Home & Lifestyle",
+        "Wellness & Beauty",
+        "Photography",
       ],
     },
-    { name: 'BOUTIQUES', hasDropdown: false },
+    { name: "BOUTIQUES", hasDropdown: false },
   ];
 
   const toggleAccordion = (name: string) => {
@@ -45,8 +54,8 @@ const Navbar = () => {
       {/* Mobile Header (Image 6 structure) */}
       <div className="md:hidden w-full bg-white border-b border-gray-200 py-3 px-4 grid grid-cols-3 items-center">
         <div className="flex items-center justify-start">
-          <button 
-            onClick={() => setIsMenuOpen(true)} 
+          <button
+            onClick={() => setIsMenuOpen(true)}
             className="text-gray-900 p-1 relative z-10"
             aria-label="Open Menu"
           >
@@ -83,16 +92,19 @@ const Navbar = () => {
           <div className="fixed inset-y-0 left-0 w-[280px] bg-[#D5D0C9] z-50 p-6 flex flex-col shadow-2xl overflow-y-auto">
             <div className="flex flex-col items-center mb-10">
               <div className="flex justify-between items-center w-full mb-8">
-                <div className="w-6"></div> 
+                <div className="w-6"></div>
                 {/* Spacer to help center logo */}
                 <Image
-                  src="/logo/logo.png"
+                  src="/logo/logo-removebg-preview.png"
                   alt="Findea Logo"
                   width={110}
                   height={38}
                   className="h-9 w-auto object-contain"
                 />
-                <button onClick={() => setIsMenuOpen(false)} className="text-gray-900">
+                <button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-gray-900"
+                >
                   <X size={24} strokeWidth={1.5} />
                 </button>
               </div>
@@ -117,7 +129,9 @@ const Navbar = () => {
                 <li key={link.name}>
                   <div
                     className="flex justify-between items-center cursor-pointer"
-                    onClick={() => link.hasDropdown && toggleAccordion(link.name)}
+                    onClick={() =>
+                      link.hasDropdown && toggleAccordion(link.name)
+                    }
                   >
                     <span className="text-lg font-serif tracking-widest text-[#1A1A1A] uppercase">
                       {link.name}
@@ -127,7 +141,7 @@ const Navbar = () => {
                         size={20}
                         strokeWidth={1}
                         className={`text-gray-600 transition-transform ${
-                          activeAccordion === link.name ? 'rotate-180' : ''
+                          activeAccordion === link.name ? "rotate-180" : ""
                         }`}
                       />
                     )}
@@ -202,14 +216,21 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-center">
           <ul className="flex items-center space-x-8 h-full">
             {navLinks.map((link) => (
-              <li key={link.name} className="relative group h-full flex items-center">
+              <li
+                key={link.name}
+                className="relative group h-full flex items-center"
+              >
                 <a
                   href="#"
                   className="flex items-center gap-1 text-[13px] font-medium tracking-[0.1em] text-gray-800 hover:text-gray-500 transition-colors uppercase cursor-pointer"
                 >
                   {link.name}
                   {link.hasDropdown && (
-                    <ChevronDown size={14} strokeWidth={1.5} className="text-gray-400 group-hover:rotate-180 transition-transform" />
+                    <ChevronDown
+                      size={14}
+                      strokeWidth={1.5}
+                      className="text-gray-400 group-hover:rotate-180 transition-transform"
+                    />
                   )}
                 </a>
 
