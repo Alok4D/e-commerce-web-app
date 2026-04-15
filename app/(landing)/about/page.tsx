@@ -21,7 +21,7 @@ const AboutPage = () => {
           src="/about-img/Rectangle 4487 copy.png"
           alt="About Hero"
           fill
-         
+          draggable={false}
           priority
         />
 
@@ -50,6 +50,7 @@ const AboutPage = () => {
               src="/about-img/Rectangle 4480.png"
               alt="Who we are"
               fill
+              draggable={false}
               className="object-cover rounded-sm"
             />
           </div>
@@ -120,10 +121,10 @@ const AboutPage = () => {
           {/* Main Body Text */}
           <div className="text-[#1a1a1a] text-base md:text-[24px] font-regular leading-[1.6] md:leading-relaxed space-y-8 md:space-y-0 mb-10 md:mb-12 tracking-wide">
             <p>
-              Que L'on Cherche Un Objet Pour Son Intérieur, Un Cadeau Chargé De Sens, Une Piece Pour Une Liste De Mariage Ou De Naissance, Ou Encore Un Service Du Quotidien, Findéa Accompagne Chaque Étape, Simplement Et Naturellement.
+              Que L&apos;on Cherche Un Objet Pour Son Intérieur, Un Cadeau Chargé De Sens, Une Piece Pour Une Liste De Mariage Ou De Naissance, Ou Encore Un Service Du Quotidien, Findéa Accompagne Chaque Étape, Simplement Et Naturellement.
             </p>
             <p>
-              Nous Avons Voulu Une Plateforme Douce Et Intuitive, À L'image De La Ville Qu'elle Met En Lumiere. Une Expérience Fluide, Esthétique Et Chaleureuse, Pensée Autant Pour Ceux Qui Découvrent Que Pour Ceux Qui Proposent.
+              Nous Avons Voulu Une Plateforme Douce Et Intuitive, À L&apos;image De La Ville Qu&apos;elle Met En Lumiere. Une Expérience Fluide, Esthétique Et Chaleureuse, Pensée Autant Pour Ceux Qui Découvrent Que Pour Ceux Qui Proposent.
             </p>
           </div>
 
@@ -166,7 +167,9 @@ const AboutPage = () => {
                 className={`bg-[#dedad2] p-8 md:p-12 h-[273px] justify-center items-center flex flex-col transition-all hover:shadow-sm ${i === 2 ? 'sm:col-span-2 md:col-span-1' : ''}`}
               >
                 <div className="flex justify-center mb-6 md:mb-8">
-                  <Image src={value.icon} alt={value.title} width={40} height={40} className="text-[#1A1A1A] md:w-12 md:h-12" />
+                  <Image src={value.icon}
+                  draggable={false}
+                  alt={value.title} width={40} height={40}  className="text-[#1A1A1A] md:w-12 md:h-12" />
                 </div>
                 <h3 className="text-lg md:text-xl font-playfair text-[#1A1A1A] uppercase font-medium mb-3 md:mb-4">
                   {value.title}
@@ -186,6 +189,7 @@ const AboutPage = () => {
             src="/about-img/Frame 60.png"
             alt="Newsletter Background"
             fill
+            draggable={false}
           />
         </div>
 
