@@ -1,34 +1,51 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import Navbar from "../_components/Navbar";
 import Footer from "../_components/Footer";
 import NewsletterSection from "../_components/NewsletterSection";
-import { Heart, Users, Leaf } from "lucide-react";
+import { Heart, Users, Leaf, ChevronLeft } from "lucide-react";
+import LandingTopAnnouncementBar from "../_components/LandingTopAnnouncementBar";
 
 const AboutPage = () => {
+  const router = useRouter();
+
   return (
     <main className="min-h-screen bg-white">
+      <LandingTopAnnouncementBar />
       <Navbar />
 
       {/* Hero Banner */}
-      <section className="relative h-[400px] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[300px] md:h-[400px] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1513519247388-19345420d4c4?q=80&w=2070"
+          src="/about-img/Rectangle 4487.png"
           alt="About Hero"
           fill
-          className="object-cover brightness-50"
+          className="object-cover"
           priority
         />
-        <div className="relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl text-white font-playfair tracking-widest uppercase bg-black/20 px-8 py-4 backdrop-blur-sm">
+        
+        {/* Return Button */}
+        <button 
+          onClick={() => router.back()}
+          className="absolute top-20 md:top-25 right-6 md:right-35 z-20 flex items-center gap-1 text-[#FFFFFF] text-[10px] md:text-sm font-inter hover:opacity-70 transition-opacity font-regular tracking-wider"
+        >
+          <ChevronLeft size={14} color="#FFFFFF" strokeWidth={1.5} className="md:w-4 md:h-4" />
+          Return to previous page
+        </button>
+
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-3xl md:text-[38px] text-[#FFFFFF] font-bold font-playfair tracking-widest uppercase py-4">
             À PROPOS DE NOUS
           </h1>
         </div>
       </section>
 
       {/* Who are we Section */}
-      <section className="max-w-[1239px] mx-auto py-20 px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="relative h-[500px] w-full">
+      <section className="max-w-[1239px] mx-auto py-12 md:py-20 px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+        <div className="relative h-[350px] md:h-[500px] w-full">
           <Image
             src="https://images.unsplash.com/photo-1522071823991-b9671f9d7d17?q=80&w=2070"
             alt="Who we are"
@@ -36,11 +53,11 @@ const AboutPage = () => {
             className="object-cover rounded-sm"
           />
         </div>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6 md:gap-8">
           <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] uppercase tracking-wider">
             Qui sommes-nous
           </h2>
-          <div className="space-y-6 text-lg text-[#4A4A4A] font-playfair leading-relaxed">
+          <div className="space-y-4 md:space-y-6 text-base md:text-lg text-[#4A4A4A] font-playfair leading-relaxed">
             <p>
               Findea est née d'un constat simple: à l'idée, les talents sont 
               partout, mais ils sont souvent difficiles à trouver. Des 
@@ -64,12 +81,12 @@ const AboutPage = () => {
       </section>
 
       {/* Meeting Point Section */}
-      <section className="bg-[#FAF9F6] py-20 px-6 md:px-12">
+      <section className="bg-[#FAF9F6] py-16 md:py-20 px-6 md:px-12">
         <div className="max-w-[1239px] mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] uppercase tracking-widest mb-16">
+          <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] uppercase tracking-widest mb-10 md:mb-16">
             FINDEA, UN POINT DE RENCONTRE
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 title: "Découvrir",
@@ -85,7 +102,7 @@ const AboutPage = () => {
               },
             ].map((item, i) => (
               <div key={i} className="flex flex-col gap-4">
-                <div className="relative h-[400px] w-full overflow-hidden">
+                <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
                   <Image
                     src={item.img}
                     alt={item.title}
@@ -93,7 +110,7 @@ const AboutPage = () => {
                     className="object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="text-xl font-playfair text-[#1A1A1A] uppercase tracking-widest mt-4">
+                <h3 className="text-lg md:text-xl font-playfair text-[#1A1A1A] uppercase tracking-widest mt-2 md:mt-4">
                   {item.title}
                 </h3>
               </div>
@@ -103,12 +120,12 @@ const AboutPage = () => {
       </section>
 
       {/* Quote Block */}
-      <section className="bg-[#D5D0C9] py-24 px-6 md:px-12">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <section className="bg-[#D5D0C9] py-16 md:py-24 px-6 md:px-12">
+        <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
           <p className="text-xl md:text-2xl font-playfair text-[#1A1A1A] leading-relaxed italic">
             "Que l'on cherche un objet pour son intérieur, un cadeau chargé de sens, une pièce pour une liste de mariage ou de naissance, ou encore un service du quotidien, Findea accompagne chaque étape."
           </p>
-          <div className="w-16 h-px bg-black mx-auto"></div>
+          <div className="w-12 md:w-16 h-px bg-black mx-auto"></div>
           <p className="text-lg md:text-xl font-playfair text-[#1A1A1A] opacity-90">
             Findea ne vend pas seulement des produits ou des services. Elle crée des liens.
           </p>
@@ -116,12 +133,12 @@ const AboutPage = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-24 px-6 md:px-12 bg-white">
+      <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
         <div className="max-w-[1239px] mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] uppercase tracking-[0.2em] mb-20">
+          <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] uppercase tracking-[0.2em] mb-12 md:mb-20">
             VALEURS DE FINDEA
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
             {[
               {
                 icon: Heart,
@@ -141,15 +158,15 @@ const AboutPage = () => {
             ].map((value, i) => (
               <div
                 key={i}
-                className="bg-[#FAF9F6] p-12 transition-all hover:shadow-sm"
+                className={`bg-[#FAF9F6] p-8 md:p-12 transition-all hover:shadow-sm ${i === 2 ? 'sm:col-span-2 md:col-span-1' : ''}`}
               >
-                <div className="flex justify-center mb-8">
-                  <value.icon size={48} strokeWidth={1} className="text-[#1A1A1A]" />
+                <div className="flex justify-center mb-6 md:mb-8">
+                  <value.icon size={40} strokeWidth={1} className="text-[#1A1A1A] md:w-12 md:h-12" />
                 </div>
-                <h3 className="text-xl font-playfair text-[#1A1A1A] uppercase tracking-widest mb-4">
+                <h3 className="text-lg md:text-xl font-playfair text-[#1A1A1A] uppercase tracking-widest mb-3 md:mb-4">
                   {value.title}
                 </h3>
-                <p className="text-[#4A4A4A] font-playfair">{value.desc}</p>
+                <p className="text-sm md:text-base text-[#4A4A4A] font-playfair">{value.desc}</p>
               </div>
             ))}
           </div>
