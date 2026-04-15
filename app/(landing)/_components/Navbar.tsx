@@ -19,21 +19,24 @@ const Navbar = () => {
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
 
   const navLinks = [
-    { name: "HOME", hasDropdown: false },
-    { name: "ABOUT", hasDropdown: false },
+    { name: "HOME", hasDropdown: false, href: "/" },
+    { name: "ABOUT", hasDropdown: false, href: "/about" },
     {
       name: "PRODUCTS",
       hasDropdown: true,
+      href: "#",
       items: ["Featured", "New Arrivals", "Best Sellers", "Collection"],
     },
     {
       name: "REGISTRIES",
       hasDropdown: true,
+      href: "#",
       items: ["Wedding Registry", "Baby Registry", "Find a Registry"],
     },
     {
       name: "SERVICES",
       hasDropdown: true,
+      href: "#",
       items: [
         "Wedding Services",
         "Baby & Family",
@@ -42,7 +45,7 @@ const Navbar = () => {
         "Photography",
       ],
     },
-    { name: "BOUTIQUES", hasDropdown: false },
+    { name: "BOUTIQUES", hasDropdown: false, href: "#" },
   ];
 
   const toggleAccordion = (name: string) => {
@@ -127,11 +130,16 @@ const Navbar = () => {
             <ul className="space-y-8 mt-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <div
+                  <Link
+                    href={link.href}
                     className="flex justify-between items-center cursor-pointer"
-                    onClick={() =>
-                      link.hasDropdown && toggleAccordion(link.name)
-                    }
+                    onClick={() => {
+                      if (link.hasDropdown) {
+                        toggleAccordion(link.name);
+                      } else {
+                        setIsMenuOpen(false);
+                      }
+                    }}
                   >
                     <span className="text-lg font-playfair tracking-widest text-[#1A1A1A] uppercase">
                       {link.name}
@@ -145,7 +153,7 @@ const Navbar = () => {
                         }`}
                       />
                     )}
-                  </div>
+                  </Link>
                   {link.hasDropdown && activeAccordion === link.name && (
                     <ul className="pl-6 mt-5 space-y-4">
                       {link.items?.map((item) => (
@@ -220,9 +228,9 @@ const Navbar = () => {
                 key={link.name}
                 className="relative group h-full flex items-center"
               >
-                <a
-                  href="#"
-                  className="flex items-center gap-1 text-[13px] font-medium tracking-[0.1em] text-gray-800 hover:text-gray-500 transition-colors uppercase cursor-pointer"
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-1 text-[13px] font-medium tracking-widest text-gray-800 hover:text-gray-500 transition-colors uppercase cursor-pointer"
                 >
                   {link.name}
                   {link.hasDropdown && (
@@ -232,7 +240,7 @@ const Navbar = () => {
                       className="text-gray-400 group-hover:rotate-180 transition-transform"
                     />
                   )}
-                </a>
+                </Link>
 
                 {/* Dropdown Menu */}
                 {link.hasDropdown && (
