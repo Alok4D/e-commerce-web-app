@@ -71,10 +71,10 @@ const AboutPage = () => {
       </section>
 
       {/* Meeting Point Section */}
-      <section className="bg-[#FAF9F6] py-16 md:py-20 px-6 md:px-12">
+      <section className="py-16 md:py-20 px-6 md:px-12">
         <div className="max-w-[1239px] mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] uppercase tracking-widest mb-10 md:mb-16">
-            FINDEA, UN POINT DE RENCONTRE
+          <h2 className="text-md md:text-[36px] font-playfair font-semibold text-[#000000] uppercase mb-10 md:mb-16">
+            Findéa, un point de rencontre
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {[
@@ -92,15 +92,16 @@ const AboutPage = () => {
               },
             ].map((item, i) => (
               <div key={i} className="flex flex-col gap-4">
-                <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden">
+                <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden cursor-pointer">
                   <Image
                     src={item.img}
                     alt={item.title}
                     fill
+                    draggable={false}
                     className="object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="text-lg md:text-xl font-playfair text-[#1A1A1A] uppercase tracking-widest mt-2 md:mt-4">
+                <h3 className="text-lg md:text-xl font-semibold font-playfair text-[#1A1A1A] uppercase mt-[21px] md:mt-4">
                   {item.title}
                 </h3>
               </div>
@@ -110,17 +111,28 @@ const AboutPage = () => {
       </section>
 
       {/* Quote Block */}
-      <section className="bg-[#D5D0C9] py-16 md:py-24 px-6 md:px-12">
-        <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
-          <p className="text-xl md:text-2xl font-playfair text-[#1A1A1A] leading-relaxed italic">
-            "Que l'on cherche un objet pour son intérieur, un cadeau chargé de sens, une pièce pour une liste de mariage ou de naissance, ou encore un service du quotidien, Findea accompagne chaque étape."
+    <section className="bg-[#cfcac1] min-h-[400px] md:min-h-[446px] flex items-center justify-center px-4 py-16 md:py-20">
+      <div className="max-w-[1240px] mx-auto text-center font-playfair">
+        
+        {/* Main Body Text */}
+        <div className="text-[#1a1a1a] text-base md:text-[24px] font-regular leading-[1.6] md:leading-relaxed space-y-8 md:space-y-0 mb-10 md:mb-12 tracking-wide">
+          <p>
+            Que L'on Cherche Un Objet Pour Son Intérieur, Un Cadeau Chargé De Sens, Une Piece Pour Une Liste De Mariage Ou De Naissance, Ou Encore Un Service Du Quotidien, Findéa Accompagne Chaque Étape, Simplement Et Naturellement.
           </p>
-          <div className="w-12 md:w-16 h-px bg-black mx-auto"></div>
-          <p className="text-lg md:text-xl font-playfair text-[#1A1A1A] opacity-90">
-            Findea ne vend pas seulement des produits ou des services. Elle crée des liens.
+          <p>
+            Nous Avons Voulu Une Plateforme Douce Et Intuitive, À L'image De La Ville Qu'elle Met En Lumiere. Une Expérience Fluide, Esthétique Et Chaleureuse, Pensée Autant Pour Ceux Qui Découvrent Que Pour Ceux Qui Proposent.
           </p>
         </div>
-      </section>
+
+        {/* Highlighted Footer Line */}
+        <div className="pt-4">
+          <p className="text-[#1a1a1a] text-lg md:text-[24px] font-semibold">
+            Findéa Ne Vend Pas Seulement Des Produits Ou Des Services. Elle Crée Des Liens.
+          </p>
+        </div>
+
+      </div>
+    </section>
 
       {/* Values Section */}
       <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
