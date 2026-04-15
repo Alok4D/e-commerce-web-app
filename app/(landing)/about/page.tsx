@@ -135,47 +135,86 @@ const AboutPage = () => {
     </section>
 
       {/* Values Section */}
-      <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
+      <section className="py-16 md:py-24 px-6 md:px-12">
         <div className="max-w-[1239px] mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] uppercase tracking-[0.2em] mb-12 md:mb-20">
-            VALEURS DE FINDEA
+          <h2 className="text-3xl md:text-[36px] font-playfair font-semibold text-[#000000] uppercase mb-12 md:mb-20">
+            Valeurs de Findéa
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
             {[
               {
-                icon: Heart,
+                icon: "/about-img/Vector (1).png",
                 title: "Authenticité",
                 desc: "Sélection soignée et de qualité",
               },
               {
-                icon: Users,
+                icon: "/about-img/Vector (2).png",
                 title: "Communauté",
-                desc: "Des liens durables avec nos partenaires",
+                desc: "Liens durables avec les créateurs locaux",
               },
               {
-                icon: Leaf,
+                icon: "/about-img/Vector (3).png",
                 title: "Durabilité",
-                desc: "Pratiques responsables et consciencieuses",
+                desc: "Pratiques responsables et commerce local",
               },
             ].map((value, i) => (
               <div
                 key={i}
-                className={`bg-[#FAF9F6] p-8 md:p-12 transition-all hover:shadow-sm ${i === 2 ? 'sm:col-span-2 md:col-span-1' : ''}`}
+                className={`bg-[#dedad2] p-8 md:p-12 h-[273px] justify-center items-center flex flex-col transition-all hover:shadow-sm ${i === 2 ? 'sm:col-span-2 md:col-span-1' : ''}`}
               >
                 <div className="flex justify-center mb-6 md:mb-8">
-                  <value.icon size={40} strokeWidth={1} className="text-[#1A1A1A] md:w-12 md:h-12" />
+                  <Image src={value.icon} alt={value.title} width={40} height={40} className="text-[#1A1A1A] md:w-12 md:h-12" />
                 </div>
-                <h3 className="text-lg md:text-xl font-playfair text-[#1A1A1A] uppercase tracking-widest mb-3 md:mb-4">
+                <h3 className="text-lg md:text-xl font-playfair text-[#1A1A1A] uppercase font-medium mb-3 md:mb-4">
                   {value.title}
                 </h3>
-                <p className="text-sm md:text-base text-[#4A4A4A] font-playfair">{value.desc}</p>
+                <p className="text-sm md:text-base text-[#6e6a63] font-playfair max-w-[168px] mx-auto">{value.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <NewsletterSection />
+      {/* newsletterSection */}
+             <section className="relative w-full h-[450px] flex items-center justify-center overflow-hidden">
+                  {/* Background Image */}
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src="/about-img/Frame 60.png" 
+                      alt="Newsletter Background"
+                      fill
+                    />
+                  </div>
+            
+                  {/* Content Overlay */}
+                  <div className="relative z-10 w-full max-w-4xl px-6 text-center text-[#FFFFFF]">
+                    <h2 className="text-3xl md:text-[40px] font-playfair font-semibold uppercase tracking-widest mb-4">
+                      Entrez dans notre univers
+                    </h2>
+                    
+                    <p className="text-base md:text-[20px] font-medium font-playfair mb-10">
+                      Découvrez En Avant-Première Nos Nouvelles Collections Et Nos Trésors Exclusifs.
+                    </p>
+            
+                    {/* Subscription Form */}
+                    <form className="flex flex-col md:flex-row items-center justify-center gap-4">
+                      <div className="w-full md:w-96">
+                        <input
+                          type="email"
+                          placeholder="Your Email"
+                          className="w-full bg-transparent border border-[#F1E1C2] py-3 px-4 text-white placeholder:text-white/70 focus:outline-none focus:border-white transition-colors font-inter"
+                          required
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        className="bg-[#F1E1C2] text-black px-10 py-3 md:text-[19px]  text-sm font-bold hover:bg-[#e5d8c1] transition-all tracking-wide shadow-lg font-playfair"
+                      >
+                        Subscribe
+                      </button>
+                    </form>
+                  </div>
+                </section>
       <Footer />
     </main>
   );
