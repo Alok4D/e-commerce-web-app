@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Navbar from "../_components/Navbar";
@@ -13,7 +12,7 @@ const AboutPage = () => {
   const router = useRouter();
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#f5f3ee]">
       <LandingTopAnnouncementBar />
       <Navbar />
 
@@ -44,37 +43,28 @@ const AboutPage = () => {
       </section>
 
       {/* Who are we Section */}
-      <section className="max-w-[1239px] mx-auto py-12 md:py-20 px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
-        <div className="relative h-[350px] md:h-[500px] w-full">
+      <section className="max-w-[1240px] mx-auto py-12 md:py-20 px-6 md:px-12 lg:px-0 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+        <div className="relative h-[350px] md:h-[500px] w-full order-2 md:order-1">
           <Image
-            src="https://images.unsplash.com/photo-1522071823991-b9671f9d7d17?q=80&w=2070"
+            src="/about-img/Rectangle 4480.png"
             alt="Who we are"
             fill
             className="object-cover rounded-sm"
           />
         </div>
-        <div className="flex flex-col gap-6 md:gap-8">
-          <h2 className="text-3xl md:text-4xl font-playfair text-[#1A1A1A] uppercase tracking-wider">
+        <div className="flex flex-col gap-6 md:gap-8 order-1 md:order-2">
+          <h2 className="text-3xl md:text-[36px] font-playfair text-[#000000] font-bold uppercase tracking-wider">
             Qui sommes-nous
           </h2>
           <div className="space-y-4 md:space-y-6 text-base md:text-lg text-[#4A4A4A] font-playfair leading-relaxed">
             <p>
-              Findea est née d'un constat simple: à l'idée, les talents sont 
-              partout, mais ils sont souvent difficiles à trouver. Des 
-              boutiques confidentielles, des artisans passionnés, des 
-              créateurs inspirés, des prestataires de confiance... autant de 
-              belles adresses qui méritent d'être vues, connues et 
-              accessibles plus facilement.
+             Findéa est née d’un constat simple : à Abidjan, les talents sont partout, mais ils sont souvent difficiles à trouver. Des boutiques confidentielles, des artisans passionnés, des créateurs inspirés, des prestataires de confiance… Autant de belles adresses qui méritent d’être vues, connues et accessibles plus facilement.
             </p>
             <p>
-              Findea a été imaginée comme un point de rencontre. Un espace 
-              où l'on prend le temps de chercher, de découvrir, de comparer 
-              et de choisir avec intention. Un lieu digital où chaque produit 
-              et chaque service raconte quelque chose, et où chaque 
-              professionnel trouve sa place.
+             Findéa a été imaginée comme un point de rencontre. Un espace où l’on prend le temps de chercher, de découvrir, de comparer et de choisir avec intention. Un lieu digital où chaque produit et chaque service raconte quelque chose, et où chaque professionnel trouve sa place.
             </p>
           </div>
-          <button className="self-start bg-[#F0E4CF] text-black px-10 py-3 text-sm font-medium hover:bg-[#e5d8c1] transition-all tracking-wide uppercase">
+          <button className="self-start font-playfair bg-[#F1E1C2] text-black px-8 py-2.5 text-[20px] font-bold hover:bg-[#e5d8c1] transition-all tracking-wide uppercase">
             Contact Us
           </button>
         </div>
