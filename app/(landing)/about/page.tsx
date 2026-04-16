@@ -25,8 +25,6 @@ const AboutPage = () => {
           draggable={false}
           priority
         />
-
-        {/* Return Button */}
         <button
           onClick={() => router.back()}
           className="absolute top-20 md:top-25 right-6 md:right-35 z-20 hidden lg:flex items-center gap-1 text-[#FFFFFF] text-[10px] md:text-sm font-inter hover:opacity-70 transition-opacity font-regular tracking-wider"
@@ -184,7 +182,6 @@ const AboutPage = () => {
 
       {/* newsletterSection */}
       <section className="relative w-full h-[450px] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/about-img/Frame 60.png"
