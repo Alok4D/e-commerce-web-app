@@ -14,12 +14,16 @@ const GiftCardSection = () => {
               alt="Findea Gift Card Left"
               fill
               className="hidden md:block"
+              draggable={false}
+              priority
             />
             <Image
               src="/gift-img/gitt-small-device-left.png"
               alt="Findea Gift Card Left Mobile"
               fill
               className="object-cover md:hidden"
+               draggable={false}
+              priority
             />
           </div>
 
@@ -30,12 +34,16 @@ const GiftCardSection = () => {
               alt="Findea Gift Card Right"
               fill
               className="hidden md:block"
+              draggable={false}
+              priority
             />
             <Image
               src="/gift-img/gitt-small-device-right.png"
               alt="Findea Gift Card Right Mobile"
               fill
               className="object-cover md:hidden"
+              draggable={false}
+              priority
             />
           </div>
         </div>

@@ -41,6 +41,8 @@ const InstagramFeed = () => {
                 alt={`Instagram feed ${index}`}
                 fill
                 className="object-cover"
+                draggable={false}
+                priority
               />
             </div>
           ))}
