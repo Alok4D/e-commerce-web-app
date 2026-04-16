@@ -49,13 +49,23 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Custom Brand Colors */
+  --color-brand-main: #F5F3EE;
+  --color-brand-beige: #DEDAD2;
+  --color-brand-greige: #CFCAC1;
+  --color-brand-text: #1C1C1C;
+  --color-brand-text-secondary: #6E6A63;
+
+  /* Custom Background & Foreground overrides if needed */
+  --color-background-warm: #F5F3EE;
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --background: #F5F3EE;
+  --foreground: #1C1C1C;
+  --card: #F5F3EE;
+  --card-foreground: #1C1C1C;
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.205 0 0);

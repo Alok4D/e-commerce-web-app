@@ -36,7 +36,7 @@ const NewsletterSection = () => {
           </div>
           <button
             type="submit"
-            className="bg-[#F0E4CF] text-black px-10 py-3 text-sm font-medium hover:bg-[#e5d8c1] transition-all tracking-wide shadow-lg"
+            className="bg-brand-greige text-black px-10 py-3 text-sm font-medium hover:bg-[#e5d8c1] transition-all tracking-wide shadow-lg font-playfair"
           >
             Subscribe
           </button>

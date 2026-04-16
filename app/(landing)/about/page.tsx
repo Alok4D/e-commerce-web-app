@@ -41,7 +41,7 @@ const AboutPage = () => {
       </section>
 
       {/* Who are we Section */}
-      <section className="w-full bg-[#f5f3ee]">
+      <section className="w-full bg-brand-main">
         <div className="max-w-[1240px] mx-auto py-12 md:py-20 px-6 md:px-12 lg:px-16 xl:px-0 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 lg:gap-12 items-center">
 
           <div className="relative h-[350px] md:h-[400px] lg:h-[500px] w-full order-2 md:order-1">
@@ -54,10 +54,10 @@ const AboutPage = () => {
             />
           </div>
           <div className="flex flex-col gap-6 md:gap-5 lg:gap-8 order-1 md:order-2">
-            <h2 className="text-3xl md:text-[30px] lg:text-[36px] font-playfair text-[#000000] font-bold uppercase tracking-wider">
+            <h2 className="text-3xl md:text-[30px] lg:text-[36px] font-playfair text-brand-text font-bold uppercase tracking-wider">
               Qui sommes-nous
             </h2>
-            <div className="space-y-4 md:space-y-5 lg:space-y-6 text-base lg:text-lg text-[#4A4A4A] font-playfair leading-relaxed">
+            <div className="space-y-4 md:space-y-5 lg:space-y-6 text-base lg:text-lg text-brand-text-secondary font-playfair leading-relaxed">
               <p>
                 Findéa est née d’un constat simple : à Abidjan, les talents sont partout, mais ils sont souvent difficiles à trouver. Des boutiques confidentielles, des artisans passionnés, des créateurs inspirés, des prestataires de confiance… Autant de belles adresses qui méritent d’être vues, connues et accessibles plus facilement.
               </p>
@@ -74,9 +74,9 @@ const AboutPage = () => {
 
 
       {/* Meeting Point Section */}
-      <section className="py-16 md:py-20 px-6 md:px-12 bg-[#f5f3ee]">
+      <section className="py-16 md:py-20 px-6 md:px-12 bg-brand-main">
         <div className="max-w-[1239px] mx-auto text-center">
-          <h2 className="text-2xl md:text-[30px] lg:text-[36px] font-playfair font-semibold text-[#000000] uppercase mb-10 lg:mb-16">
+          <h2 className="text-2xl md:text-[30px] lg:text-[36px] font-playfair font-semibold text-brand-text uppercase mb-10 lg:mb-16">
             Findéa, un point de rencontre
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-8">
@@ -114,11 +114,11 @@ const AboutPage = () => {
       </section>
 
       {/* Quote Block */}
-      <section className="bg-[#cfcac1] min-h-[400px] md:min-h-[446px] flex items-center justify-center px-6 md:px-12 py-16 md:py-20">
+      <section className="bg-brand-greige min-h-[400px] md:min-h-[446px] flex items-center justify-center px-6 md:px-12 py-16 md:py-20">
         <div className="max-w-[1240px] mx-auto text-center font-playfair">
 
           {/* Main Body Text */}
-          <div className="text-[#1a1a1a] text-base md:text-xl lg:text-[24px] font-regular leading-[1.6] md:leading-relaxed space-y-8 md:space-y-0 mb-10 md:mb-12 tracking-wide">
+          <div className="text-brand-text text-base md:text-xl lg:text-[24px] font-regular leading-[1.6] md:leading-relaxed space-y-8 md:space-y-0 mb-10 md:mb-12 tracking-wide">
             <p>
               Que L&apos;on Cherche Un Objet Pour Son Intérieur, Un Cadeau Chargé De Sens, Une Piece Pour Une Liste De Mariage Ou De Naissance, Ou Encore Un Service Du Quotidien, Findéa Accompagne Chaque Étape, Simplement Et Naturellement.
             </p>
@@ -129,7 +129,7 @@ const AboutPage = () => {
 
           {/* Highlighted Footer Line */}
           <div className="pt-4">
-            <p className="text-[#1a1a1a] text-lg md:text-xl lg:text-[24px] font-semibold">
+            <p className="text-brand-text text-lg md:text-xl lg:text-[24px] font-semibold">
               Findéa Ne Vend Pas Seulement Des Produits Ou Des Services. Elle Crée Des Liens.
             </p>
           </div>
@@ -138,9 +138,9 @@ const AboutPage = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 md:py-24 px-6 md:px-12 bg-[#f5f3ee]">
+      <section className="py-16 md:py-24 px-6 md:px-12 bg-brand-main">
         <div className="max-w-[1239px] mx-auto text-center">
-          <h2 className="text-3xl lg:text-[36px] font-playfair font-semibold text-[#000000] uppercase mb-12 lg:mb-20">
+          <h2 className="text-3xl lg:text-[36px] font-playfair font-semibold text-brand-text uppercase mb-12 lg:mb-20">
             Valeurs de Findéa
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
@@ -163,17 +163,17 @@ const AboutPage = () => {
             ].map((value, i) => (
               <div
                 key={i}
-                className={`bg-[#dedad2] p-8 md:p-10 lg:p-12 h-[273px] justify-center items-center flex flex-col transition-all hover:shadow-sm ${i === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+                className={`bg-brand-beige p-8 md:p-10 lg:p-12 h-[273px] justify-center items-center flex flex-col transition-all hover:shadow-sm ${i === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
               >
                 <div className="flex justify-center mb-6 md:mb-8">
                   <Image src={value.icon}
                   draggable={false}
-                  alt={value.title} width={40} height={40}  className="text-[#1A1A1A] md:w-12 md:h-12" />
+                  alt={value.title} width={40} height={40}  className="text-brand-text md:w-12 md:h-12" />
                 </div>
-                <h3 className="text-lg md:text-xl font-playfair text-[#1A1A1A] uppercase font-medium mb-3 md:mb-4">
+                <h3 className="text-lg md:text-xl font-playfair text-brand-text uppercase font-medium mb-3 md:mb-4">
                   {value.title}
                 </h3>
-                <p className="text-sm md:text-base text-[#6e6a63] font-playfair max-w-[168px] mx-auto">{value.desc}</p>
+                <p className="text-sm md:text-base text-brand-text-secondary font-playfair max-w-[168px] mx-auto">{value.desc}</p>
               </div>
             ))}
           </div>

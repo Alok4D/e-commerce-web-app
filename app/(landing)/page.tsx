@@ -17,7 +17,7 @@ import LandingTopAnnouncementBar from "./_components/LandingTopAnnouncementBar";
 
 export default function page() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <LandingTopAnnouncementBar />
       <Navbar />
       <HeroSection />
