@@ -8,6 +8,7 @@ import { ChevronLeft } from "lucide-react";
 import LandingTopAnnouncementBar from "../_components/LandingTopAnnouncementBar";
 
 const AboutPage = () => {
+  
   const router = useRouter();
 
   return (
@@ -16,7 +17,7 @@ const AboutPage = () => {
       <Navbar />
 
       {/* Hero Banner */}
-      <section className="relative h-[300px] md:h-[400px] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[174px] md:h-[400px] w-full flex items-center justify-center overflow-hidden">
         <Image
           src="/about-img/Rectangle 4487 copy.png"
           alt="About Hero"
@@ -28,7 +29,7 @@ const AboutPage = () => {
         {/* Return Button */}
         <button
           onClick={() => router.back()}
-          className="absolute top-20 md:top-25 right-6 md:right-35 z-20 flex items-center gap-1 text-[#FFFFFF] text-[10px] md:text-sm font-inter hover:opacity-70 transition-opacity font-regular tracking-wider"
+          className="absolute top-20 md:top-25 right-6 md:right-35 z-20 hidden lg:flex items-center gap-1 text-[#FFFFFF] text-[10px] md:text-sm font-inter hover:opacity-70 transition-opacity font-regular tracking-wider"
         >
           <ChevronLeft size={14} color="#FFFFFF" strokeWidth={1.5} className="md:w-4 md:h-4" />
           Return to previous page
