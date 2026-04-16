@@ -24,7 +24,7 @@ const BlogFeaturedSection = () => {
   ];
 
   return (
-    <section className="w-full bg-brand-greige py-20 px-6 md:px-12 lg:px-24">
+    <section className="w-full bg-brand-greige py-24 md:py-[118px] px-6 md:px-12 lg:px-24">
       <div className="max-w-[1240px] mx-auto flex flex-col gap-15 md:gap-24">
         
         {posts.map((post, index) => (
