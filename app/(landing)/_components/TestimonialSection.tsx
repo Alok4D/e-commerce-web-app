@@ -1,12 +1,17 @@
+'use client';
+
+import React from 'react';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 const TestimonialSection = () => {
   const testimonials = [
     {
       name: 'Samantha D.',
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150',
-      review: '"I absolutely love the curated collection! The attention to detail in every piece is remarkable. It\'s become my favorite place to find unique items."'
+      review: '"I absolutely love the curated collection! The attention to detail in every piece is remarkable. It\'s become my favorite place to find items."'
     },
     {
       name: 'Michael R.',
@@ -22,53 +27,100 @@ const TestimonialSection = () => {
       name: 'David L.',
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
       review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+    },
+    {
+      name: 'David L.',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+    },
+    {
+      name: 'David L.',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+    },
+    {
+      name: 'David L.',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+    },
+    {
+      name: 'David L.',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+    },
+    {
+      name: 'David L.',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+    },
+    {
+      name: 'David L.',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+    },
+    {
+      name: 'David L.',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
     }
   ];
 
+  const [emblaRef] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    skipSnaps: false,
+  }, [Autoplay({ delay: 3000, stopOnInteraction: false })]);
+
   return (
-    <section className="w-full bg-[#F5F3F0] py-20 px-6 md:px-12 lg:px-20">
+    <section className="w-full py-20 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Title */}
-        <h2 className="text-2xl md:text-4xl font-playfair text-[#1A1A1A] mb-16 uppercase tracking-wider">
+        <h2 className="text-[30px] md:text-[32px] font-bold font-playfair text-brand-text mb-16 uppercase">
           WORDS FROM OUR COMMUNITY
         </h2>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.map((item, index) => (
-            <div 
-              key={index} 
-              className="bg-[#E2E0D6] p-8 flex flex-col items-center text-center shadow-sm border-t-4 border-[#1A1A1A] hover:bg-[#D9D7CB] transition-colors duration-300"
-            >
-              {/* Profile Image (Circular) */}
-              <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-white shadow-md">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  className="object-cover"
-                />
+        {/* Testimonials Carousel */}
+        <div className="embla overflow-hidden" ref={emblaRef}>
+          <div className="embla__container flex -ml-6">
+            {testimonials.map((item, index) => (
+              <div 
+                key={index} 
+                className="embla__slide flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] pl-6"
+              >
+                <div className="bg-brand-beige p-8 h-full flex flex-col items-center text-center shadow-xs border-t-4 border-[#1A1A1A] hover:bg-[#D9D7CB] transition-colors duration-300">
+                  {/* Profile Image (Circular) */}
+                  <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-white shadow-md">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover"
+                      draggable={false}
+                      priority
+                    />
+                  </div>
+
+                  {/* Star Rating */}
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={14} fill="#E47F0C" stroke="#E47F0C" />
+                    ))}
+                  </div>
+
+                  {/* User Name */}
+                  <h3 className="text-[22px] font-manrope font-bold text-brand-text mb-3 tracking-tight">
+                    {item.name}
+                  </h3>
+
+                  {/* Review Text */}
+                  <p className="text-[13.5px] font-inter text-brand-text-secondary leading-relaxed">
+                    {item.review}
+                  </p>
+                </div>
               </div>
-
-              {/* Star Rating */}
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} fill="#D4A017" stroke="#D4A017" />
-                ))}
-              </div>
-
-              {/* User Name */}
-              <h3 className="text-lg font-playfair font-bold text-[#1A1A1A] mb-3 uppercase tracking-tight">
-                {item.name}
-              </h3>
-
-              {/* Review Text */}
-              <p className="text-[13px] font-playfair text-[#4A4A4A] leading-relaxed italic">
-                {item.review}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
       </div>

@@ -49,7 +49,7 @@ const GiftCardSection = () => {
         </div>
 
         {/* Text Content block */}
-        <div className="relative z-30 w-full max-w-md py-6 md:py-12 px-4 md:px-8 md:bg-[#DEDAD2]/50 md:backdrop-blur-sm md:border md:border-white/20 text-center md:shadow-xl">
+        <div className="relative z-30 w-full max-w-md py-6 md:py-12 px-4 md:px-8 md:bg-brand-beige/50 md:backdrop-blur-sm md:border md:border-white/20 text-center md:shadow-xl">
           <h2 className="text-3xl md:text-[32px] font-semibold font-playfair text-brand-text mb-4">
             Offrez la liberté du choix
           </h2>
