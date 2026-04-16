@@ -13,8 +13,11 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
 
@@ -128,48 +131,51 @@ const Navbar = () => {
 
             {/* Accordion Links (Image Structure) */}
             <ul className="space-y-8 mt-4">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="flex justify-between items-center cursor-pointer"
-                    onClick={() => {
-                      if (link.hasDropdown) {
-                        toggleAccordion(link.name);
-                      } else {
-                        setIsMenuOpen(false);
-                      }
-                    }}
-                  >
-                    <span className="text-lg font-playfair tracking-widest text-[#1A1A1A] uppercase">
-                      {link.name}
-                    </span>
-                    {link.hasDropdown && (
-                      <ChevronDown
-                        size={20}
-                        strokeWidth={1}
-                        className={`text-gray-600 transition-transform ${
-                          activeAccordion === link.name ? "rotate-180" : ""
-                        }`}
-                      />
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="flex justify-between items-center cursor-pointer group"
+                      onClick={() => {
+                        if (link.hasDropdown) {
+                          toggleAccordion(link.name);
+                        } else {
+                          setIsMenuOpen(false);
+                        }
+                      }}
+                    >
+                      <span className={`text-lg font-playfair tracking-widest uppercase transition-colors ${isActive ? 'text-brand-text font-bold' : 'text-[#1A1A1A]'}`}>
+                        {link.name}
+                      </span>
+                      {link.hasDropdown && (
+                        <ChevronDown
+                          size={20}
+                          strokeWidth={1}
+                          className={`text-gray-600 transition-transform ${
+                            activeAccordion === link.name ? "rotate-180" : ""
+                          }`}
+                        />
+                      )}
+                    </Link>
+                    {link.hasDropdown && activeAccordion === link.name && (
+                      <ul className="pl-6 mt-5 space-y-4">
+                        {link.items?.map((item) => (
+                          <li key={item}>
+                            <a
+                              href="#"
+                              className="text-[15px] font-playfair text-[#333] hover:text-black transition-colors"
+                            >
+                              {item}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
                     )}
-                  </Link>
-                  {link.hasDropdown && activeAccordion === link.name && (
-                    <ul className="pl-6 mt-5 space-y-4">
-                      {link.items?.map((item) => (
-                        <li key={item}>
-                          <a
-                            href="#"
-                            className="text-[15px] font-playfair text-[#333] hover:text-black transition-colors"
-                          >
-                            {item}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
+                  </li>
+                );
+              })}
               <li className="pt-4">
                 <a
                   href="#"
@@ -222,45 +228,62 @@ const Navbar = () => {
 
       <nav className="hidden md:block w-full bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-center">
-          <ul className="flex items-center space-x-8 h-full">
-            {navLinks.map((link) => (
-              <li
-                key={link.name}
-                className="relative group h-full flex items-center"
-              >
-                <Link
-                  href={link.href}
-                  className="flex items-center gap-1 text-[13px] font-medium tracking-widest text-gray-800 hover:text-gray-500 transition-colors uppercase cursor-pointer"
+          <ul className="flex items-center space-x-12 h-full">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li
+                  key={link.name}
+                  className="relative h-full flex items-center group"
                 >
-                  {link.name}
-                  {link.hasDropdown && (
-                    <ChevronDown
-                      size={14}
-                      strokeWidth={1.5}
-                      className="text-gray-400 group-hover:rotate-180 transition-transform"
-                    />
-                  )}
-                </Link>
+                  <Link
+                    href={link.href}
+                    className={`flex items-center gap-1 text-[13px] font-medium tracking-widest uppercase transition-colors cursor-pointer ${isActive ? 'text-black font-bold' : 'text-gray-800 hover:text-gray-500'}`}
+                  >
+                    {link.name}
+                    {link.hasDropdown && (
+                      <ChevronDown
+                        size={14}
+                        strokeWidth={1.5}
+                        className="text-gray-400 group-hover:rotate-180 transition-transform"
+                      />
+                    )}
+                  </Link>
 
-                {/* Dropdown Menu */}
-                {link.hasDropdown && (
-                  <div className="absolute top-full left-0 w-56 bg-brand-beige border border-gray-100 shadow-xl py-4 px-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                    <ul className="space-y-1">
-                      {link.items?.map((item) => (
-                        <li key={item}>
-                          <a
-                            href="#"
-                            className="block px-4 py-2 text-[13px] text-gray-600 hover:bg-[#F7F5F2] hover:text-black transition-colors"
-                          >
-                            {item}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </li>
-            ))}
+                  {/* Active Indicator (Design Specs: W=45, Weight=1.5) */}
+                  <AnimatePresence mode="wait">
+                    {isActive && (
+                      <motion.div 
+                        layoutId="nav-indicator"
+                        initial={{ opacity: 0, scaleX: 0 }}
+                        animate={{ opacity: 1, scaleX: 1 }}
+                        exit={{ opacity: 0, scaleX: 0 }}
+                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                        className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[45px] h-[1.5px] bg-[#F1E1C2] z-10" 
+                      />
+                    )}
+                  </AnimatePresence>
+
+                  {/* Dropdown Menu */}
+                  {link.hasDropdown && (
+                    <div className="absolute top-full left-0 w-56 bg-brand-beige border border-gray-100 shadow-xl py-4 px-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                      <ul className="space-y-1">
+                        {link.items?.map((item) => (
+                          <li key={item}>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 text-[13px] text-gray-600 hover:bg-[#F7F5F2] hover:text-black transition-colors"
+                            >
+                              {item}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </nav>
