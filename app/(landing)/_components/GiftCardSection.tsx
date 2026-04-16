@@ -1,40 +1,54 @@
-
 import Image from 'next/image';
 
 const GiftCardSection = () => {
   return (
-    <section className="w-full bg-[#D1CDC3] py-20 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto relative h-[500px] md:h-[600px] flex items-center justify-center">
+    <section className="w-full bg-brand-main md:bg-brand-greige py-16 md:py-20 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <div className="max-w-[1240px] mx-auto flex flex-col md:relative md:h-[600px] items-center justify-center">
         
-        {/* Left side overlap image */}
-        <div className="absolute left-0 top-0 w-[55%] h-[70%] md:h-[80%] border-10 border-white shadow-2xl z-10">
-          <Image
-            src="/gift-img/Rectangle 4464.png"
-            alt="Findea Gift Card Left"
-            fill
-            className="object-cover"
-          />
+        {/* Images Container */}
+        <div className="relative w-full h-[320px] md:h-full md:absolute md:inset-0 mb-8 md:mb-0">
+          {/* Left side image */}
+          <div className="absolute left-0 top-0 w-[60%] md:w-[55%] h-[180px] md:h-[80%] border-[6px] md:border-10 border-white shadow-xl z-10">
+            <Image
+              src="/gift-img/Rectangle 4464.png"
+              alt="Findea Gift Card Left"
+              fill
+              className="hidden md:block"
+            />
+            <Image
+              src="/gift-img/gitt-small-device-left.png"
+              alt="Findea Gift Card Left Mobile"
+              fill
+              className="object-cover md:hidden"
+            />
+          </div>
+
+          {/* Right side image */}
+          <div className="absolute right-0 top-16 md:top-auto md:bottom-0 w-[60%] md:w-[55%] h-[180px] md:h-[80%] border-[6px] md:border-[10px] border-white shadow-xl z-20">
+            <Image
+              src="/gift-img/Rectangle 4479.png"
+              alt="Findea Gift Card Right"
+              fill
+              className="hidden md:block"
+            />
+            <Image
+              src="/gift-img/gitt-small-device-right.png"
+              alt="Findea Gift Card Right Mobile"
+              fill
+              className="object-cover md:hidden"
+            />
+          </div>
         </div>
 
-        {/* Right side overlap image */}
-        <div className="absolute right-0 bottom-0 w-[55%] h-[70%] md:h-[80%] border-10 border-white shadow-2xl z-10">
-          <Image
-            src="/gift-img/Rectangle 4479.png"
-            alt="Findea Gift Card Right"
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* Central glassmorphism box */}
-        <div className="relative z-30 w-full max-w-md py-12 px-8 bg-white/30 backdrop-blur-lg border border-white/20 text-center shadow-xl">
-          <h2 className="text-2xl md:text-3xl font-playfair text-[#1A1A1A] mb-4">
+        {/* Text Content block */}
+        <div className="relative z-30 w-full max-w-md py-6 md:py-12 px-4 md:px-8 md:bg-white/30 md:backdrop-blur-lg md:border md:border-white/20 text-center md:shadow-xl">
+          <h2 className="text-2xl md:text-3xl font-playfair text-brand-text mb-4">
             Offrez la liberté du choix
           </h2>
-          <p className="text-[15px] font-playfair text-[#1A1A1A] mb-8 italic">
+          <p className="text-[15px] font-playfair text-brand-text mb-8 italic">
             Findea Gift Card
           </p>
-          <button className="bg-[#f1e1c2] text-black px-8 py-3 text-sm font-medium hover:bg-[#e5d8c1] transition-all tracking-wide shadow-sm">
+          <button className="bg-[#e5d8c1] text-black px-10 py-3 text-sm font-bold hover:bg-[#d4c4b0] transition-all tracking-wide shadow-sm font-playfair uppercase">
             Send A Gift Card
           </button>
         </div>
