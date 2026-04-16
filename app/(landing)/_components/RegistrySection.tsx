@@ -29,7 +29,8 @@ const RegistrySection = () => {
      
       <div className="w-full md:w-1/2 relative min-h-[400px]">
         <Image
-          src="/blog-img/Frame 1597881210 copy.png"
+          src="/about-img/Frame 1597881210.svg"
+          // src="/blog-img/Frame 1597881210 copy.png"
           alt="Wedding Registry Decor"
           fill
           className="object-cover"

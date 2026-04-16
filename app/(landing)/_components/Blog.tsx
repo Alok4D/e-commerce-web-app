@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 const Blog = () => {
   const categories = [
-    { title: 'Produits', image: '/blog-img/Rectangle 4448.png' },
-    { title: 'Services', image: '/blog-img/Rectangle 4448 (1).png' },
+    { title: 'Produits', image: '/blog-img/Rectangle 4448.svg' },
+    { title: 'Services', image: '/blog-img/Rectangle 4448 (1).svg' },
     { title: 'Boutiques', image: '/blog-img/Rectangle 4448 (2).png' },
     { title: 'Inspiration', image: '/blog-img/Rectangle 4448 (3).png' },
   ];

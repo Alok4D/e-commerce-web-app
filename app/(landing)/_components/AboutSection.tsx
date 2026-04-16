@@ -14,6 +14,8 @@ const AboutSection = () => {
               alt="Artisans"
               fill
               className="object-cover"
+              draggable={false}
+              priority
             />
           </div>
 
@@ -24,16 +26,21 @@ const AboutSection = () => {
               alt="Model"
               fill
               className="object-cover"
+              draggable={false}
+              priority
             />
           </div>
 
           {/* Right small image (Overlap) */}
           <div className="absolute right-0 top-30 z-20 w-40 h-52 hidden md:block">
             <Image
-              src="/banner-img/right-img.png"
+              src="/banner-img/Gemini_Generated_Image_2tv8hi2tv8hi2tv8.png"
+              // src="/banner-img/right-img.png"
               alt="Boutique"
               fill
               className="object-cover"
+              draggable={false}
+              priority
             />
           </div>
         </div>
