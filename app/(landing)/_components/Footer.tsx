@@ -11,13 +11,13 @@ const XIcon = () => (
 
 const Footer: FC = () => {
   return (
-    <footer className="w-full bg-[#f5f3ee] pt-20 font-playfair">
+    <footer className="w-full bg-[#F5F3EE] pt-20 font-playfair">
       <div className="max-w-[1239px] mx-auto px-4 sm:px-6 md:px-12 lg:px-5 xl:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-20 text-[#1A1A1A]">
         {/* Column 1: Logo & About */}
         <div className="flex flex-col gap-6">
           <div className="relative">
             <Image
-              src="/logo/1000008546-removebg-preview 1.png"
+              src="/footer-logo/1000008546-removebg-preview 1.svg"
               alt="Findea Logo"
               width={180}
               height={60}
@@ -112,8 +112,8 @@ const Footer: FC = () => {
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="w-full bg-[#dedad2] py-7 text-center border-t border-gray-200/50 font-playfair">
-        <p className="text-[16px] text-[#6e6a63] font-medium">
+      <div className="w-full bg-brand-greige py-6 text-center border-t border-gray-200/50 font-playfair">
+        <p className="text-[16px] text-brand-text-secondary font-medium">
           Copyright © 2026 Findea. All Rights Reserved.
         </p>
       </div>
