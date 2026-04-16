@@ -76,8 +76,9 @@ const TestimonialSection = () => {
       <div className="max-w-7xl mx-auto">
         
         {/* Section Title */}
-        <h2 className="text-[30px] md:text-[32px] font-bold font-playfair text-brand-text mb-16 uppercase">
-          WORDS FROM OUR COMMUNITY
+        <h2 className="text-[28px] md:text-[32px] font-bold font-playfair text-brand-text mb-16 uppercase">
+          <span className="md:hidden italic font-bold font-playfair">CUSTOMER FEEDBACK</span>
+          <span className="hidden md:block">WORDS FROM OUR COMMUNITY</span>
         </h2>
 
         {/* Testimonials Carousel */}
