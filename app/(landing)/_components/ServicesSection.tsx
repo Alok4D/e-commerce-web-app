@@ -11,7 +11,7 @@ const ServicesSection = () => {
     {
       title: 'Wedding & Events',
       description: 'Curated professionals for weddings and special occasions.',
-      image: '/service-img/Rectangle 4448 (7).png',
+      image: 'https://images.unsplash.com/photo-1602872030490-4a484a7b3ba6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
       title: 'Home, Lifestyle & Family',
@@ -21,7 +21,7 @@ const ServicesSection = () => {
     {
       title: 'Education & Coaching',
       description: 'Learning, creativity and personal growth services.',
-      image: '/service-img/Rectangle 4448 (9).png',
+      image: 'https://plus.unsplash.com/premium_photo-1663106423058-c5242333348c?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
   ];
 
@@ -30,7 +30,7 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto">
         
         {/* Section Title */}
-        <h2 className="text-2xl md:text-3xl font-playfair font-medium text-[#1A1A1A] tracking-wider mb-12 uppercase">
+        <h2 className="text-[25px] md:text-[32px] font-playfair text-brand-text font-bold uppercase mb-12">
           SERVICES PROPOSÉS PAR DES TALENTS LOCAUX
         </h2>
 
@@ -45,6 +45,8 @@ const ServicesSection = () => {
                   alt={service.title}
                   fill
                   className="object-cover transition-transform duration-500 hover:scale-105"
+                  draggable={false}
+                  priority
                 />
               </div>
               
