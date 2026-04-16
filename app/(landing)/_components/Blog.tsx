@@ -10,7 +10,7 @@ const Blog = () => {
   ];
 
   return (
-    <section className="w-full bg-[#D1CDC3] py-16 px-6 md:px-12 lg:px-20">
+    <section className="w-full bg-brand-greige py-16 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
         <h2 className="text-2xl md:text-3xl font-playfair text-[#1A1A1A] tracking-wider mb-12 uppercase">
