@@ -41,14 +41,14 @@ const GiftCardSection = () => {
         </div>
 
         {/* Text Content block */}
-        <div className="relative z-30 w-full max-w-md py-6 md:py-12 px-4 md:px-8 md:bg-white/30 md:backdrop-blur-lg md:border md:border-white/20 text-center md:shadow-xl">
-          <h2 className="text-2xl md:text-3xl font-playfair text-brand-text mb-4">
+        <div className="relative z-30 w-full max-w-md py-6 md:py-12 px-4 md:px-8 md:bg-[#DEDAD2]/50 md:backdrop-blur-sm md:border md:border-white/20 text-center md:shadow-xl">
+          <h2 className="text-2xl md:text-[32px] font-semibold font-playfair text-brand-text mb-4">
             Offrez la liberté du choix
           </h2>
-          <p className="text-[15px] font-playfair text-brand-text mb-8 italic">
+          <p className="text-[15px] md:text-[20px] font-medium font-playfair text-brand-text mb-8">
             Findea Gift Card
           </p>
-          <button className="bg-[#e5d8c1] text-black px-10 py-3 text-sm font-bold hover:bg-[#d4c4b0] transition-all tracking-wide shadow-sm font-playfair uppercase">
+          <button className="bg-[#F1E1C2] text-brand-text px-10 py-3 text-sm md:text-[20px] font-medium font-playfair transition-all shadow-sm">
             Send A Gift Card
           </button>
         </div>
