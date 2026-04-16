@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -29,39 +28,24 @@ const TestimonialSection = () => {
       review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
     },
     {
-      name: 'David L.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
-      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+      name: 'Sarah K.',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"The attention to detail in the packaging alone is impressive. You can tell they really value  and the brands they represent."'
     },
     {
-      name: 'David L.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
-      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+      name: 'James W.',
+      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"Everything I have ordered so far has been top-notch. The site is easy to navigate and the delivery is fast even for delicate items."'
     },
     {
-      name: 'David L.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
-      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+      name: 'Olivia M.',
+      image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"I love the diversity of artists featured here. It\'s not just a store; it feels like a community that celebrates creativity and craftsmanship."'
     },
     {
-      name: 'David L.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
-      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
-    },
-    {
-      name: 'David L.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
-      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
-    },
-    {
-      name: 'David L.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
-      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
-    },
-    {
-      name: 'David L.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
-      review: '"A seamless experience from browsing to delivery. The premium feel of the website matches the premium quality of the products perfectly."'
+      name: 'Lucas P.',
+      image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150&h=150',
+      review: '"Finally a platform that filters the noise and brings only the best quality services and products. Highly satisfied with my recent purchase!"'
     }
   ];
 
@@ -87,7 +71,7 @@ const TestimonialSection = () => {
             {testimonials.map((item, index) => (
               <div 
                 key={index} 
-                className="embla__slide flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] pl-6"
+                className="embla__slide flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333333%] xl:flex-[0_0_25%] pl-6"
               >
                 <div className="bg-brand-beige p-8 h-full flex flex-col items-center text-center shadow-xs border-t-4 border-[#1A1A1A] hover:bg-[#D9D7CB] transition-colors duration-300">
                   {/* Profile Image (Circular) */}
