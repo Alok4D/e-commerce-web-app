@@ -7,6 +7,7 @@ import Autoplay from 'embla-carousel-autoplay';
 
 const ProductGridLanding = () => {
   const products = [
+    
     {
       name: "Ajami Njoya",
       brand: "Ateliers Ifé",
@@ -32,16 +33,46 @@ const ProductGridLanding = () => {
       image: "/product-img/Rectangle 4448 (13).png",
     },
     {
-      name: "Ajami Njoya",
-      brand: "Ateliers Ifé",
-      price: "CFA 22,500",
-      image: "/product-img/Rectangle 4448 (10).png",
+      name: "Classic Leather Tote",
+      brand: "Maison Elegance",
+      price: "CFA 85,000",
+      image: "https://images.unsplash.com/photo-1523779105320-d1cd346ff52b?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
-      name: "Ajami Njoya",
+      name: "Minimalist Chrono",
+      brand: "Chrono Styles",
+      price: "CFA 110,000",
+      image: "https://plus.unsplash.com/premium_photo-1728324765205-289d852f3442?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      name: "Velvet Evening Clutch",
+      brand: "Velvet & Co.",
+      price: "CFA 30,000",
+      image: "https://images.unsplash.com/photo-1546454272-5914d75c01e9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      name: "Midnight Jasmine",
+      brand: "Warmth & Wick",
+      price: "CFA 8,500",
+      image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=800",
+    },
+    {
+      name: "Artisan Silk Scarf",
+      brand: "Loom & Thread",
+      price: "CFA 12,500",
+      image: "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&q=80&w=800",
+    },
+    {
+      name: "Hydrating Facial Serum",
+      brand: "Glow Rituals",
+      price: "CFA 22,000",
+      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=800",
+    },
+    {
+      name: "Signature Tote Bag",
       brand: "Ateliers Ifé",
-      price: "CFA 22,500",
-      image: "/product-img/Rectangle 4448 (11).png",
+      price: "CFA 55,500",
+      image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=800",
     },
   ];
 
@@ -82,9 +113,10 @@ const ProductGridLanding = () => {
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="transition-transform duration-500 hover:scale-105"
+                      className="transition-transform duration-500 hover:scale-105 object-cover"
                       draggable={false}
                       priority
+
                     />
                   </div>
 
