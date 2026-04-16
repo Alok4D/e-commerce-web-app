@@ -36,28 +36,28 @@ const HeroSection = () => {
           </h1>
 
           {/* Search Bar */}
-          <div className="w-full max-w-2xl bg-[#F7F5F2]/95 md:bg-white text-black py-4 px-6 flex items-center justify-between shadow-2xl rounded-sm md:rounded-full">
+          <div className="w-full max-w-[850px] bg-white text-black py-5 px-8 flex items-center justify-between shadow-sm rounded-none">
             <input
               type="text"
               placeholder="Search a product, a boutique or a service...."
-              className="w-full bg-transparent border-none outline-none text-[13px] md:text-sm font-normal text-gray-700 placeholder:text-gray-500"
+              className="w-full bg-transparent border-none outline-none text-[13px] md:text-[18px] font-normal text-gray-800 placeholder:text-gray-600"
             />
-            <Search size={20} className="text-gray-900" />
+            <Search size={22} strokeWidth={1} className="text-gray-900" />
           </div>
 
           {/* Desktop Action Buttons (Hidden on mobile) */}
-          <div className="hidden md:flex items-center justify-center gap-6 mt-12">
+          <div className="hidden md:flex items-center justify-center gap-5 mt-10 md:mt-12 w-full px-6">
             <a
               href="#"
-              className="font-playfair font-normal flex items-center gap-2 text-sm text-black bg-[#f0e4cf] py-3 px-8 rounded-full shadow-lg hover:brightness-95 transition-all"
+              className="w-full sm:w-auto font-playfair font-medium flex items-center justify-center gap-3 text-[18px] md:text-[22px] text-brand-text bg-[#F1E1C2] py-4 md:py-4 px-10 md:px-10 transition-all hover:bg-[#e9d5ab] group"
             >
-              Explore Products <MoveRight size={18} strokeWidth={1} />
+              Explore Products <span className="text-2xl transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#"
-              className="font-playfair font-normal flex items-center gap-2 text-sm text-white border-2 border-[#f0e4cf]/70 py-3 px-8 rounded-full hover:bg-white/5 transition-all"
+              className="w-full sm:w-auto font-playfair font-medium flex items-center justify-center gap-3 text-[18px] md:text-[22px] text-[#F1E1C2] border-2 border-[#F1E1C2] py-4 md:py-4 px-10 md:px-10 transition-all hover:bg-[#F1E1C2] hover:text-brand-text group"
             >
-              Explore Services <MoveRight size={18} strokeWidth={1} />
+              Explore Services <span className="text-2xl transition-transform group-hover:translate-x-1">→</span>
             </a>
           </div>
         </div>
