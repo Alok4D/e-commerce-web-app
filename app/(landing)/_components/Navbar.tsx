@@ -69,7 +69,7 @@ const Navbar = () => {
         <div className="flex justify-center">
           <Link href="/">
             <Image
-              src="/logo/logo.png"
+              src="/footer-logo/1000008546-removebg-preview 1.svg"
               alt="Findea Logo"
               width={90}
               height={30}
@@ -98,7 +98,7 @@ const Navbar = () => {
                 <div className="w-6"></div>
                 {/* Spacer to help center logo */}
                 <Image
-                  src="/logo/logo-removebg-preview.png"
+                  src="/footer-logo/1000008546-removebg-preview 1.svg"
                   alt="Findea Logo"
                   width={110}
                   height={38}
@@ -194,7 +194,7 @@ const Navbar = () => {
         <div className="flex-1 flex justify-center">
           <Link href="/" className="hover:opacity-90 transition-all">
             <Image
-              src="/logo/logo.png"
+              src="/footer-logo/1000008546-removebg-preview 1.svg"
               alt="Findea Logo"
               width={120}
               height={40}
