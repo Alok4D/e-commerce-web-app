@@ -56,7 +56,7 @@ const TestimonialSection = () => {
   }, [Autoplay({ delay: 3000, stopOnInteraction: false })]);
 
   return (
-    <section className="w-full py-20 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section className="w-full py-20 px-6 md:px-12 lg:px-20 overflow-hidden bg-[#F5F3EE]">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Title */}

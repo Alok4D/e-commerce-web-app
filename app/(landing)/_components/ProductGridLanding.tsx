@@ -29,16 +29,16 @@ const ProductGridLanding = () => {
   ];
 
   return (
-    <section className="w-full bg-[#D1CDC3] py-16 px-6 md:px-12 lg:px-20">
+    <section className="w-full bg-brand-greige py-20 md:py-[82px] px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         {/* Header: Title and See All link */}
         <div className="flex justify-between items-end mb-10">
-          <h2 className="text-md md:text-2xl font-playfair text-[#1A1A1A] uppercase tracking-wider">
+          <h2 className="text-[25px] md:text-[32px] font-playfair text-brand-text font-bold uppercase">
             ACTUELLEMENT ADORÉ SUR FINDÉA
           </h2>
           <a
             href="#"
-            className="text-md font-playfair text-[#1A1A1A] hover:opacity-60 transition-opacity font-medium"
+            className="text-md md:text-[24px] hidden md:block font-playfair font-semibold text-brand-text hover:opacity-60 transition-opacity"
           >
             See All
           </a>
@@ -54,19 +54,21 @@ const ProductGridLanding = () => {
                   src={product.image}
                   alt={product.name}
                   fill
-                  className="object-cover transition-transform duration-500 hover:scale-105"
+                  className="transition-transform duration-500 hover:scale-105"
+                  draggable={false}
+                  priority
                 />
               </div>
 
               {/* Product Info Box */}
-              <div className="bg-[#EAE5DB] py-6 px-4 text-center">
-                <h3 className="text-sm font-playfair font-bold text-[#1A1A1A] mb-1 uppercase tracking-tight">
+              <div className="bg-brand-beige py-6 px-4 text-center">
+                <h3 className="text-[20px] font-playfair font-medium text-brand-text mb-1 uppercase">
                   {product.name}
                 </h3>
-                <p className="text-xs font-playfair text-gray-600 mb-2 italic">
+                <p className="text-[16px] font-playfair text-brand-text mb-2">
                   {product.brand}
                 </p>
-                <p className="text-xs font-playfair text-[#1A1A1A] font-medium">
+                <p className="text-[16px] font-playfair text-brand-text font-medium">
                   {product.price}
                 </p>
               </div>
