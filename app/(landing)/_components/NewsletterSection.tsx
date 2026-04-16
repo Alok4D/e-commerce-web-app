@@ -9,7 +9,8 @@ const NewsletterSection = () => {
           src="/social-img/cta (1).png" 
           alt="Newsletter Background"
           fill
-          className="" 
+          draggable={false}
+          priority
         />
       </div>
 
