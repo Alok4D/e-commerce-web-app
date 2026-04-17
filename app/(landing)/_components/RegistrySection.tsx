@@ -6,21 +6,21 @@ const RegistrySection = () => {
       
      
       <div className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16">
-        <h2 className="text-3xl md:text-4xl font-playfair text-brand-text leading-tight mb-8 uppercase tracking-wide">
+        <h2 className="text-2xl md:text-[32px] font-playfair font-semibold text-brand-text leading-tight mb-8 uppercase tracking-wide">
           CREATE YOUR WEDDING OR <br /> BABY REGISTRY
         </h2>
         
-        <p className="text-lg font-playfair text-brand-text-secondary leading-relaxed mb-10 max-w-md">
+        <p className="text-lg md:text-[22px] font-playfair text-brand-text-secondary mb-10 max-w-md">
           Créez une liste à partir de plusieurs boutiques sur Findéa, 
           partagez-la avec vos proches et laissez-la se mettre à jour automatiquement.
         </p>
 
        
-        <div className="flex flex-wrap gap-4">
-          <button className="bg-[#F1E1C2] text-black px-8 py-3 text-[14px] font-medium hover:bg-[#e5d8c1] transition-all shadow-sm">
+        <div className="grid grid-cols-2 gap-3 md:flex md:flex-wrap md:gap-4">
+          <button className="bg-[#F1E1C2] text-black px-2 md:px-8 py-3 text-sm sm:text-base md:text-[20px] font-playfair font-medium hover:bg-[#e5d8c1] transition-all shadow-sm">
             Create A Wedding List
           </button>
-          <button className="bg-[#747067] text-white px-8 py-3 text-[14px] font-medium hover:bg-[#635f56] transition-all shadow-sm">
+          <button className="bg-brand-text-secondary text-[#F1E1C2] px-2 md:px-8 py-3 text-sm sm:text-base md:text-[20px] font-playfair font-medium hover:bg-[#635f56] transition-all shadow-sm">
             Create A Baby Registry
           </button>
         </div>
