@@ -24,7 +24,7 @@ const Blog = () => {
     <section className="w-full bg-brand-greige py-16 px-6 md:px-12 lg:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
-        <h2 className="text-2xl md:text-3xl font-playfair text-[#1A1A1A] tracking-wider mb-12 uppercase font-bold">
+        <h2 className="text-[22px] md:text-[32px] font-semibold font-playfair text-brand-text tracking-wider mb-12 uppercase">
           PARCOUREZ AVEC INTENTION
         </h2>
 

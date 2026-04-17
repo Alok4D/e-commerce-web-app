@@ -3,7 +3,7 @@ import Image from 'next/image';
 const AboutSection = () => {
   return (
     <section className="w-full bg-brand-main py-16 px-6 md:px-12 lg:px-16 xl:px-0">
-      <div className="max-w-[1239px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         
         {/* Left side image grid (Overlap Layout) */}
         <div className="relative w-full lg:w-1/2 h-[500px] md:h-[600px]">
@@ -51,7 +51,7 @@ const AboutSection = () => {
             Qui sommes-nous
           </h2>
           
-          <div className="space-y-6 text-brand-text-secondary leading-relaxed text-[15px] font-light max-w-xl">
+          <div className="space-y-6 text-brand-text-secondary leading-relaxed text-[16px] font-light max-w-xl">
             <p>
               Findéa est née d&apos;une envie simple : rassembler le beau, le sens
               et l&apos;humain en un seul lieu.
@@ -72,7 +72,7 @@ const AboutSection = () => {
           </div>
 
           {/* Contact button */}
-          <button className="mt-10 bg-[#F1E1C2] text-black px-10 py-3 text-sm font-medium hover:bg-[#e5d8c1] transition-all shadow-sm">
+          <button className="mt-10 bg-[#F1E1C2] font-playfair font-medium text-black px-10 py-3 text-[20px]  hover:bg-[#e5d8c1] transition-all shadow-sm">
             Contact Us
           </button>
         </div>
