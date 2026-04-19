@@ -1,6 +1,5 @@
 'use client';
 
-import React from "react";
 import Image from "next/image";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
@@ -91,7 +90,7 @@ const ProductGridLanding = () => {
             ACTUELLEMENT ADORÉ SUR FINDÉA
           </h2>
           <a
-            href="/products"
+            href="#"
             className="text-md md:text-[24px] hidden md:block font-playfair font-semibold text-brand-text hover:opacity-60 transition-opacity"
           >
             See All
