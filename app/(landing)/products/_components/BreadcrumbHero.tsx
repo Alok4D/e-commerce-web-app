@@ -1,6 +1,8 @@
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const BreadcrumbHero = () => {
+  const router = useRouter();
   return (
     <section className="relative w-full h-32 md:h-48 bg-[#f5f4ee] flex items-center justify-center overflow-hidden">
       {/* Central Trapezoid Shape */}
@@ -28,7 +30,9 @@ const BreadcrumbHero = () => {
         </h1>
 
         {/* Return Button - Absolute positioned to the right */}
-        <button className="hidden md:flex absolute right-6 items-center space-x-1 text-sm text-gray-800 hover:opacity-70 transition-opacity">
+        <button
+        onClick={() => router.back()}
+        className="hidden md:flex absolute right-6 items-center space-x-1 text-sm text-gray-800 hover:opacity-70 transition-opacity">
           <ChevronLeft size={16} />
           <span>Return to previous page</span>
         </button>
