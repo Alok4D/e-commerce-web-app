@@ -67,7 +67,7 @@ const FilterSidebar = ({ categories, expandedFilters, toggleFilter }: FilterSide
                 <div className="h-[2px] bg-gray-200 relative">
                   <div className="absolute left-[20%] right-[40%] h-full bg-[#D4C3A3]"></div>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-6">
+                <div className="flex flex-wrap gap-2 mt-6 ">
                   {["10-25k", "25-50k", "50-100k", "100k+"].map(range => (
                     <button key={range} className="px-3 py-1 bg-[#DEDAD2] text-[12px] hover:bg-[#CFCAC1] transition-colors">
                       {range}

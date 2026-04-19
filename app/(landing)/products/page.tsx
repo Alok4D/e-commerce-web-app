@@ -49,7 +49,7 @@ const ProductsPage = () => {
       {/* Mobile Filter Overlay/Sidebar */}
       <div className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${isFilterOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className="absolute inset-0 bg-black/30" onClick={() => setIsFilterOpen(false)} />
-        <div className={`absolute left-0 top-0 h-full w-[300px] bg-white transform transition-transform duration-300 overflow-y-auto ${isFilterOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`absolute left-0 top-0 h-full w-[300px] bg-[#DEDAD2] transform transition-transform duration-300 overflow-y-auto ${isFilterOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="p-6">
             <div className="flex justify-end mb-4">
               <button onClick={() => setIsFilterOpen(false)} className="p-2 hover:bg-gray-100">
