@@ -8,9 +8,9 @@ interface ProductGridProps {
 
 const ProductGrid = ({ products, viewMode }: ProductGridProps) => {
   return (
-    <div className={`grid gap-x-8 gap-y-16 ${
+    <div className={`grid gap-x-4 md:gap-x-8 gap-y-8 md:gap-y-16 ${
       viewMode === 'grid' 
-        ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3' 
+        ? 'grid-cols-2 lg:grid-cols-3' 
         : 'grid-cols-1'
     }`}>
       {products.map((product) => (
