@@ -31,7 +31,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className="text-[14px] md:text-[16px] font-bold text-[#1C1C1C] mb-3 md:mb-4">{product.price}</div>
         
         {product.hasGiftCard && (
-          <button className="flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest hover:opacity-60 transition-opacity">
+          <button className="hidden md:flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest hover:opacity-60 transition-opacity">
             Gift Card Instead <ArrowRight size={14} />
           </button>
         )}

@@ -65,7 +65,7 @@ const ProductsPage = () => {
         </div>
       </div>
 
-      <div className="bg-[#F5F3EE] pt-16 pb-24">
+      <div className="bg-background pt-16 pb-24">
         <Container>
           <div className="flex flex-col lg:flex-row gap-12">
             {/* Desktop Sidebar */}
