@@ -91,7 +91,7 @@ const ProductGridLanding = () => {
             ACTUELLEMENT ADORÉ SUR FINDÉA
           </h2>
           <a
-            href="#"
+            href="/products"
             className="text-md md:text-[24px] hidden md:block font-playfair font-semibold text-brand-text hover:opacity-60 transition-opacity"
           >
             See All

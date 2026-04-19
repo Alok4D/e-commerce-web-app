@@ -26,9 +26,8 @@ const Navbar = () => {
     { name: "ABOUT", hasDropdown: false, href: "/about" },
     {
       name: "PRODUCTS",
-      hasDropdown: true,
-      href: "#",
-      items: ["Featured", "New Arrivals", "Best Sellers", "Collection"],
+      hasDropdown: false,
+      href: "/products",
     },
     {
       name: "REGISTRIES",
@@ -259,7 +258,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, scaleX: 1 }}
                         exit={{ opacity: 0, scaleX: 0 }}
                         transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                        className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[45px] h-[1.5px] bg-[#F1E1C2] z-10" 
+                        className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[45px] h-[1.5px] bg-[#1C1C1C] z-10" 
                       />
                     )}
                   </AnimatePresence>
