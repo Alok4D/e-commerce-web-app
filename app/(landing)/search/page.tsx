@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import LandingTopAnnouncementBar from "../_components/LandingTopAnnouncementBar";
 import Navbar from "../_components/Navbar";
@@ -12,7 +12,7 @@ import { ChevronRight, Filter, LayoutGrid, List, X, Search, Star, MapPin, Eye, H
 import Image from "next/image";
 import Link from "next/link";
 
-const SearchPage = () => {
+const SearchResults = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get("q") || "";
@@ -579,5 +579,21 @@ const SidebarContent = () => (
     </div>
   </>
 );
+
+const SearchPage = () => {
+  return (
+    <Suspense fallback={
+       <div className="min-h-screen bg-white">
+          <LandingTopAnnouncementBar />
+          <Navbar />
+          <div className="flex items-center justify-center py-40">
+             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
+          </div>
+       </div>
+    }>
+      <SearchResults />
+    </Suspense>
+  );
+};
 
 export default SearchPage;
