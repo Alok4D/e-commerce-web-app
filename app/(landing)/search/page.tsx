@@ -1,7 +1,8 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import LandingTopAnnouncementBar from "../_components/LandingTopAnnouncementBar";
 import Navbar from "../_components/Navbar";
 import Container from "@/components/shared/Container";
@@ -213,130 +214,56 @@ const SearchPage = () => {
           </div>
        </div>
      </div>
-      <div className="bg-white py-12 md:py-20">
+      <div className="bg-white py-12 md:py-20 relative">
+        {/* Floating Filter Tab Button for Mobile */}
+        <button 
+          onClick={() => setIsFilterOpen(true)}
+          className="lg:hidden fixed left-0 top-1/2 -translate-y-1/2 z-40 bg-[#A3A3A3] text-white pl-3 pr-5 py-4 rounded-r-full shadow-lg hover:bg-gray-500 transition-all active:scale-95 flex items-center justify-center"
+          aria-label="Open Filters"
+        >
+          <Filter size={22} strokeWidth={1.5} />
+        </button>
+
         <Container>
           <div className="flex flex-col lg:flex-row gap-12">
-            {/* Sidebar Filters */}
-            <aside className="w-full lg:w-[280px] flex-shrink-0">
-               <h3 className="text-lg font-bold tracking-widest uppercase mb-8 border-b border-black pb-2">Filters</h3>
-               
-               {/* TYPE Filter */}
-               <div className="mb-8">
-                 <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-                   Type <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-                 </h4>
-                 <div className="space-y-4">
-                   {[
-                     { label: "Products", count: 186 },
-                     { label: "Services", count: 31 },
-                     { label: "Boutiques", count: 136 },
-                     { label: "Registries", count: 10 }
-                   ].map((item) => (
-                     <label key={item.label} className="flex items-center gap-3 cursor-pointer group">
-                       <div className="w-[18px] h-[18px] rounded-full border border-gray-300 flex items-center justify-center transition-all group-hover:border-black">
-                         {item.label === "Products" && <div className="w-[10px] h-[10px] rounded-full bg-[#1C1C1C]"></div>}
-                       </div>
-                       <span className={`text-[14px] transition-colors ${item.label === "Products" ? 'text-black font-medium' : 'text-gray-500 group-hover:text-black'}`}>
-                         {item.label} ({item.count})
-                       </span>
-                     </label>
-                   ))}
-                 </div>
-               </div>
-
-               {/* CATEGORY Filter */}
-               <div className="mb-8 border-t border-gray-200 pt-8">
-                 <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-                   Category <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-                 </h4>
-                 <div className="space-y-4">
-                   {["Fashion", "Jewelry", "Home & Decor", "Wellness & Beauty"].map((cat) => (
-                     <label key={cat} className="flex items-center gap-3 cursor-pointer group">
-                       <div className="w-[18px] h-[18px] border border-gray-300 transition-all group-hover:border-black"></div>
-                       <span className="text-[14px] text-gray-500 group-hover:text-black transition-colors">{cat} (186)</span>
-                     </label>
-                   ))}
-                 </div>
-               </div>
-
-               {/* PRICE Filter */}
-               <div className="mb-8 border-t border-gray-200 pt-8">
-                 <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-                   Price <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-                 </h4>
-                 <div className="mt-4">
-                    <div className="text-[14px] mb-6 font-bold text-[#1C1C1C]">Price: $50 - $500</div>
-                    <div className="h-[2px] bg-gray-200 relative mb-8">
-                      <div className="absolute left-[0%] right-[20%] h-full bg-[#D4C3A3]"></div>
-                      <div className="absolute left-[0%] top-1/2 -translate-y-1/2 w-4 h-4 bg-[#D4C3A3] rounded-full border-2 border-white shadow-md cursor-pointer"></div>
-                      <div className="absolute right-[20%] top-1/2 -translate-y-1/2 w-4 h-4 bg-[#D4C3A3] rounded-full border-2 border-white shadow-md cursor-pointer"></div>
+            {/* Mobile Filter Drawer */}
+            <AnimatePresence>
+              {isFilterOpen && (
+                <>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setIsFilterOpen(false)}
+                    className="fixed inset-0 bg-black/40 z-[60] lg:hidden backdrop-blur-sm"
+                  />
+                  <motion.aside
+                    initial={{ x: "-100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "-100%" }}
+                    transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                    className="fixed inset-y-0 left-0 w-[85%] max-w-[320px] bg-white z-[70] lg:hidden overflow-y-auto p-6 shadow-2xl"
+                  >
+                    <div className="flex justify-between items-center mb-8 border-b border-gray-100 pb-4">
+                      <h3 className="text-lg font-bold tracking-widest uppercase">Filters</h3>
+                      <button 
+                        onClick={() => setIsFilterOpen(false)}
+                        className="p-2 hover:bg-gray-100 transition-colors rounded-full"
+                      >
+                        <X size={20} />
+                      </button>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                       {["10-25k", "25-50k", "50-100k", "100k+"].map(range => (
-                         <button key={range} className="px-4 py-1.5 bg-[#F1EADA] text-[11px] font-bold hover:bg-[#EAE0CD] transition-colors uppercase tracking-widest text-[#1C1C1C]">
-                           {range}
-                         </button>
-                       ))}
-                    </div>
-                 </div>
-               </div>
+                    
+                    {/* Reuse Sidebar Content */}
+                    <SidebarContent />
+                  </motion.aside>
+                </>
+              )}
+            </AnimatePresence>
 
-               {/* AVAILABILITY Filter */}
-               <div className="mb-8 border-t border-gray-200 pt-8">
-                 <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-                   Availability <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-                 </h4>
-                 <div className="space-y-4">
-                   <label className="flex items-center gap-3 cursor-pointer group">
-                     <div className="w-[18px] h-[18px] border border-[#D4C3A3] bg-[#D4C3A3] flex items-center justify-center text-white">
-                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                     </div>
-                     <span className="text-[14px] text-black font-bold">In Stock</span>
-                   </label>
-                   <label className="flex items-center gap-3 cursor-pointer group">
-                     <div className="w-[18px] h-[18px] border border-gray-300 group-hover:border-black transition-colors"></div>
-                     <span className="text-[14px] text-gray-500 group-hover:text-black transition-colors">Booked</span>
-                   </label>
-                 </div>
-               </div>
-
-               {/* RATING Filter */}
-               <div className="mb-8 border-t border-gray-200 pt-8">
-                 <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-                   Rating <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-                 </h4>
-                 <div className="space-y-4">
-                   {[4, 3, 2, 1].map((stars) => (
-                     <label key={stars} className="flex items-center gap-3 cursor-pointer group">
-                       <div className="w-[18px] h-[18px] border border-[#D4C3A3] bg-[#D4C3A3] flex items-center justify-center text-white">
-                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                       </div>
-                       <div className="flex gap-1">
-                         {[...Array(5)].map((_, i) => (
-                           <Star key={i} size={14} fill={i < stars ? "#D4C3A3" : "none"} stroke={i < stars ? "#D4C3A3" : "#D1D5DB"} />
-                         ))}
-                       </div>
-                       <span className="text-[12px] text-gray-500 font-medium">{stars} and up (39)</span>
-                     </label>
-                   ))}
-                 </div>
-               </div>
-
-               {/* LOCATION Filter */}
-               <div className="mb-8 border-t border-gray-200 pt-8">
-                 <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-                   Location <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-                 </h4>
-                 <div className="text-[12px] text-gray-400 italic mb-4">[for services or boutiques]</div>
-                 <div className="space-y-4">
-                   {["London", "New York", "Los Angeles", "Paris"].map((loc) => (
-                     <label key={loc} className="flex items-center gap-3 cursor-pointer group">
-                       <div className="w-[18px] h-[18px] border border-gray-300 group-hover:border-black transition-colors"></div>
-                       <span className="text-[14px] text-gray-500 group-hover:text-black transition-colors">{loc}</span>
-                     </label>
-                   ))}
-                 </div>
-               </div>
+            {/* Desktop Sidebar Filters */}
+            <aside className="hidden lg:block w-[280px] flex-shrink-0">
+               <SidebarContent />
             </aside>
 
             {/* Main Content Area */}
@@ -524,5 +451,129 @@ const SearchPage = () => {
     </main>
   );
 };
+
+const SidebarContent = () => (
+  <>
+    <h3 className="hidden lg:block text-lg font-bold tracking-widest uppercase mb-8 border-b border-black pb-2">Filters</h3>
+    
+    {/* TYPE Filter */}
+    <div className="mb-8">
+      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
+        Type <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
+      </h4>
+      <div className="space-y-4">
+        {[
+          { label: "Products", count: 186 },
+          { label: "Services", count: 31 },
+          { label: "Boutiques", count: 136 },
+          { label: "Registries", count: 10 }
+        ].map((item) => (
+          <label key={item.label} className="flex items-center gap-3 cursor-pointer group">
+            <div className="w-[18px] h-[18px] rounded-full border border-gray-300 flex items-center justify-center transition-all group-hover:border-black">
+              {item.label === "Products" && <div className="w-[10px] h-[10px] rounded-full bg-[#1C1C1C]"></div>}
+            </div>
+            <span className={`text-[14px] transition-colors ${item.label === "Products" ? 'text-black font-medium' : 'text-gray-500 group-hover:text-black'}`}>
+              {item.label} ({item.count})
+            </span>
+          </label>
+        ))}
+      </div>
+    </div>
+
+    {/* CATEGORY Filter */}
+    <div className="mb-8 border-t border-gray-200 pt-8">
+      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
+        Category <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
+      </h4>
+      <div className="space-y-4">
+        {["Fashion", "Jewelry", "Home & Decor", "Wellness & Beauty"].map((cat) => (
+          <label key={cat} className="flex items-center gap-3 cursor-pointer group">
+            <div className="w-[18px] h-[18px] border border-gray-300 transition-all group-hover:border-black"></div>
+            <span className="text-[14px] text-gray-500 group-hover:text-black transition-colors">{cat} (186)</span>
+          </label>
+        ))}
+      </div>
+    </div>
+
+    {/* PRICE Filter */}
+    <div className="mb-8 border-t border-gray-200 pt-8">
+      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
+        Price <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
+      </h4>
+      <div className="mt-4">
+         <div className="text-[14px] mb-6 font-bold text-[#1C1C1C]">Price: $50 - $500</div>
+         <div className="h-[2px] bg-gray-200 relative mb-8">
+           <div className="absolute left-[0%] right-[20%] h-full bg-[#D4C3A3]"></div>
+           <div className="absolute left-[0%] top-1/2 -translate-y-1/2 w-4 h-4 bg-[#D4C3A3] rounded-full border-2 border-white shadow-md cursor-pointer"></div>
+           <div className="absolute right-[20%] top-1/2 -translate-y-1/2 w-4 h-4 bg-[#D4C3A3] rounded-full border-2 border-white shadow-md cursor-pointer"></div>
+         </div>
+         <div className="flex flex-wrap gap-2">
+            {["10-25k", "25-50k", "50-100k", "100k+"].map(range => (
+              <button key={range} className="px-4 py-1.5 bg-[#F1EADA] text-[11px] font-bold hover:bg-[#EAE0CD] transition-colors uppercase tracking-widest text-[#1C1C1C]">
+                {range}
+              </button>
+            ))}
+         </div>
+      </div>
+    </div>
+
+    {/* AVAILABILITY Filter */}
+    <div className="mb-8 border-t border-gray-200 pt-8">
+      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
+        Availability <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
+      </h4>
+      <div className="space-y-4">
+        <label className="flex items-center gap-3 cursor-pointer group">
+          <div className="w-[18px] h-[18px] border border-[#D4C3A3] bg-[#D4C3A3] flex items-center justify-center text-white">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <span className="text-[14px] text-black font-bold">In Stock</span>
+        </label>
+        <label className="flex items-center gap-3 cursor-pointer group">
+          <div className="w-[18px] h-[18px] border border-gray-300 group-hover:border-black transition-colors"></div>
+          <span className="text-[14px] text-gray-500 group-hover:text-black transition-colors">Booked</span>
+        </label>
+      </div>
+    </div>
+
+    {/* RATING Filter */}
+    <div className="mb-8 border-t border-gray-200 pt-8">
+      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
+        Rating <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
+      </h4>
+      <div className="space-y-4">
+        {[4, 3, 2, 1].map((stars) => (
+          <label key={stars} className="flex items-center gap-3 cursor-pointer group">
+            <div className="w-[18px] h-[18px] border border-[#D4C3A3] bg-[#D4C3A3] flex items-center justify-center text-white">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={14} fill={i < stars ? "#D4C3A3" : "none"} stroke={i < stars ? "#D4C3A3" : "#D1D5DB"} />
+              ))}
+            </div>
+            <span className="text-[12px] text-gray-500 font-medium">{stars} and up (39)</span>
+          </label>
+        ))}
+      </div>
+    </div>
+
+    {/* LOCATION Filter */}
+    <div className="mb-8 border-t border-gray-200 pt-8">
+      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
+        Location <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
+      </h4>
+      <div className="text-[12px] text-gray-400 italic mb-4">[for services or boutiques]</div>
+      <div className="space-y-4">
+        {["London", "New York", "Los Angeles", "Paris"].map((loc) => (
+          <label key={loc} className="flex items-center gap-3 cursor-pointer group">
+            <div className="w-[18px] h-[18px] border border-gray-300 group-hover:border-black transition-colors"></div>
+            <span className="text-[14px] text-gray-500 group-hover:text-black transition-colors">{loc}</span>
+          </label>
+        ))}
+      </div>
+    </div>
+  </>
+);
 
 export default SearchPage;
