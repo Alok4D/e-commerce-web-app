@@ -334,7 +334,7 @@ const SearchPage = () => {
                <div className={`grid gap-x-8 gap-y-16 ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'}`}>
                  {paginatedProducts.map((item) => (
                    <div key={item.id} className="group flex flex-col">
-                     <div className="relative aspect-[4/5] bg-[#F7F5F2] mb-6 overflow-hidden">
+                     <Link href={`/products/${item.id}`} className="relative aspect-[4/5] bg-[#F7F5F2] mb-6 overflow-hidden block">
                        <Image
                          src={item.image}
                          alt={item.name}
@@ -355,7 +355,7 @@ const SearchPage = () => {
                            Featured Collection
                          </div>
                        )}
-                     </div>
+                     </Link>
                      
                      <div className="flex flex-col flex-grow">
                         <div className="flex justify-between items-center mb-2">
@@ -365,7 +365,9 @@ const SearchPage = () => {
                              <Heart size={18} strokeWidth={1.5} className="hover:text-black cursor-pointer transition-colors" />
                           </div>
                         </div>
-                        <h3 className="text-[20px] font-playfair font-bold text-[#1C1C1C] mb-1 group-hover:text-brand-text transition-colors">{item.name}</h3>
+                        <Link href={`/products/${item.id}`}>
+                          <h3 className="text-[20px] font-playfair font-bold text-[#1C1C1C] mb-1 group-hover:text-brand-text transition-colors">{item.name}</h3>
+                        </Link>
                         <p className="text-[14px] text-gray-500 mb-2 font-playfair leading-relaxed italic">{item.description}</p>
                         
                         {item.price && (
@@ -403,9 +405,11 @@ const SearchPage = () => {
                           </div>
                         )}
 
-                        <button className="mt-auto w-full bg-[#F1EADA] py-4 text-[12px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 shadow-sm border border-[#D4C3A3]/30">
-                           {item.buttonText}
-                        </button>
+                        <Link href={`/products/${item.id}`} className="mt-auto w-full">
+                          <button className="w-full bg-[#F1EADA] py-4 text-[12px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 shadow-sm border border-[#D4C3A3]/30">
+                             {item.buttonText}
+                          </button>
+                        </Link>
                      </div>
                    </div>
                  ))}
