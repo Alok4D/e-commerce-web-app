@@ -1,7 +1,20 @@
+"use client";
 import { Search, MoveRight } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = (e: React.FormEvent | React.KeyboardEvent) => {
+    if ('key' in e && e.key !== 'Enter') return;
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
   return (
     <div className="relative w-full overflow-hidden bg-[#F7F5F2]">
       {/* Top Part: Images and Search Bar */}
@@ -35,15 +48,21 @@ const HeroSection = () => {
             Findéa
           </h1>
 
-          {/* Search Bar */}
-          <div className="w-full max-w-[850px] bg-white text-black py-5 px-8 flex items-center justify-between shadow-sm rounded-none">
+          <form 
+            onSubmit={handleSearch}
+            className="w-full max-w-[850px] bg-white text-black py-5 px-8 flex items-center justify-between shadow-sm rounded-none"
+          >
             <input
               type="text"
               placeholder="Search a product, a boutique or a service...."
               className="w-full bg-transparent border-none outline-none text-[13px] md:text-[18px] font-normal text-gray-800 placeholder:text-gray-600"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <Search size={22} strokeWidth={1} className="text-gray-900" />
-          </div>
+            <button type="submit">
+              <Search size={22} strokeWidth={1} className="text-gray-900 cursor-pointer" />
+            </button>
+          </form>
 
           {/* Desktop Action Buttons (Hidden on mobile) */}
           <div className="hidden md:flex items-center justify-center gap-5 mt-10 md:mt-12 w-full px-6">

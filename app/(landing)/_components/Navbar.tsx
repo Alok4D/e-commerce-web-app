@@ -13,13 +13,24 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setIsMenuOpen(false);
+      setSearchQuery("");
+    }
+  };
 
   const navLinks = [
     { name: "HOME", hasDropdown: false, href: "/" },
@@ -114,18 +125,18 @@ const Navbar = () => {
                 </button>
               </div>
 
-              {/* Search Input (Image Structure) */}
-              <div className="relative w-full">
+              <form onSubmit={handleSearch} className="relative w-full">
                 <input
                   type="text"
                   placeholder="Type here..."
                   className="w-full bg-white text-gray-800 placeholder:text-gray-400 rounded-none px-4 py-3 text-sm outline-none font-playfair"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <Search
-                  size={18}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-                />
-              </div>
+                <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                  <Search size={18} />
+                </button>
+              </form>
             </div>
 
             {/* Accordion Links (Image Structure) */}
@@ -191,9 +202,18 @@ const Navbar = () => {
       {/* Desktop Navbar (Original Structure) */}
       <div className="hidden md:flex w-full bg-white border-b border-gray-200 py-4 px-6 md:px-12 items-center justify-between max-w-[1239px] mx-auto">
         <div className="flex-1">
-          <a href="#" className="hover:opacity-60 transition-all">
-            <Search size={22} className="text-gray-900" />
-          </a>
+          <form onSubmit={handleSearch} className="relative max-w-[200px] group">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full bg-transparent border-b border-gray-200 py-1 pl-1 pr-8 text-[13px] outline-none focus:border-black transition-colors placeholder:text-gray-400"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button type="submit" className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-900 hover:text-brand-text transition-colors">
+              <Search size={18} strokeWidth={1.5} />
+            </button>
+          </form>
         </div>
 
         <div className="flex-1 flex justify-center">
@@ -258,7 +278,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, scaleX: 1 }}
                         exit={{ opacity: 0, scaleX: 0 }}
                         transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                        className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[45px] h-[1.5px] bg-[#1C1C1C] z-10" 
+                        className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[45px] h-[1.5px] bg-brand-text z-10" 
                       />
                     )}
                   </AnimatePresence>
