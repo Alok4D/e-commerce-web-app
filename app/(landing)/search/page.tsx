@@ -191,7 +191,7 @@ const SearchPage = () => {
                 <span className="text-black font-bold">Search</span>
                 <span className="mx-1">&gt;</span>
               </div>
-              <h1 className="text-2xl md:text-[36px] font-playfair font-bold text-[#1C1C1C] uppercase tracking-[0.1em] whitespace-nowrap px-8">
+              <h1 className="text-2xl md:text-[36px] tracking-tight font-playfair font-bold text-[#1C1C1C] uppercase tracking-[0.1em] whitespace-nowrap px-8">
                 SEARCH RESULTS FOR "{query}"
               </h1>
             </div>
