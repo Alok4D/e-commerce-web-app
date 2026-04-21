@@ -181,7 +181,7 @@ const SearchResults = () => {
   );
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <LandingTopAnnouncementBar />
       <Navbar />
 
@@ -191,7 +191,7 @@ const SearchResults = () => {
         onBack={() => router.back()} 
       />
 
-      <div className="bg-white py-12 md:py-20 relative">
+      <div className="bg-background py-12 md:py-20 relative">
         {/* Floating Filter Tab Button for Mobile */}
         <button 
           onClick={() => setIsFilterOpen(true)}

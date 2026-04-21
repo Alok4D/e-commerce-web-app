@@ -10,7 +10,7 @@ interface SearchHeaderProps {
 
 const SearchHeader = ({ query, resultsCount, onBack }: SearchHeaderProps) => {
   return (
-    <div className="bg-[#F7F5F2] pb-8 text-center relative overflow-hidden">
+    <div className="bg-background pb-8 text-center relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-center relative min-h-[180px]">
           {/* The Trapezoid Shape */}
@@ -24,7 +24,7 @@ const SearchHeader = ({ query, resultsCount, onBack }: SearchHeaderProps) => {
               <span className="text-black font-bold">Search</span>
               <span className="mx-1">&gt;</span>
             </div>
-            <h1 className="text-2xl md:text-[36px] tracking-tight font-playfair font-bold text-[#1C1C1C] uppercase tracking-[0.1em] whitespace-nowrap px-8">
+            <h1 className="text-2xl md:text-[36px] tracking-tight font-playfair font-medium text-[#1C1C1C] uppercase tracking-[0.1em] whitespace-nowrap px-8">
               SEARCH RESULTS FOR "{query}"
             </h1>
           </div>
