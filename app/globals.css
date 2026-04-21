@@ -146,3 +146,32 @@
 button, a {
   cursor: pointer;
 }
+
+/* Custom Slider Styles */
+.slider-thumb-custom::-webkit-slider-thumb {
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #D4C3A3;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7px; /* Centers the thumb on the track */
+}
+
+.slider-thumb-custom::-moz-range-thumb {
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #D4C3A3;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.slider-thumb-custom {
+  outline: none;
+}

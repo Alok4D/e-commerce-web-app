@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useMemo, useEffect, Suspense } from "react";
+import React, { useState, useMemo, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import LandingTopAnnouncementBar from "../_components/LandingTopAnnouncementBar";
 import Navbar from "../_components/Navbar";
@@ -19,6 +19,11 @@ const SearchResults = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Products");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
+  const [availability, setAvailability] = useState<string[]>(["In Stock"]);
+  const [selectedRating, setSelectedRating] = useState<number | null>(null);
+  const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
@@ -254,7 +259,20 @@ const SearchResults = () => {
                       </button>
                     </div>
                     
-                    <SidebarContent activeType={activeTab} setActiveType={setActiveTab} />
+                    <SidebarContent 
+                      activeType={activeTab} 
+                      setActiveType={setActiveTab} 
+                      selectedCategories={selectedCategories}
+                      setSelectedCategories={setSelectedCategories}
+                      priceRange={priceRange}
+                      setPriceRange={setPriceRange}
+                      availability={availability}
+                      setAvailability={setAvailability}
+                      selectedRating={selectedRating}
+                      setSelectedRating={setSelectedRating}
+                      selectedLocations={selectedLocations}
+                      setSelectedLocations={setSelectedLocations}
+                    />
                   </motion.aside>
                 </>
               )}
@@ -262,7 +280,20 @@ const SearchResults = () => {
 
             {/* Desktop Sidebar Filters */}
             <aside className="hidden lg:block w-[280px] flex-shrink-0">
-               <SidebarContent activeType={activeTab} setActiveType={setActiveTab} />
+               <SidebarContent 
+                activeType={activeTab} 
+                setActiveType={setActiveTab} 
+                selectedCategories={selectedCategories}
+                setSelectedCategories={setSelectedCategories}
+                priceRange={priceRange}
+                setPriceRange={setPriceRange}
+                availability={availability}
+                setAvailability={setAvailability}
+                selectedRating={selectedRating}
+                setSelectedRating={setSelectedRating}
+                selectedLocations={selectedLocations}
+                setSelectedLocations={setSelectedLocations}
+               />
             </aside>
 
             {/* Main Content Area */}
@@ -455,7 +486,91 @@ const SearchResults = () => {
   );
 };
 
-const SidebarContent = ({ activeType, setActiveType }: { activeType: string, setActiveType: (type: string) => void }) => (
+const SidebarContent = ({ 
+  activeType, 
+  setActiveType,
+  selectedCategories,
+  setSelectedCategories,
+  priceRange,
+  setPriceRange,
+  availability,
+  setAvailability,
+  selectedRating,
+  setSelectedRating,
+  selectedLocations,
+  setSelectedLocations
+}: { 
+  activeType: string, 
+  setActiveType: (type: string) => void,
+  selectedCategories: string[],
+  setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>,
+  priceRange: [number, number],
+  setPriceRange: (range: [number, number]) => void,
+  availability: string[],
+  setAvailability: React.Dispatch<React.SetStateAction<string[]>>,
+  selectedRating: number | null,
+  setSelectedRating: (rating: number | null) => void,
+  selectedLocations: string[],
+  setSelectedLocations: React.Dispatch<React.SetStateAction<string[]>>
+}) => {
+  const toggleCategory = (category: string) => {
+    setSelectedCategories(prev => 
+      prev.includes(category) 
+        ? prev.filter(c => c !== category) 
+        : [...prev, category]
+    );
+  };
+
+  const toggleAvailability = (item: string) => {
+    setAvailability(prev => 
+      prev.includes(item) 
+        ? prev.filter(a => a !== item) 
+        : [...prev, item]
+    );
+  };
+
+  const toggleLocation = (loc: string) => {
+    setSelectedLocations(prev => 
+      prev.includes(loc) 
+        ? prev.filter(l => l !== loc) 
+        : [...prev, loc]
+    );
+  };
+
+  const sliderRef = React.useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = React.useState<number | null>(null);
+
+  const handleSliderMove = React.useCallback((clientX: number) => {
+    if (isDragging === null || !sliderRef.current) return;
+
+    const rect = sliderRef.current.getBoundingClientRect();
+    const percent = Math.min(Math.max(0, (clientX - rect.left) / rect.width), 1);
+    const newValue = Math.round(percent * 500000);
+
+    setPriceRange([0, newValue]);
+  }, [isDragging, setPriceRange]);
+
+  React.useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => handleSliderMove(e.clientX);
+    const handleTouchMove = (e: TouchEvent) => handleSliderMove(e.touches[0].clientX);
+    const handleMouseUp = () => setIsDragging(null);
+
+    if (isDragging !== null) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleTouchMove);
+      window.addEventListener('touchend', handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleMouseUp);
+    };
+  }, [isDragging, handleSliderMove]);
+
+  return (
   <>
     <h3 className="hidden lg:block text-lg font-bold tracking-widest uppercase mb-8 border-b border-black pb-2">Filters</h3>
     
@@ -494,9 +609,27 @@ const SidebarContent = ({ activeType, setActiveType }: { activeType: string, set
       </h4>
       <div className="space-y-4">
         {["Fashion", "Jewelry", "Home & Decor", "Wellness & Beauty"].map((cat) => (
-          <label key={cat} className="flex items-center gap-3 cursor-pointer group">
-            <div className="w-[18px] h-[18px] border border-gray-300 transition-all group-hover:border-black"></div>
-            <span className="text-[14px] text-gray-500 group-hover:text-black transition-colors">{cat} (186)</span>
+          <label 
+            key={cat} 
+            className="flex items-center gap-3 cursor-pointer group"
+            onClick={() => toggleCategory(cat)}
+          >
+            <div className={`w-[18px] h-[18px] border transition-all flex items-center justify-center ${
+              selectedCategories.includes(cat) 
+                ? 'bg-[#1C1C1C] border-[#1C1C1C]' 
+                : 'border-gray-300 group-hover:border-black'
+            }`}>
+              {selectedCategories.includes(cat) && (
+                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
+            </div>
+            <span className={`text-[14px] transition-colors ${
+              selectedCategories.includes(cat) ? 'text-black font-medium' : 'text-gray-500 group-hover:text-black'
+            }`}>
+              {cat} (186)
+            </span>
           </label>
         ))}
       </div>
@@ -508,16 +641,59 @@ const SidebarContent = ({ activeType, setActiveType }: { activeType: string, set
         Price <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
       </h4>
       <div className="mt-4">
-         <div className="text-[14px] mb-6 font-bold text-[#1C1C1C]">Price: $50 - $500</div>
-         <div className="h-[2px] bg-gray-200 relative mb-8">
-           <div className="absolute left-[0%] right-[20%] h-full bg-[#D4C3A3]"></div>
-           <div className="absolute left-[0%] top-1/2 -translate-y-1/2 w-4 h-4 bg-[#D4C3A3] rounded-full border-2 border-white shadow-md cursor-pointer"></div>
-           <div className="absolute right-[20%] top-1/2 -translate-y-1/2 w-4 h-4 bg-[#D4C3A3] rounded-full border-2 border-white shadow-md cursor-pointer"></div>
+         <div className="text-[14px] mb-6 font-bold text-[#1C1C1C]">Price: ${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()}</div>
+         <div 
+           ref={sliderRef}
+           className="relative h-1.5 bg-gray-200 mb-10 mx-3 cursor-pointer rounded-full"
+           onClick={(e) => {
+             if (isDragging !== null) return;
+             const rect = sliderRef.current?.getBoundingClientRect();
+             if (!rect) return;
+             const percent = (e.clientX - rect.left) / rect.width;
+             const val = Math.round(percent * 500000);
+             setPriceRange([0, val]);
+           }}
+         >
+           {/* Track highlight */}
+            <div 
+              className="absolute h-full bg-[#D4C3A3] z-10 rounded-full" 
+              style={{ 
+                left: '0%', 
+                width: `${(priceRange[1] / 500000) * 100}%`
+              }}
+            ></div>
+           
+           {/* Max Handle */}
+            <div 
+              className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-[#D4C3A3] rounded-full border-2 border-white shadow-md cursor-grab active:cursor-grabbing z-30 transition-shadow hover:shadow-lg"
+              style={{ left: `calc(${(priceRange[1] / 500000) * 100}% - 8px)` }}
+              onMouseDown={(e) => {
+                e.stopPropagation();
+                setIsDragging(1);
+              }}
+              onTouchStart={(e) => {
+                e.stopPropagation();
+                setIsDragging(1);
+              }}
+            ></div>
          </div>
          <div className="flex flex-wrap gap-2">
-            {["10-25k", "25-50k", "50-100k", "100k+"].map(range => (
-              <button key={range} className="px-4 py-1.5 bg-[#F1EADA] text-[11px] font-bold hover:bg-[#EAE0CD] transition-colors uppercase tracking-widest text-[#1C1C1C]">
-                {range}
+            {[
+              { label: "10-25k", range: [10000, 25000] },
+              { label: "25-50k", range: [25000, 50000] },
+              { label: "50-100k", range: [50000, 100000] },
+              { label: "100k+", range: [100000, 500000] }
+            ].map(item => (
+              <button 
+                key={item.label} 
+                onClick={() => setPriceRange([0, item.range[1]])}
+                className={`px-4 py-1.5 text-[11px] font-bold transition-colors uppercase tracking-widest border ${
+                  priceRange[1] === item.range[1]
+                    ? 'bg-black text-white border-black'
+                    : 'bg-[#F1EADA] text-[#1C1C1C] border-[#D4C3A3] hover:bg-[#EAE0CD]'
+                }`}
+              >
+                {item.label}
               </button>
             ))}
          </div>
@@ -530,16 +706,28 @@ const SidebarContent = ({ activeType, setActiveType }: { activeType: string, set
         Availability <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
       </h4>
       <div className="space-y-4">
-        <label className="flex items-center gap-3 cursor-pointer group">
-          <div className="w-[18px] h-[18px] border border-[#D4C3A3] bg-[#D4C3A3] flex items-center justify-center text-white">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <span className="text-[14px] text-black font-bold">In Stock</span>
-        </label>
-        <label className="flex items-center gap-3 cursor-pointer group">
-          <div className="w-[18px] h-[18px] border border-gray-300 group-hover:border-black transition-colors"></div>
-          <span className="text-[14px] text-gray-500 group-hover:text-black transition-colors">Booked</span>
-        </label>
+        {["In Stock", "Booked"].map((item) => (
+          <label 
+            key={item} 
+            className="flex items-center gap-3 cursor-pointer group"
+            onClick={() => toggleAvailability(item)}
+          >
+            <div className={`w-[18px] h-[18px] border transition-all flex items-center justify-center ${
+              availability.includes(item) 
+                ? 'bg-[#D4C3A3] border-[#D4C3A3]' 
+                : 'border-gray-300 group-hover:border-black'
+            }`}>
+              {availability.includes(item) && (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              )}
+            </div>
+            <span className={`text-[14px] transition-colors ${
+              availability.includes(item) ? 'text-black font-bold' : 'text-gray-500 group-hover:text-black'
+            }`}>
+              {item}
+            </span>
+          </label>
+        ))}
       </div>
     </div>
 
@@ -550,16 +738,30 @@ const SidebarContent = ({ activeType, setActiveType }: { activeType: string, set
       </h4>
       <div className="space-y-4">
         {[4, 3, 2, 1].map((stars) => (
-          <label key={stars} className="flex items-center gap-3 cursor-pointer group">
-            <div className="w-[18px] h-[18px] border border-[#D4C3A3] bg-[#D4C3A3] flex items-center justify-center text-white">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <label 
+            key={stars} 
+            className="flex items-center gap-3 cursor-pointer group"
+            onClick={() => setSelectedRating(selectedRating === stars ? null : stars)}
+          >
+            <div className={`w-[18px] h-[18px] border transition-all flex items-center justify-center ${
+              selectedRating === stars 
+                ? 'bg-[#D4C3A3] border-[#D4C3A3]' 
+                : 'border-gray-300 group-hover:border-black'
+            }`}>
+              {selectedRating === stars && (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              )}
             </div>
             <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} size={14} fill={i < stars ? "#D4C3A3" : "none"} stroke={i < stars ? "#D4C3A3" : "#D1D5DB"} />
               ))}
             </div>
-            <span className="text-[12px] text-gray-500 font-medium">{stars} and up (39)</span>
+            <span className={`text-[12px] font-medium transition-colors ${
+              selectedRating === stars ? 'text-black' : 'text-gray-500'
+            }`}>
+              {stars} and up (39)
+            </span>
           </label>
         ))}
       </div>
@@ -573,15 +775,34 @@ const SidebarContent = ({ activeType, setActiveType }: { activeType: string, set
       <div className="text-[12px] text-gray-400 italic mb-4">[for services or boutiques]</div>
       <div className="space-y-4">
         {["London", "New York", "Los Angeles", "Paris"].map((loc) => (
-          <label key={loc} className="flex items-center gap-3 cursor-pointer group">
-            <div className="w-[18px] h-[18px] border border-gray-300 group-hover:border-black transition-colors"></div>
-            <span className="text-[14px] text-gray-500 group-hover:text-black transition-colors">{loc}</span>
+          <label 
+            key={loc} 
+            className="flex items-center gap-3 cursor-pointer group"
+            onClick={() => toggleLocation(loc)}
+          >
+            <div className={`w-[18px] h-[18px] border transition-all flex items-center justify-center ${
+              selectedLocations.includes(loc) 
+                ? 'bg-[#1C1C1C] border-[#1C1C1C]' 
+                : 'border-gray-300 group-hover:border-black'
+            }`}>
+              {selectedLocations.includes(loc) && (
+                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
+            </div>
+            <span className={`text-[14px] transition-colors ${
+              selectedLocations.includes(loc) ? 'text-black font-medium' : 'text-gray-500 group-hover:text-black'
+            }`}>
+              {loc}
+            </span>
           </label>
         ))}
       </div>
     </div>
   </>
-);
+  );
+};
 
 const SearchPage = () => {
   return (
