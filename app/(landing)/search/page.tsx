@@ -1,21 +1,25 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import React, { useState, useMemo, useEffect, Suspense } from "react";
+import React, { useState, useMemo, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Filter, X, ChevronRight } from "lucide-react";
+
 import LandingTopAnnouncementBar from "../_components/LandingTopAnnouncementBar";
 import Navbar from "../_components/Navbar";
 import Container from "@/components/shared/Container";
-import productData from "@/data/products.json";
-import { Product } from "@/types/product";
-import { ChevronRight, Filter, LayoutGrid, List, X, Search, Star, MapPin, Eye, Heart } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+
+import SearchHeader from "./_components/SearchHeader";
+import SearchSidebar from "./_components/SearchSidebar";
+import SearchSortBar from "./_components/SearchSortBar";
+import SearchProductGrid from "./_components/SearchProductGrid";
+import SearchPagination from "./_components/SearchPagination";
 
 const SearchResults = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get("q") || "";
+  
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Products");
@@ -181,44 +185,12 @@ const SearchResults = () => {
       <LandingTopAnnouncementBar />
       <Navbar />
 
-      {/* Search Header/Breadcrumb */}
-      <div className="bg-[#F7F5F2]  pb-8 text-center relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-center relative min-h-[180px]">
-            {/* The Trapezoid Shape */}
-            <div 
-              className="bg-[#EAE0CD] px-12 md:px-32 py-10 md:py-14 relative z-0"
-              style={{ clipPath: 'polygon(12% 0, 88% 0, 100% 100%, 0 100%)' }}
-            >
-              <div className="flex items-center justify-center gap-1 text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-3 font-medium">
-                <Link href="/" className="hover:text-black">Home</Link>
-                <span className="mx-1">&gt;</span>
-                <span className="text-black font-bold">Search</span>
-                <span className="mx-1">&gt;</span>
-              </div>
-              <h1 className="text-2xl md:text-[36px] tracking-tight font-playfair font-bold text-[#1C1C1C] uppercase tracking-[0.1em] whitespace-nowrap px-8">
-                SEARCH RESULTS FOR "{query}"
-              </h1>
-            </div>
+      <SearchHeader 
+        query={query} 
+        resultsCount={displayProducts.length} 
+        onBack={() => router.back()} 
+      />
 
-            {/* Return link positioned to the right */}
-            <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 mt-8 md:mt-0">
-              <button 
-                onClick={() => router.back()}
-                className="text-[11px] uppercase tracking-[0.15em] text-gray-500 flex items-center gap-2 hover:text-black transition-colors font-medium"
-              >
-                 <span className="text-[14px]">&lt;</span> Return to previous page
-              </button>
-            </div>
-          </div>
-
-          <div className="mt-12 mb-8 text-center">
-             <h2 className="text-[22px] md:text-[24px] font-playfair text-[#1C1C1C]">
-               {displayProducts.length} Products found
-             </h2>
-          </div>
-       </div>
-     </div>
       <div className="bg-white py-12 md:py-20 relative">
         {/* Floating Filter Tab Button for Mobile */}
         <button 
@@ -259,7 +231,7 @@ const SearchResults = () => {
                       </button>
                     </div>
                     
-                    <SidebarContent 
+                    <SearchSidebar 
                       activeType={activeTab} 
                       setActiveType={setActiveTab} 
                       selectedCategories={selectedCategories}
@@ -280,7 +252,7 @@ const SearchResults = () => {
 
             {/* Desktop Sidebar Filters */}
             <aside className="hidden lg:block w-[280px] flex-shrink-0">
-               <SidebarContent 
+               <SearchSidebar 
                 activeType={activeTab} 
                 setActiveType={setActiveTab} 
                 selectedCategories={selectedCategories}
@@ -298,46 +270,11 @@ const SearchResults = () => {
 
             {/* Main Content Area */}
             <div className="flex-grow">
-               {/* Controls Bar */}
-               <div className="flex flex-wrap justify-between items-center mb-10 gap-4">
-                 <div className="flex items-center gap-4">
-                    <div className="relative border border-gray-300 bg-white">
-                      <select className="appearance-none bg-transparent pl-4 pr-10 py-2.5 text-[12px] font-bold uppercase tracking-widest outline-none cursor-pointer">
-                        <option>Default Sorting</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                      </select>
-                      <ChevronRight size={14} className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none text-gray-400" />
-                    </div>
-                    <div className="flex border border-gray-300 bg-white">
-                      <button 
-                        onClick={() => setViewMode("grid")}
-                        className={`p-2.5 transition-colors ${viewMode === "grid" ? 'bg-gray-100' : 'hover:bg-gray-50'}`}
-                      >
-                        <LayoutGrid size={18} strokeWidth={1.5} />
-                      </button>
-                      <div className="w-[1px] h-full bg-gray-200"></div>
-                      <button 
-                        onClick={() => setViewMode("list")}
-                        className={`p-2.5 transition-colors ${viewMode === "list" ? 'bg-gray-100' : 'hover:bg-gray-50'}`}
-                      >
-                        <List size={18} strokeWidth={1.5} />
-                      </button>
-                    </div>
-                 </div>
-
-                 <div className="flex items-center gap-4">
-                    <span className="text-[12px] font-bold uppercase tracking-widest text-gray-500">Show</span>
-                    <div className="relative border border-gray-300 bg-white">
-                      <select className="appearance-none bg-transparent pl-4 pr-10 py-2.5 text-[12px] font-bold outline-none cursor-pointer">
-                        <option>12</option>
-                        <option>24</option>
-                        <option>48</option>
-                      </select>
-                      <ChevronRight size={14} className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 pointer-events-none text-gray-400" />
-                    </div>
-                 </div>
-               </div>
+               <SearchSortBar 
+                 viewMode={viewMode} 
+                 setViewMode={setViewMode} 
+                 itemsPerPage={itemsPerPage} 
+               />
 
                {/* Tabs */}
                <div className="flex gap-2 mb-12 overflow-x-auto pb-4 scrollbar-hide border-b border-gray-100">
@@ -360,124 +297,17 @@ const SearchResults = () => {
                  </button>
                </div>
 
-               {/* Product Grid */}
-               <div className={`grid gap-x-8 gap-y-16 ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'}`}>
-                 {paginatedProducts.map((item) => (
-                   <div key={item.id} className="group flex flex-col">
-                     <Link href={`/products/${item.id}`} className="relative aspect-[4/5] bg-[#F7F5F2] mb-6 overflow-hidden block">
-                       <Image
-                         src={item.image}
-                         alt={item.name}
-                         fill
-                         className="object-cover group-hover:scale-105 transition-transform duration-1000"
-                       />
-                       
-                       {/* Badge from data */}
-                       {item.badge && (
-                         <div className="absolute top-4 right-4 bg-[#F1EADA]/90 px-3 py-1 text-[10px] uppercase font-bold tracking-widest text-[#1C1C1C] italic shadow-sm">
-                           {item.badge}
-                         </div>
-                       )}
+               <SearchProductGrid 
+                 products={paginatedProducts} 
+                 viewMode={viewMode} 
+                 query={query} 
+               />
 
-                       {/* Featured Collection Badge */}
-                       {item.isFeaturedCollection && (
-                         <div className="absolute top-4 left-4 text-[14px] font-playfair italic text-gray-800 bg-white/20 backdrop-blur-sm px-2 py-1">
-                           Featured Collection
-                         </div>
-                       )}
-                     </Link>
-                     
-                     <div className="flex flex-col flex-grow">
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-[12px] uppercase tracking-widest text-gray-400 font-medium">{item.category}</span>
-                          <div className="flex gap-3 text-gray-400">
-                             <Eye size={18} strokeWidth={1.5} className="hover:text-black cursor-pointer transition-colors" />
-                             <Heart size={18} strokeWidth={1.5} className="hover:text-black cursor-pointer transition-colors" />
-                          </div>
-                        </div>
-                        <Link href={`/products/${item.id}`}>
-                          <h3 className="text-[20px] font-playfair font-bold text-[#1C1C1C] mb-1 group-hover:text-brand-text transition-colors">{item.name}</h3>
-                        </Link>
-                        <p className="text-[14px] text-gray-500 mb-2 font-playfair leading-relaxed italic">{item.description}</p>
-                        
-                        {item.price && (
-                          <div className="text-[16px] font-bold text-[#1C1C1C] mb-3">{item.price}</div>
-                        )}
-
-                        {/* Tags for Boutiques */}
-                        {item.tags && (
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {item.tags.map(tag => (
-                              <span key={tag} className="text-[10px] uppercase tracking-widest bg-gray-100 px-2 py-1 text-gray-600 font-bold border border-gray-200">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                        
-                        {/* Rating section */}
-                        {item.rating && (
-                          <div className="flex items-center gap-1.5 mb-3 pt-2">
-                             <div className="flex gap-0.5">
-                                {[...Array(5)].map((_, i) => (
-                                  <Star key={i} size={12} fill={i < 5 ? "#D4C3A3" : "none"} stroke={i < 5 ? "#D4C3A3" : "#D1D5DB"} />
-                                ))}
-                             </div>
-                             <span className="text-[12px] font-bold text-gray-800 ml-1">4.9 <span className="font-normal text-gray-400">({item.rating.split('(')[1]}</span></span>
-                          </div>
-                        )}
-
-                        {/* Location for Boutiques */}
-                        {item.location && (
-                          <div className="flex items-center gap-2 text-[12px] font-medium text-gray-500 mb-6 uppercase tracking-widest">
-                             <MapPin size={14} className="text-gray-400" />
-                             <span>{item.location}</span>
-                          </div>
-                        )}
-
-                        <Link href={`/products/${item.id}`} className="mt-auto w-full">
-                          <button className="w-full bg-[#F1EADA] py-4 text-[12px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 shadow-sm border border-[#D4C3A3]/30">
-                             {item.buttonText}
-                          </button>
-                        </Link>
-                     </div>
-                   </div>
-                 ))}
-               </div>
-
-               {/* Empty State */}
-               {displayProducts.length === 0 && (
-                 <div className="text-center py-20 bg-gray-50 rounded-lg">
-                    <Search size={48} className="mx-auto text-gray-300 mb-4" />
-                    <p className="text-xl font-playfair text-gray-500 italic">No results found for "{query}"</p>
-                    <button 
-                      onClick={() => router.push('/products')}
-                      className="mt-6 text-brand-text font-bold uppercase tracking-widest text-sm hover:underline"
-                    >
-                      Browse all products
-                    </button>
-                 </div>
-               )}
-
-               {/* Pagination */}
-               {displayProducts.length > 0 && (
-                 <div className="flex justify-center items-center gap-3 mt-24">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                      <button 
-                        key={page}
-                        onClick={() => {
-                          setCurrentPage(page);
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                        className={`w-12 h-12 border flex items-center justify-center text-[14px] transition-all duration-300 ${
-                          page === currentPage ? 'bg-[#F1EADA] border-[#D4C3A3] font-bold text-black shadow-sm' : 'border-gray-200 text-gray-400 hover:border-gray-400 hover:text-black'
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    ))}
-                 </div>
-               )}
+               <SearchPagination 
+                 currentPage={currentPage} 
+                 totalPages={totalPages} 
+                 onPageChange={setCurrentPage} 
+               />
             </div>
           </div>
         </Container>
@@ -486,335 +316,9 @@ const SearchResults = () => {
   );
 };
 
-const SidebarContent = ({ 
-  activeType, 
-  setActiveType,
-  selectedCategories,
-  setSelectedCategories,
-  priceRange,
-  setPriceRange,
-  availability,
-  setAvailability,
-  selectedRating,
-  setSelectedRating,
-  selectedLocations,
-  setSelectedLocations
-}: { 
-  activeType: string, 
-  setActiveType: (type: string) => void,
-  selectedCategories: string[],
-  setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>,
-  priceRange: [number, number],
-  setPriceRange: (range: [number, number]) => void,
-  availability: string[],
-  setAvailability: React.Dispatch<React.SetStateAction<string[]>>,
-  selectedRating: number | null,
-  setSelectedRating: (rating: number | null) => void,
-  selectedLocations: string[],
-  setSelectedLocations: React.Dispatch<React.SetStateAction<string[]>>
-}) => {
-  const toggleCategory = (category: string) => {
-    setSelectedCategories(prev => 
-      prev.includes(category) 
-        ? prev.filter(c => c !== category) 
-        : [...prev, category]
-    );
-  };
-
-  const toggleAvailability = (item: string) => {
-    setAvailability(prev => 
-      prev.includes(item) 
-        ? prev.filter(a => a !== item) 
-        : [...prev, item]
-    );
-  };
-
-  const toggleLocation = (loc: string) => {
-    setSelectedLocations(prev => 
-      prev.includes(loc) 
-        ? prev.filter(l => l !== loc) 
-        : [...prev, loc]
-    );
-  };
-
-  const sliderRef = React.useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = React.useState<number | null>(null);
-
-  const handleSliderMove = React.useCallback((clientX: number) => {
-    if (isDragging === null || !sliderRef.current) return;
-
-    const rect = sliderRef.current.getBoundingClientRect();
-    const percent = Math.min(Math.max(0, (clientX - rect.left) / rect.width), 1);
-    const newValue = Math.round(percent * 500000);
-
-    setPriceRange([0, newValue]);
-  }, [isDragging, setPriceRange]);
-
-  React.useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => handleSliderMove(e.clientX);
-    const handleTouchMove = (e: TouchEvent) => handleSliderMove(e.touches[0].clientX);
-    const handleMouseUp = () => setIsDragging(null);
-
-    if (isDragging !== null) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-      window.addEventListener('touchmove', handleTouchMove);
-      window.addEventListener('touchend', handleMouseUp);
-    }
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleMouseUp);
-    };
-  }, [isDragging, handleSliderMove]);
-
-  return (
-  <>
-    <h3 className="hidden lg:block text-lg font-bold tracking-widest uppercase mb-8 border-b border-black pb-2">Filters</h3>
-    
-    {/* TYPE Filter */}
-    <div className="mb-8">
-      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-        Type <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-      </h4>
-      <div className="space-y-4">
-        {[
-          { label: "Products", count: 186 },
-          { label: "Services", count: 31 },
-          { label: "Boutiques", count: 136 },
-          { label: "Registries", count: 10 }
-        ].map((item) => (
-          <label 
-            key={item.label} 
-            className="flex items-center gap-3 cursor-pointer group"
-            onClick={() => setActiveType(item.label)}
-          >
-            <div className="w-[18px] h-[18px] rounded-full border border-gray-300 flex items-center justify-center transition-all group-hover:border-black">
-              {activeType === item.label && <div className="w-[10px] h-[10px] rounded-full bg-[#1C1C1C]"></div>}
-            </div>
-            <span className={`text-[14px] transition-colors ${activeType === item.label ? 'text-black font-medium' : 'text-gray-500 group-hover:text-black'}`}>
-              {item.label} ({item.count})
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
-
-    {/* CATEGORY Filter */}
-    <div className="mb-8 border-t border-gray-200 pt-8">
-      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-        Category <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-      </h4>
-      <div className="space-y-4">
-        {["Fashion", "Jewelry", "Home & Decor", "Wellness & Beauty"].map((cat) => (
-          <label 
-            key={cat} 
-            className="flex items-center gap-3 cursor-pointer group"
-            onClick={() => toggleCategory(cat)}
-          >
-            <div className={`w-[18px] h-[18px] border transition-all flex items-center justify-center ${
-              selectedCategories.includes(cat) 
-                ? 'bg-[#1C1C1C] border-[#1C1C1C]' 
-                : 'border-gray-300 group-hover:border-black'
-            }`}>
-              {selectedCategories.includes(cat) && (
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              )}
-            </div>
-            <span className={`text-[14px] transition-colors ${
-              selectedCategories.includes(cat) ? 'text-black font-medium' : 'text-gray-500 group-hover:text-black'
-            }`}>
-              {cat} (186)
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
-
-    {/* PRICE Filter */}
-    <div className="mb-8 border-t border-gray-200 pt-8">
-      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-        Price <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-      </h4>
-      <div className="mt-4">
-         <div className="text-[14px] mb-6 font-bold text-[#1C1C1C]">Price: ${priceRange[0].toLocaleString()} - ${priceRange[1].toLocaleString()}</div>
-         <div 
-           ref={sliderRef}
-           className="relative h-1.5 bg-gray-200 mb-10 mx-3 cursor-pointer rounded-full"
-           onClick={(e) => {
-             if (isDragging !== null) return;
-             const rect = sliderRef.current?.getBoundingClientRect();
-             if (!rect) return;
-             const percent = (e.clientX - rect.left) / rect.width;
-             const val = Math.round(percent * 500000);
-             setPriceRange([0, val]);
-           }}
-         >
-           {/* Track highlight */}
-            <div 
-              className="absolute h-full bg-[#D4C3A3] z-10 rounded-full" 
-              style={{ 
-                left: '0%', 
-                width: `${(priceRange[1] / 500000) * 100}%`
-              }}
-            ></div>
-           
-           {/* Max Handle */}
-            <div 
-              className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-[#D4C3A3] rounded-full border-2 border-white shadow-md cursor-grab active:cursor-grabbing z-30 transition-shadow hover:shadow-lg"
-              style={{ left: `calc(${(priceRange[1] / 500000) * 100}% - 8px)` }}
-              onMouseDown={(e) => {
-                e.stopPropagation();
-                setIsDragging(1);
-              }}
-              onTouchStart={(e) => {
-                e.stopPropagation();
-                setIsDragging(1);
-              }}
-            ></div>
-         </div>
-         <div className="flex flex-wrap gap-2">
-            {[
-              { label: "10-25k", range: [10000, 25000] },
-              { label: "25-50k", range: [25000, 50000] },
-              { label: "50-100k", range: [50000, 100000] },
-              { label: "100k+", range: [100000, 500000] }
-            ].map(item => (
-              <button 
-                key={item.label} 
-                onClick={() => setPriceRange([0, item.range[1]])}
-                className={`px-4 py-1.5 text-[11px] font-bold transition-colors uppercase tracking-widest border ${
-                  priceRange[1] === item.range[1]
-                    ? 'bg-black text-white border-black'
-                    : 'bg-[#F1EADA] text-[#1C1C1C] border-[#D4C3A3] hover:bg-[#EAE0CD]'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-         </div>
-      </div>
-    </div>
-
-    {/* AVAILABILITY Filter */}
-    <div className="mb-8 border-t border-gray-200 pt-8">
-      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-        Availability <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-      </h4>
-      <div className="space-y-4">
-        {["In Stock", "Booked"].map((item) => (
-          <label 
-            key={item} 
-            className="flex items-center gap-3 cursor-pointer group"
-            onClick={() => toggleAvailability(item)}
-          >
-            <div className={`w-[18px] h-[18px] border transition-all flex items-center justify-center ${
-              availability.includes(item) 
-                ? 'bg-[#D4C3A3] border-[#D4C3A3]' 
-                : 'border-gray-300 group-hover:border-black'
-            }`}>
-              {availability.includes(item) && (
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              )}
-            </div>
-            <span className={`text-[14px] transition-colors ${
-              availability.includes(item) ? 'text-black font-bold' : 'text-gray-500 group-hover:text-black'
-            }`}>
-              {item}
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
-
-    {/* RATING Filter */}
-    <div className="mb-8 border-t border-gray-200 pt-8">
-      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-        Rating <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-      </h4>
-      <div className="space-y-4">
-        {[4, 3, 2, 1].map((stars) => (
-          <label 
-            key={stars} 
-            className="flex items-center gap-3 cursor-pointer group"
-            onClick={() => setSelectedRating(selectedRating === stars ? null : stars)}
-          >
-            <div className={`w-[18px] h-[18px] border transition-all flex items-center justify-center ${
-              selectedRating === stars 
-                ? 'bg-[#D4C3A3] border-[#D4C3A3]' 
-                : 'border-gray-300 group-hover:border-black'
-            }`}>
-              {selectedRating === stars && (
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              )}
-            </div>
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} fill={i < stars ? "#D4C3A3" : "none"} stroke={i < stars ? "#D4C3A3" : "#D1D5DB"} />
-              ))}
-            </div>
-            <span className={`text-[12px] font-medium transition-colors ${
-              selectedRating === stars ? 'text-black' : 'text-gray-500'
-            }`}>
-              {stars} and up (39)
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
-
-    {/* LOCATION Filter */}
-    <div className="mb-8 border-t border-gray-200 pt-8">
-      <h4 className="text-[14px] font-bold tracking-widest uppercase mb-4 flex justify-between items-center group cursor-pointer">
-        Location <ChevronRight size={16} className="rotate-90 text-gray-400 group-hover:text-black transition-colors" />
-      </h4>
-      <div className="text-[12px] text-gray-400 italic mb-4">[for services or boutiques]</div>
-      <div className="space-y-4">
-        {["London", "New York", "Los Angeles", "Paris"].map((loc) => (
-          <label 
-            key={loc} 
-            className="flex items-center gap-3 cursor-pointer group"
-            onClick={() => toggleLocation(loc)}
-          >
-            <div className={`w-[18px] h-[18px] border transition-all flex items-center justify-center ${
-              selectedLocations.includes(loc) 
-                ? 'bg-[#1C1C1C] border-[#1C1C1C]' 
-                : 'border-gray-300 group-hover:border-black'
-            }`}>
-              {selectedLocations.includes(loc) && (
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              )}
-            </div>
-            <span className={`text-[14px] transition-colors ${
-              selectedLocations.includes(loc) ? 'text-black font-medium' : 'text-gray-500 group-hover:text-black'
-            }`}>
-              {loc}
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
-  </>
-  );
-};
-
 const SearchPage = () => {
   return (
-    <Suspense fallback={
-       <div className="min-h-screen bg-white">
-          <LandingTopAnnouncementBar />
-          <Navbar />
-          <div className="flex items-center justify-center py-40">
-             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
-          </div>
-       </div>
-    }>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
       <SearchResults />
     </Suspense>
   );
