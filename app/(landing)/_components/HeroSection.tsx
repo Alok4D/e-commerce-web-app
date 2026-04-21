@@ -3,6 +3,7 @@ import { Search, MoveRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -66,12 +67,12 @@ const HeroSection = () => {
 
           {/* Desktop Action Buttons (Hidden on mobile) */}
           <div className="hidden md:flex items-center justify-center gap-5 mt-10 md:mt-12 w-full px-6">
-            <a
-              href="#"
+            <Link
+              href="/products"
               className="w-full sm:w-auto font-playfair font-medium flex items-center justify-center gap-3 text-[18px] md:text-[22px] text-brand-text bg-[#F1E1C2] py-4 md:py-4 px-10 md:px-10 transition-all hover:bg-[#e9d5ab] group"
             >
               Explore Products <span className="text-2xl transition-transform group-hover:translate-x-1">→</span>
-            </a>
+            </Link>
             <a
               href="#"
               className="w-full sm:w-auto font-playfair font-medium flex items-center justify-center gap-3 text-[18px] md:text-[22px] text-[#F1E1C2] border-2 border-[#F1E1C2] py-4 md:py-4 px-10 md:px-10 transition-all hover:bg-[#F1E1C2] hover:text-brand-text group"
