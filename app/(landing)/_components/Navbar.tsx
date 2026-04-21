@@ -22,6 +22,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const Navbar = () => {
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setIsMenuOpen(false);
       setSearchQuery("");
+      setIsSearchExpanded(false);
     }
   };
 
@@ -202,15 +204,43 @@ const Navbar = () => {
       {/* Desktop Navbar (Original Structure) */}
       <div className="hidden md:flex w-full bg-white border-b border-gray-200 py-4 px-6 md:px-12 items-center justify-between max-w-[1239px] mx-auto">
         <div className="flex-1">
-          <form onSubmit={handleSearch} className="relative max-w-[200px] group">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-full bg-transparent border-b border-gray-200 py-1 pl-1 pr-8 text-[13px] outline-none focus:border-black transition-colors placeholder:text-gray-400"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button type="submit" className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-900 hover:text-brand-text transition-colors">
+          <form 
+            onSubmit={handleSearch} 
+            className="relative flex items-center justify-start group"
+          >
+            <motion.div
+              initial={false}
+              animate={{ 
+                width: isSearchExpanded ? "200px" : "0px",
+                opacity: isSearchExpanded ? 1 : 0,
+                marginRight: isSearchExpanded ? "10px" : "0px"
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <input
+                type="text"
+                placeholder="Search..."
+                className="w-[200px] bg-transparent border-b border-gray-200 py-1 pl-1 pr-2 text-[13px] outline-none focus:border-black transition-colors placeholder:text-gray-400"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onBlur={() => !searchQuery && setIsSearchExpanded(false)}
+                autoFocus={isSearchExpanded}
+              />
+            </motion.div>
+            <button 
+              type="button"
+              onClick={() => {
+                if (!isSearchExpanded) {
+                  setIsSearchExpanded(true);
+                } else if (searchQuery.trim()) {
+                  handleSearch({ preventDefault: () => {} } as React.FormEvent);
+                } else {
+                  setIsSearchExpanded(false);
+                }
+              }}
+              className="text-gray-900 hover:text-brand-text transition-colors"
+            >
               <Search size={18} strokeWidth={1.5} />
             </button>
           </form>
