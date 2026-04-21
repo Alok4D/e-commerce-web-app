@@ -254,8 +254,7 @@ const SearchResults = () => {
                       </button>
                     </div>
                     
-                    {/* Reuse Sidebar Content */}
-                    <SidebarContent />
+                    <SidebarContent activeType={activeTab} setActiveType={setActiveTab} />
                   </motion.aside>
                 </>
               )}
@@ -263,7 +262,7 @@ const SearchResults = () => {
 
             {/* Desktop Sidebar Filters */}
             <aside className="hidden lg:block w-[280px] flex-shrink-0">
-               <SidebarContent />
+               <SidebarContent activeType={activeTab} setActiveType={setActiveTab} />
             </aside>
 
             {/* Main Content Area */}
@@ -456,7 +455,7 @@ const SearchResults = () => {
   );
 };
 
-const SidebarContent = () => (
+const SidebarContent = ({ activeType, setActiveType }: { activeType: string, setActiveType: (type: string) => void }) => (
   <>
     <h3 className="hidden lg:block text-lg font-bold tracking-widest uppercase mb-8 border-b border-black pb-2">Filters</h3>
     
@@ -472,11 +471,15 @@ const SidebarContent = () => (
           { label: "Boutiques", count: 136 },
           { label: "Registries", count: 10 }
         ].map((item) => (
-          <label key={item.label} className="flex items-center gap-3 cursor-pointer group">
+          <label 
+            key={item.label} 
+            className="flex items-center gap-3 cursor-pointer group"
+            onClick={() => setActiveType(item.label)}
+          >
             <div className="w-[18px] h-[18px] rounded-full border border-gray-300 flex items-center justify-center transition-all group-hover:border-black">
-              {item.label === "Products" && <div className="w-[10px] h-[10px] rounded-full bg-[#1C1C1C]"></div>}
+              {activeType === item.label && <div className="w-[10px] h-[10px] rounded-full bg-[#1C1C1C]"></div>}
             </div>
-            <span className={`text-[14px] transition-colors ${item.label === "Products" ? 'text-black font-medium' : 'text-gray-500 group-hover:text-black'}`}>
+            <span className={`text-[14px] transition-colors ${activeType === item.label ? 'text-black font-medium' : 'text-gray-500 group-hover:text-black'}`}>
               {item.label} ({item.count})
             </span>
           </label>
