@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Eye, Heart, Star, MapPin, Search } from "lucide-react";
 
 interface Product {
@@ -28,6 +29,7 @@ interface SearchProductGridProps {
 }
 
 const SearchProductGrid = ({ products, viewMode, query }: SearchProductGridProps) => {
+  const router = useRouter();
   if (products.length === 0) {
     return (
       <div className="text-center py-20 bg-gray-50 rounded-lg">
@@ -113,11 +115,20 @@ const SearchProductGrid = ({ products, viewMode, query }: SearchProductGridProps
               </div>
             )}
 
-            <Link href={`/products/${item.id}`} className="mt-auto w-full">
-              <button className="w-full bg-[#F1EADA] py-4 text-[12px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 shadow-sm border border-[#D4C3A3]/30">
-                {item.buttonText}
-              </button>
-            </Link>
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                if (item.buttonText === "Add To Cart") {
+                  // Add to cart logic can be added here
+                  console.log("Added to cart:", item.name);
+                } else {
+                  router.push(`/products/${item.id}`);
+                }
+              }}
+              className="mt-auto w-full bg-[#F1EADA] py-4 text-[12px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 shadow-sm border border-[#D4C3A3]/30"
+            >
+              {item.buttonText}
+            </button>
           </div>
         </div>
       ))}

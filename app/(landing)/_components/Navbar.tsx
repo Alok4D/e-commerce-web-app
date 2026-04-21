@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Search,
   User,
@@ -23,6 +23,7 @@ const Navbar = () => {
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -219,13 +220,13 @@ const Navbar = () => {
               className="overflow-hidden"
             >
               <input
+                ref={searchInputRef}
                 type="text"
                 placeholder="Search..."
                 className="w-[200px] bg-transparent border-b border-gray-200 py-1 pl-1 pr-2 text-[13px] outline-none focus:border-black transition-colors placeholder:text-gray-400"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onBlur={() => !searchQuery && setIsSearchExpanded(false)}
-                autoFocus={isSearchExpanded}
               />
             </motion.div>
             <button 
@@ -233,6 +234,7 @@ const Navbar = () => {
               onClick={() => {
                 if (!isSearchExpanded) {
                   setIsSearchExpanded(true);
+                  setTimeout(() => searchInputRef.current?.focus(), 100);
                 } else if (searchQuery.trim()) {
                   handleSearch({ preventDefault: () => {} } as React.FormEvent);
                 } else {
