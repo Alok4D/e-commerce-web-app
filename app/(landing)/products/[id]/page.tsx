@@ -98,7 +98,7 @@ const ProductDetailsPage = () => {
             </div>
 
             <div className=" p-4 md:p-12 text-[#2a2a2a]">
-      <div className="max-w-7xl mx-auto  shadow-sm p-6 md:p-10">
+      <div className="max-w-7xl mx-auto  p-6 md:p-10">
         
         {/* Main Product Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -114,7 +114,7 @@ const ProductDetailsPage = () => {
             </div>
             <div className="grid grid-cols-4 gap-2">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="aspect-square bg-gray-100 overflow-hidden cursor-pointer">
+                <div key={i} className="aspect-square bg-[#DEDAD2] overflow-hidden cursor-pointer">
                   <img src="/product-details-img/Rectangle 4483.png" alt={`Thumb ${i}`} className="w-full h-full object-cover" />
                 </div>
               ))}
@@ -152,9 +152,9 @@ const ProductDetailsPage = () => {
               
               <div className="flex items-center gap-4 py-4">
                 <div className="flex border border-gray-300">
-                  <button className="px-3 py-2 hover:bg-gray-100"><Minus size={16} /></button>
+                  <button className="px-3 py-2 hover:bg-[#DEDAD2]"><Minus size={16} /></button>
                   <input type="number" defaultValue="1" className="w-12 text-center border-x border-gray-300 focus:outline-none" />
-                  <button className="px-3 py-2 hover:bg-gray-100"><Plus size={16} /></button>
+                  <button className="px-3 py-2 hover:bg-[#DEDAD2]"><Plus size={16} /></button>
                 </div>
               </div>
 
@@ -202,7 +202,7 @@ const ProductDetailsPage = () => {
               
               {[1, 2].map((item) => (
                 <div key={item} className="flex gap-4 group cursor-pointer">
-                  <div className="w-20 h-24 bg-gray-100 flex-shrink-0">
+                  <div className="w-20 h-24 bg-[#DEDAD2] flex-shrink-0">
                     <img src="/product-details-img/Rectangle 4483.svg" alt="Rec" className="w-full h-full object-cover" />
                   </div>
                   <div className="text-sm">
@@ -237,17 +237,17 @@ const ProductDetailsPage = () => {
               
               <div>
                 <label className="block text-sm font-medium mb-2">Your review *</label>
-                <textarea className="w-full h-32 bg-gray-100 border-none p-4 focus:ring-1 focus:ring-black outline-none" />
+                <textarea className="w-full h-32 bg-[#DEDAD2] border-none p-4 focus:ring-1 focus:ring-black outline-none" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">Name *</label>
-                  <input type="text" className="w-full bg-gray-100 border-none p-3 focus:ring-1 focus:ring-black outline-none" />
+                  <input type="text" className="w-full bg-[#DEDAD2] border-none p-3 focus:ring-1 focus:ring-black outline-none" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Email *</label>
-                  <input type="email" className="w-full bg-gray-100 border-none p-3 focus:ring-1 focus:ring-black outline-none" />
+                  <input type="email" className="w-full bg-[#DEDAD2] border-none p-3 focus:ring-1 focus:ring-black outline-none" />
                 </div>
               </div>
 
