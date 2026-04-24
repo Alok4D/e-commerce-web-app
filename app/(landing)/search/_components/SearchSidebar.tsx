@@ -309,7 +309,7 @@ const SearchSidebar = ({
               </div>
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} fill={i < stars ? "#D4C3A3" : "none"} stroke={i < stars ? "#D4C3A3" : "#D1D5DB"} />
+                  <Star key={i} size={14} fill={i < stars ? "#EEA71D" : "none"} stroke={i < stars ? "#EEA71D" : "#D1D5DB"} />
                 ))}
               </div>
               <span className={`text-[12px] font-medium transition-colors ${
