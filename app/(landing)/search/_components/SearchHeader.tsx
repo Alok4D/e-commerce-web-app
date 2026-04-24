@@ -33,7 +33,7 @@ const SearchHeader = ({ query, resultsCount, onBack }: SearchHeaderProps) => {
           <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 mt-8 md:mt-0">
             <button
               onClick={onBack}
-              className="text-[11px] uppercase tracking-[0.15em] text-gray-500 flex items-center gap-2 hover:text-black transition-colors font-medium"
+              className="text-[11px] uppercase tracking-[0.15em] text-gray-500 flex md:hidden lg:flex items-center gap-2 hover:text-black transition-colors font-medium"
             >
               <span className="text-[14px]">&lt;</span> Return to previous page
             </button>
