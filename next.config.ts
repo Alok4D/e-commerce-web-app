@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
         hostname: 'plus.unsplash.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.paperlesspost.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.buzzfeed.com',
+        pathname: '/**',
+      },
     ],
   },
 };

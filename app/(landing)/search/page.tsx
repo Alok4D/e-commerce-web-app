@@ -209,7 +209,7 @@ const SearchResults = () => {
       category: "Registries",
       description: "Essential items for your new arrival",
       price: "Custom",
-      image: "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=800&auto=format&fit=crop",
+      image: "https://www.paperlesspost.com/blog/wp-content/uploads/073123_Blog_SEO_RefreshHowToMakeABabyRegistry.png",
       type: "Registry",
       buttonText: "Start Registry"
     },
@@ -250,7 +250,7 @@ const SearchResults = () => {
       category: "Registries",
       description: "Help your grad start their next chapter",
       price: "Custom",
-      image: "https://images.unsplash.com/photo-1523050335456-adabbf72c766?q=80&w=800&auto=format&fit=crop",
+      image: "https://img.buzzfeed.com/buzzfeed-static/static/2023-06/28/19/asset/6ac02f84ae6d/sub-buzz-1545-1687980698-1.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto",
       type: "Registry",
       buttonText: "Create Registry"
     },
