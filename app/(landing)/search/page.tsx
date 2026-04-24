@@ -22,7 +22,7 @@ const SearchResults = () => {
   
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Products");
+  const [activeTab, setActiveTab] = useState("All");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
   const [availability, setAvailability] = useState<string[]>(["In Stock"]);
@@ -31,7 +31,7 @@ const SearchResults = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const tabs = ["Products", "Services", "Boutiques", "Registries"];
+  const tabs = ["All", "Products", "Services", "Boutiques", "Registries"];
 
   const staticResults = [
     {
@@ -169,16 +169,563 @@ const SearchResults = () => {
       image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=687&auto=format&fit=crop",
       type: "Product",
       buttonText: "Add To Cart"
+    },
+    // Adding 50+ more items
+    {
+      id: 13,
+      name: "Velvet Occasion Chair",
+      category: "Home & Decor",
+      description: "Mid-century modern accent chair",
+      price: "$450.00",
+      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 14,
+      name: "Luxury Spa Retreat",
+      category: "Wellness & Beauty",
+      description: "Full day of pampering and relaxation",
+      price: "$350.00",
+      image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Book Now",
+      badge: "Popular"
+    },
+    {
+      id: 15,
+      name: "Parisian Boutique",
+      category: "Fashion",
+      description: "Hand-picked vintage collections from Paris",
+      price: "",
+      image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "Paris",
+      buttonText: "Explore"
+    },
+    {
+      id: 16,
+      name: "Baby Shower Registry",
+      category: "Registries",
+      description: "Essential items for your new arrival",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Start Registry"
+    },
+    {
+      id: 17,
+      name: "Handmade Ceramic Vase",
+      category: "Home & Decor",
+      description: "Unique terracotta glazed pottery",
+      price: "$85.00",
+      image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 18,
+      name: "Personal Training Session",
+      category: "Wellness & Beauty",
+      description: "1-on-1 fitness coaching and nutrition",
+      price: "$75.00/hr",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Schedule"
+    },
+    {
+      id: 19,
+      name: "The London Watch Co.",
+      category: "Jewelry",
+      description: "Exclusive timepieces and luxury watches",
+      price: "",
+      image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "London",
+      buttonText: "Visit Shop"
+    },
+    {
+      id: 20,
+      name: "Graduation Registry",
+      category: "Registries",
+      description: "Help your grad start their next chapter",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1523050335456-adabbf72c766?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Create Registry"
+    },
+    {
+      id: 21,
+      name: "Leather Messenger Bag",
+      category: "Fashion",
+      description: "Premium Italian leather briefcase",
+      price: "$295.00",
+      image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 22,
+      name: "Yoga Workshop",
+      category: "Wellness & Beauty",
+      description: "Mastering the art of mindfulness",
+      price: "$120.00",
+      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Join Now"
+    },
+    {
+      id: 23,
+      name: "Manhattan Loft Decor",
+      category: "Home & Decor",
+      description: "Modern industrial furniture and art",
+      price: "",
+      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "New York",
+      buttonText: "Browse"
+    },
+    {
+      id: 24,
+      name: "Housewarming Registry",
+      category: "Registries",
+      description: "Gifts to make a new house a home",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "View Registry"
+    },
+    {
+      id: 25,
+      name: "Minimalist Desk Lamp",
+      category: "Home & Decor",
+      description: "Adjustable LED light with wireless charging",
+      price: "$125.00",
+      image: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 26,
+      name: "Interior Design Consultation",
+      category: "Home & Decor",
+      description: "Professional room planning and styling",
+      price: "$250.00",
+      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Book Consultation"
+    },
+    {
+      id: 27,
+      name: "LA Fashion House",
+      category: "Fashion",
+      description: "Trendy streetwear and designer labels",
+      price: "",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "Los Angeles",
+      buttonText: "Shop Now"
+    },
+    {
+      id: 28,
+      name: "Retirement Registry",
+      category: "Registries",
+      description: "Celebrate a lifetime of achievement",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Start Here"
+    },
+    {
+      id: 29,
+      name: "Cashmere Scarf",
+      category: "Fashion",
+      description: "100% pure Mongolian cashmere",
+      price: "$145.00",
+      image: "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 30,
+      name: "Facial Skin Therapy",
+      category: "Wellness & Beauty",
+      description: "Organic treatments for glowing skin",
+      price: "$95.00",
+      image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Book Spa"
+    },
+    {
+      id: 31,
+      name: "Classic Jewelry Co.",
+      category: "Jewelry",
+      description: "Timeless elegance and craftsmanship",
+      price: "",
+      image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "Paris",
+      buttonText: "View Collection"
+    },
+    {
+      id: 32,
+      name: "Anniversary Registry",
+      category: "Registries",
+      description: "Commemorate your years together",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Explore"
+    },
+    {
+      id: 33,
+      name: "Smart Coffee Maker",
+      category: "Home & Decor",
+      description: "Programmable with smartphone integration",
+      price: "$210.00",
+      image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 34,
+      name: "Professional Wardrobe Styling",
+      category: "Fashion",
+      description: "Curated outfits for your personal brand",
+      price: "$180.00",
+      image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Book Stylist"
+    },
+    {
+      id: 35,
+      name: "Modern Home Boutique",
+      category: "Home & Decor",
+      description: "Chic decor for the contemporary home",
+      price: "",
+      image: "https://images.unsplash.com/photo-1513519247388-193461244651?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "London",
+      buttonText: "Shop Store"
+    },
+    {
+      id: 36,
+      name: "New Business Registry",
+      category: "Registries",
+      description: "Everything you need to launch your startup",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Get Started"
+    },
+    {
+      id: 37,
+      name: "Gold Pendant Necklace",
+      category: "Jewelry",
+      description: "14k solid gold with a delicate chain",
+      price: "$340.00",
+      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 38,
+      name: "Cooking Class Experience",
+      category: "Wellness & Beauty",
+      description: "Gourmet meal preparation with a top chef",
+      price: "$150.00",
+      image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Reserve Spot"
+    },
+    {
+      id: 39,
+      name: "Village Arts & Crafts",
+      category: "Home & Decor",
+      description: "Local handmade gifts and souvenirs",
+      price: "",
+      image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "Los Angeles",
+      buttonText: "View Gallery"
+    },
+    {
+      id: 40,
+      name: "Travel Adventure Registry",
+      category: "Registries",
+      description: "Fund your next big journey",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Plan Trip"
+    },
+    {
+      id: 41,
+      name: "Silk Pillowcase Set",
+      category: "Wellness & Beauty",
+      description: "Anti-aging mulberry silk for better sleep",
+      price: "$65.00",
+      image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 42,
+      name: "Makeup Masterclass",
+      category: "Wellness & Beauty",
+      description: "Professional tips for flawless application",
+      price: "$110.00",
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Enroll"
+    },
+    {
+      id: 43,
+      name: "Luxury Watch Boutique",
+      category: "Jewelry",
+      description: "Pre-owned and new high-end timepieces",
+      price: "",
+      image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "New York",
+      buttonText: "Discover"
+    },
+    {
+      id: 44,
+      name: "Birthday Milestone Registry",
+      category: "Registries",
+      description: "Make your big birthday unforgettable",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1464349153735-7db50ed83c84?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Start Wishlist"
+    },
+    {
+      id: 45,
+      name: "Wireless Noise Cancelling Headphones",
+      category: "Home & Decor",
+      description: "Premium sound quality and comfort",
+      price: "$349.00",
+      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 46,
+      name: "Dog Grooming & Styling",
+      category: "Wellness & Beauty",
+      description: "Treat your pet to a luxury spa day",
+      price: "$80.00",
+      image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Book Appointment"
+    },
+    {
+      id: 47,
+      name: "Eco-Friendly Boutique",
+      category: "Home & Decor",
+      description: "Sustainable products for a greener lifestyle",
+      price: "",
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "Paris",
+      buttonText: "Shop Green"
+    },
+    {
+      id: 48,
+      name: "Charity Donation Registry",
+      category: "Registries",
+      description: "Direct your gifts to causes you care about",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Donate Now"
+    },
+    {
+      id: 49,
+      name: "Aromatherapy Diffuser",
+      category: "Wellness & Beauty",
+      description: "Essential oil mister with color-changing LED",
+      price: "$45.00",
+      image: "https://images.unsplash.com/photo-1547038577-da80abbc4f19?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 50,
+      name: "Car Detailing Service",
+      category: "Services",
+      description: "Complete interior and exterior deep clean",
+      price: "$200.00",
+      image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Schedule Wash"
+    },
+    {
+      id: 51,
+      name: "Vintage Vinyl Shop",
+      category: "Home & Decor",
+      description: "Rare records and classic turntable equipment",
+      price: "",
+      image: "https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "London",
+      buttonText: "Browse Vinyl"
+    },
+    {
+      id: 52,
+      name: "Holiday Gift Registry",
+      category: "Registries",
+      description: "Spread joy with a personalized gift list",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1512389142860-9c449e58a543?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "View List"
+    },
+    {
+      id: 53,
+      name: "Designer Sunglasses",
+      category: "Fashion",
+      description: "UV protection with iconic style",
+      price: "$275.00",
+      image: "https://images.unsplash.com/photo-1511499767390-90342f54eb8d?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 54,
+      name: "Wedding Planning Service",
+      category: "Services",
+      description: "Full coordination for your dream wedding",
+      price: "$3500.00",
+      image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Consult Now"
+    },
+    {
+      id: 55,
+      name: "Urban Boutique",
+      category: "Fashion",
+      description: "Edgy fashion for the city dweller",
+      price: "",
+      image: "https://images.unsplash.com/photo-1470309634618-c6c88f4c18fe?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "New York",
+      buttonText: "Shop Urban"
+    },
+    {
+      id: 56,
+      name: "Education Fund Registry",
+      category: "Registries",
+      description: "Support future learning and development",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1523240715639-99f2f1e23ad6?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Contribute"
+    },
+    {
+      id: 57,
+      name: "Smart Watch Elite",
+      category: "Jewelry",
+      description: "Health tracking with premium design",
+      price: "$499.00",
+      image: "https://images.unsplash.com/photo-1544117518-30dd5ff7a986?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 58,
+      name: "Pet Sitting Service",
+      category: "Services",
+      description: "Trusted care for your furry friends while you're away",
+      price: "$40/day",
+      image: "https://images.unsplash.com/photo-1541599540903-216a46ca1df0?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Book Sitter"
+    },
+    {
+      id: 59,
+      name: "Sunset Coast Boutique",
+      category: "Fashion",
+      description: "Beachwear and coastal lifestyle apparel",
+      price: "",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+      type: "Boutique",
+      location: "Los Angeles",
+      buttonText: "View Style"
+    },
+    {
+      id: 60,
+      name: "Home Renovation Registry",
+      category: "Registries",
+      description: "Help build the perfect living space",
+      price: "Custom",
+      image: "https://images.unsplash.com/photo-1503387762-592dee58c160?q=80&w=800&auto=format&fit=crop",
+      type: "Registry",
+      buttonText: "Start Project"
+    },
+    {
+      id: 61,
+      name: "Modern Art Print",
+      category: "Home & Decor",
+      description: "Limited edition abstract canvas",
+      price: "$185.00",
+      image: "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=800&auto=format&fit=crop",
+      type: "Product",
+      buttonText: "Add To Cart"
+    },
+    {
+      id: 62,
+      name: "Language Tutoring",
+      category: "Services",
+      description: "Master a new language with native speakers",
+      price: "$50/hr",
+      image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=800&auto=format&fit=crop",
+      type: "Service",
+      buttonText: "Book Lesson"
     }
   ];
 
-  const displayProducts = staticResults;
+  const filteredResults = useMemo(() => {
+    return staticResults.filter(item => {
+      // Filter by Search Query
+      const matchesQuery = !query || 
+        item.name.toLowerCase().includes(query.toLowerCase()) ||
+        item.description.toLowerCase().includes(query.toLowerCase()) ||
+        item.category.toLowerCase().includes(query.toLowerCase());
+
+      // Filter by Tab (Type)
+      const tabToTypeMap: Record<string, string> = {
+        "Products": "Product",
+        "Services": "Service",
+        "Boutiques": "Boutique",
+        "Registries": "Registry"
+      };
+      const normalizedTab = tabToTypeMap[activeTab] || activeTab;
+      const matchesTab = activeTab === "All" || item.type.toLowerCase() === normalizedTab.toLowerCase();
+
+      // Filter by Category
+      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(item.category);
+
+      // Filter by Location
+      const matchesLocation = selectedLocations.length === 0 || (item.location && selectedLocations.includes(item.location));
+
+      return matchesQuery && matchesTab && matchesCategory && matchesLocation;
+    });
+  }, [query, activeTab, selectedCategories, selectedLocations, staticResults]);
+
+  const displayProducts = filteredResults;
   const totalPages = Math.ceil(displayProducts.length / itemsPerPage);
   
   const paginatedProducts = displayProducts.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+  // Reset page when filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [query, activeTab, selectedCategories, selectedLocations, priceRange, availability, selectedRating]);
 
   return (
     <main className="min-h-screen bg-background">

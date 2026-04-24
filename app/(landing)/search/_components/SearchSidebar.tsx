@@ -116,6 +116,7 @@ const SearchSidebar = ({
       {openSections.type && (
         <div className="space-y-4">
           {[
+            { label: "All", count: 363 },
             { label: "Products", count: 186 },
             { label: "Services", count: 31 },
             { label: "Boutiques", count: 136 },

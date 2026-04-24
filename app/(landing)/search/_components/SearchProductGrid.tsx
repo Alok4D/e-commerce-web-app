@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -49,7 +48,7 @@ const SearchProductGrid = ({ products, viewMode, query }: SearchProductGridProps
     <div className={`grid gap-x-8 gap-y-16 ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'}`}>
       {products.map((item) => (
         <div key={item.id} className="group flex flex-col">
-          <Link href={`/products/${item.id}`} className="relative aspect-[4/5] bg-[#F7F5F2] mb-6 overflow-hidden block">
+          <Link href={`/products/${item.id}`} className="relative aspect-4/5 bg-[#F7F5F2] mb-6 overflow-hidden block">
             <Image
               src={item.image}
               alt={item.name}
