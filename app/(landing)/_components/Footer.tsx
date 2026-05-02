@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Facebook, Instagram, Youtube } from "lucide-react";
 
 // Custom X (Twitter) icon component to match the branding better
@@ -69,8 +70,13 @@ const Footer: FC = () => {
             <li className="hover:text-[#1A1A1A] transition-colors cursor-pointer">
               Terms & Conditions
             </li>
-            <li className="hover:text-[#1A1A1A] transition-colors cursor-pointer">
-              Contact Us
+            <li>
+              <Link
+                href="/contact"
+                className="text-[15px] text-[#4A4A4A] transition-colors hover:text-[#1A1A1A]"
+              >
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
