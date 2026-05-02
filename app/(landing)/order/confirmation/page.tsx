@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CheckoutFlowShell } from "@/components/checkout/CheckoutFlowShell";
+import NewsletterSection from "../../_components/NewsletterSection";
 
 const TRACK_STEPS = [
   { n: 1, title: "Order Confirmed", body: "Your order has been confirmed and we are preparing your items.", when: "Feb 1, 2024 · 9:12 AM" },
@@ -161,6 +162,7 @@ export default function OrderConfirmationPage() {
           </div>
         </div>
       </div>
+      <NewsletterSection />
     </CheckoutFlowShell>
   );
 }
