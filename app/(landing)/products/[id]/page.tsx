@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import LandingTopAnnouncementBar from "../../_components/LandingTopAnnouncementBar";
 import Navbar from "../../_components/Navbar";
 import Container from "@/components/shared/Container";
@@ -10,12 +10,54 @@ import { Product } from "@/types/product";
 import { ChevronRight, Star, Heart, Minus, Plus, Gift, Eye, MapPin, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { RegistrySelectModal } from "../_components/RegistrySelectModal";
+import { RegistrySuccessModal } from "../_components/RegistrySuccessModal";
+import type { RegistryModalStep, RegistryOption } from "@/types/registry-modal";
 
 const ProductDetailsPage = () => {
     const { id } = useParams();
     const router = useRouter();
     const [quantity, setQuantity] = useState(1);
     const [activeImage, setActiveImage] = useState(0);
+    const [registryModalStep, setRegistryModalStep] = useState<RegistryModalStep>("closed");
+    const [selectedRegistryId, setSelectedRegistryId] = useState<string | null>(null);
+    const [activeRegistryName, setActiveRegistryName] = useState("Sarah & Johnson's Wedding");
+
+    const registryOptions = useMemo<RegistryOption[]>(
+        () => [
+            { id: "sarah", name: "Sarah & Johnson's Wedding" },
+            { id: "emma", name: "Emma's Baby Shower" },
+            { id: "home", name: "Chen Family — Home Essentials" },
+        ],
+        []
+    );
+
+    const closeRegistryModals = useCallback(() => {
+        setRegistryModalStep("closed");
+        setSelectedRegistryId(null);
+    }, []);
+
+    const confirmAddToSelectedRegistry = () => {
+        if (!selectedRegistryId) return;
+        const opt = registryOptions.find((o) => o.id === selectedRegistryId);
+        if (opt) setActiveRegistryName(opt.name);
+        setRegistryModalStep("success");
+        setSelectedRegistryId(null);
+    };
+
+    useEffect(() => {
+        if (registryModalStep === "closed") return;
+        const prevOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") closeRegistryModals();
+        };
+        window.addEventListener("keydown", onKeyDown);
+        return () => {
+            document.body.style.overflow = prevOverflow;
+            window.removeEventListener("keydown", onKeyDown);
+        };
+    }, [registryModalStep, closeRegistryModals]);
 
     const product = useMemo(() => {
         return productData.products.find(p => p.id === Number(id));
@@ -162,7 +204,14 @@ const ProductDetailsPage = () => {
                 <button className="bg-[#EFE3C9] text-black py-3 px-6 hover:bg-[#e5d4b0] transition-colors">
                   Add To Cart
                 </button>
-                <button className="border border-gray-300 py-3 px-6 hover:bg-gray-50 transition-colors">
+                <button
+                  type="button"
+                  onClick={() => {
+                      setSelectedRegistryId(null);
+                      setRegistryModalStep("select");
+                  }}
+                  className="border border-gray-300 py-3 px-6 hover:bg-gray-50 transition-colors"
+                >
                   Add To Registry
                 </button>
               </div>
@@ -170,7 +219,8 @@ const ProductDetailsPage = () => {
 
             <div className="pt-4 space-y-3 text-sm">
               <p className="flex items-center gap-2">
-                <Gift size={16} /> Can't decide? <span className="underline cursor-pointer">Send a Gift Card Instead</span>
+                <Gift size={16} /> {"Can't decide?"}{" "}
+                <span className="underline cursor-pointer">Send a Gift Card Instead</span>
               </p>
               <button className="flex items-center gap-2 text-gray-700 hover:text-black">
                 <Heart size={16} /> Add to wishlist
@@ -224,7 +274,9 @@ const ProductDetailsPage = () => {
           </div>
 
           <div>
-            <h2 className="text-xl font-serif mb-4">Be the first to review "Crew Sweatshirt"</h2>
+            <h2 className="text-xl font-serif mb-4">
+              Be the first to review &ldquo;Crew Sweatshirt&rdquo;
+            </h2>
             <p className="text-xs text-gray-500 mb-6 italic">Your email address will not be published. Required fields are marked</p>
             
             <form className="space-y-6">
@@ -259,8 +311,26 @@ const ProductDetailsPage = () => {
         </div>
       </div>
     </div>
+
+            <RegistrySelectModal
+                open={registryModalStep === "select"}
+                onClose={closeRegistryModals}
+                options={registryOptions}
+                selectedId={selectedRegistryId}
+                onSelect={setSelectedRegistryId}
+                productName={product.name}
+                onConfirm={confirmAddToSelectedRegistry}
+            />
+
+            <RegistrySuccessModal
+                open={registryModalStep === "success"}
+                onClose={closeRegistryModals}
+                productName={product.name}
+                registryName={activeRegistryName}
+            />
         </main>
     );
 };
 
 export default ProductDetailsPage;
+
