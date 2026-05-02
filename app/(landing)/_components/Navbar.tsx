@@ -97,7 +97,9 @@ const Navbar = () => {
 
         <div className="flex items-center justify-end gap-3">
           <Gift size={22} className="text-gray-900" />
-          <ShoppingCart size={22} className="text-gray-900" />
+          <Link href="/cart/items" className="text-gray-900" aria-label="Shopping cart">
+            <ShoppingCart size={22} />
+          </Link>
         </div>
       </div>
 
@@ -265,12 +267,12 @@ const Navbar = () => {
           <a href="#" className="hover:opacity-60 transition-all">
             <User size={22} className="text-gray-900" />
           </a>
-          <a href="#" className="hover:opacity-60 transition-all">
+          <Link href="/wishlist" className="hover:opacity-60 transition-all" aria-label="Wishlist">
             <Heart size={22} className="text-gray-900" />
-          </a>
-          <a href="#" className="hover:opacity-60 transition-all">
+          </Link>
+          <Link href="/cart/items" className="hover:opacity-60 transition-all" aria-label="Shopping cart">
             <ShoppingCart size={22} className="text-gray-900" />
-          </a>
+          </Link>
           <a href="#" className="hover:opacity-60 transition-all">
             <Gift size={22} className="text-gray-900" />
           </a>
