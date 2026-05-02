@@ -1,27 +1,29 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import LandingTopAnnouncementBar from "../../_components/LandingTopAnnouncementBar";
 import Navbar from "../../_components/Navbar";
 import Container from "@/components/shared/Container";
 import productData from "@/data/products.json";
 import { Product } from "@/types/product";
-import { ChevronRight, Star, Heart, Minus, Plus, Gift, Eye, MapPin, ChevronLeft, X, Check } from "lucide-react";
+import { ChevronRight, Star, Heart, Minus, Plus, Gift, Eye, MapPin, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { RegistrySelectModal } from "../_components/RegistrySelectModal";
+import { RegistrySuccessModal } from "../_components/RegistrySuccessModal";
+import type { RegistryModalStep, RegistryOption } from "@/types/registry-modal";
 
 const ProductDetailsPage = () => {
     const { id } = useParams();
     const router = useRouter();
     const [quantity, setQuantity] = useState(1);
     const [activeImage, setActiveImage] = useState(0);
-    type RegistryModalStep = "closed" | "select" | "success";
     const [registryModalStep, setRegistryModalStep] = useState<RegistryModalStep>("closed");
     const [selectedRegistryId, setSelectedRegistryId] = useState<string | null>(null);
     const [activeRegistryName, setActiveRegistryName] = useState("Sarah & Johnson's Wedding");
 
-    const registryOptions = useMemo(
+    const registryOptions = useMemo<RegistryOption[]>(
         () => [
             { id: "sarah", name: "Sarah & Johnson's Wedding" },
             { id: "emma", name: "Emma's Baby Shower" },
@@ -30,10 +32,10 @@ const ProductDetailsPage = () => {
         []
     );
 
-    const closeRegistryModals = () => {
+    const closeRegistryModals = useCallback(() => {
         setRegistryModalStep("closed");
         setSelectedRegistryId(null);
-    };
+    }, []);
 
     const confirmAddToSelectedRegistry = () => {
         if (!selectedRegistryId) return;
@@ -55,7 +57,7 @@ const ProductDetailsPage = () => {
             document.body.style.overflow = prevOverflow;
             window.removeEventListener("keydown", onKeyDown);
         };
-    }, [registryModalStep]);
+    }, [registryModalStep, closeRegistryModals]);
 
     const product = useMemo(() => {
         return productData.products.find(p => p.id === Number(id));
@@ -217,7 +219,8 @@ const ProductDetailsPage = () => {
 
             <div className="pt-4 space-y-3 text-sm">
               <p className="flex items-center gap-2">
-                <Gift size={16} /> Can't decide? <span className="underline cursor-pointer">Send a Gift Card Instead</span>
+                <Gift size={16} /> {"Can't decide?"}{" "}
+                <span className="underline cursor-pointer">Send a Gift Card Instead</span>
               </p>
               <button className="flex items-center gap-2 text-gray-700 hover:text-black">
                 <Heart size={16} /> Add to wishlist
@@ -271,7 +274,9 @@ const ProductDetailsPage = () => {
           </div>
 
           <div>
-            <h2 className="text-xl font-serif mb-4">Be the first to review "Crew Sweatshirt"</h2>
+            <h2 className="text-xl font-serif mb-4">
+              Be the first to review &ldquo;Crew Sweatshirt&rdquo;
+            </h2>
             <p className="text-xs text-gray-500 mb-6 italic">Your email address will not be published. Required fields are marked</p>
             
             <form className="space-y-6">
@@ -307,171 +312,25 @@ const ProductDetailsPage = () => {
       </div>
     </div>
 
-            {registryModalStep === "select" ? (
-                <div
-                    className="fixed inset-0 z-100 flex items-center justify-center p-4"
-                    role="presentation"
-                >
-                    <button
-                        type="button"
-                        aria-label="Close dialog"
-                        className="absolute inset-0 bg-black/40"
-                        onClick={closeRegistryModals}
-                    />
-                    <div
-                        role="dialog"
-                        aria-modal="true"
-                        aria-labelledby="registry-select-title"
-                        className="relative w-full max-w-[996px] bg-[#F5F3EE] shadow-xl"
-                    >
-                        <div className="flex justify-end px-6 pt-6 md:px-10 md:pt-10">
-                            <button
-                                type="button"
-                                onClick={closeRegistryModals}
-                                className="flex h-11 w-11 items-center justify-center text-brand-text transition-opacity hover:opacity-70"
-                                aria-label="Close"
-                            >
-                                <X size={28} strokeWidth={1.25} />
-                            </button>
-                        </div>
+            <RegistrySelectModal
+                open={registryModalStep === "select"}
+                onClose={closeRegistryModals}
+                options={registryOptions}
+                selectedId={selectedRegistryId}
+                onSelect={setSelectedRegistryId}
+                productName={product.name}
+                onConfirm={confirmAddToSelectedRegistry}
+            />
 
-                        <div className="flex flex-col gap-8 px-6 pb-10 pt-2 md:gap-10 md:px-12 md:pb-14">
-                            <div className="text-center md:text-left">
-                                <h2
-                                    id="registry-select-title"
-                                    className="font-playfair text-[22px] font-semibold text-brand-text md:text-[28px]"
-                                >
-                                    Choose a registry
-                                </h2>
-                                <p className="mt-3 max-w-xl font-playfair text-base text-brand-text-secondary md:mx-0 md:text-lg">
-                                    Select which registry should include{" "}
-                                    <span className="font-medium text-[#66573F]">{product.name}</span>.
-                                </p>
-                            </div>
-
-                            <ul className="mx-auto w-full max-w-[647px] space-y-3 md:mx-0">
-                                {registryOptions.map((opt) => {
-                                    const checked = selectedRegistryId === opt.id;
-                                    return (
-                                        <li key={opt.id}>
-                                            <label
-                                                className={`flex cursor-pointer items-start gap-4 border px-4 py-4 transition-colors md:px-5 md:py-5 ${
-                                                    checked
-                                                        ? "border-brand-text bg-white/60"
-                                                        : "border-neutral-300 bg-transparent hover:bg-white/40"
-                                                }`}
-                                            >
-                                                <input
-                                                    type="radio"
-                                                    name="registry-choice"
-                                                    value={opt.id}
-                                                    checked={checked}
-                                                    onChange={() => setSelectedRegistryId(opt.id)}
-                                                    className="mt-1 size-4 shrink-0 border-neutral-400 text-brand-text accent-neutral-800"
-                                                />
-                                                <span className="font-playfair text-lg text-brand-text md:text-xl">
-                                                    {opt.name}
-                                                </span>
-                                            </label>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-
-                            <div className="grid w-full max-w-[904px] grid-cols-1 gap-4 sm:mx-0 sm:grid-cols-2 sm:gap-7">
-                                <button
-                                    type="button"
-                                    onClick={closeRegistryModals}
-                                    className="flex min-h-[54px] items-center justify-center border border-brand-text-secondary bg-[#F5F3EE] px-4 py-3 text-center font-playfair text-lg font-bold tracking-wide text-brand-text transition-colors hover:bg-[#EDEAE4]"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="button"
-                                    disabled={!selectedRegistryId}
-                                    onClick={confirmAddToSelectedRegistry}
-                                    className="flex min-h-[54px] items-center justify-center bg-[#F1E1C2] px-4 py-3 text-center font-playfair text-lg font-bold tracking-wide text-brand-text transition-colors hover:bg-[#e9d5ab] disabled:pointer-events-none disabled:opacity-45"
-                                >
-                                    Add to registry
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ) : null}
-
-            {registryModalStep === "success" ? (
-                <div
-                    className="fixed inset-0 z-100 flex items-center justify-center p-4"
-                    role="presentation"
-                >
-                    <button
-                        type="button"
-                        aria-label="Close dialog"
-                        className="absolute inset-0 bg-black/40"
-                        onClick={closeRegistryModals}
-                    />
-                    <div
-                        role="dialog"
-                        aria-modal="true"
-                        aria-labelledby="registry-modal-title"
-                        className="relative w-full max-w-[996px] bg-[#F5F3EE] shadow-xl"
-                    >
-                        <div className="flex justify-end px-6 pt-6 md:px-10 md:pt-10">
-                            <button
-                                type="button"
-                                onClick={closeRegistryModals}
-                                className="flex h-11 w-11 items-center justify-center text-brand-text transition-opacity hover:opacity-70"
-                                aria-label="Close"
-                            >
-                                <X size={28} strokeWidth={1.25} />
-                            </button>
-                        </div>
-
-                        <div className="flex flex-col items-center gap-8 px-6 pb-10 pt-2 md:gap-10 md:px-12 md:pb-14">
-                            <div className="flex size-[100px] shrink-0 items-center justify-center rounded-full bg-[#E0DDD5]">
-                                <Check className="text-brand-text" size={44} strokeWidth={2} />
-                            </div>
-
-                            <div className="max-w-[647px] text-center">
-                                <h2
-                                    id="registry-modal-title"
-                                    className="font-playfair text-[22px] font-semibold text-brand-text md:text-[28px]"
-                                >
-                                    Item Added to Registry!
-                                </h2>
-                                <p className="mt-4 font-playfair text-lg leading-[1.12] text-brand-text-secondary md:text-2xl">
-                                    <span className="font-medium text-[#66573F]">{product.name}</span>
-                                    <span> has been added to </span>
-                                    <span className="font-medium text-[#171717]">
-                                        &lsquo;{activeRegistryName}&rsquo;
-                                    </span>
-                                    <span> Registry</span>
-                                </p>
-                            </div>
-
-                            <div className="grid w-full max-w-[904px] grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-7">
-                                <Link
-                                    href="/products"
-                                    onClick={closeRegistryModals}
-                                    className="flex min-h-[54px] items-center justify-center bg-[#F1E1C2] px-4 py-3 text-center font-playfair text-lg font-bold tracking-wide text-brand-text transition-colors hover:bg-[#e9d5ab]"
-                                >
-                                    View Registry
-                                </Link>
-                                <button
-                                    type="button"
-                                    onClick={closeRegistryModals}
-                                    className="flex min-h-[54px] items-center justify-center border border-brand-text-secondary bg-[#F5F3EE] px-4 py-3 text-center font-playfair text-lg font-bold tracking-wide text-brand-text transition-colors hover:bg-[#EDEAE4]"
-                                >
-                                    Continue Shopping
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ) : null}
+            <RegistrySuccessModal
+                open={registryModalStep === "success"}
+                onClose={closeRegistryModals}
+                productName={product.name}
+                registryName={activeRegistryName}
+            />
         </main>
     );
 };
 
 export default ProductDetailsPage;
+

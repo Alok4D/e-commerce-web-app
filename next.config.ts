@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         hostname: 'img.buzzfeed.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.figma.com',
+        pathname: '/api/mcp/asset/**',
+      },
     ],
   },
 };
