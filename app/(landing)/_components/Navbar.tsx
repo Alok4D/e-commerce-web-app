@@ -99,7 +99,7 @@ const Navbar = () => {
           <Gift size={22} className="text-gray-900" />
           <Link href="/cart/items" className="text-gray-900 relative" aria-label="Shopping cart">
             <ShoppingCart size={22} />
-            <span className="absolute -top-1.5 -right-1.5 bg-black text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
               2
             </span>
           </Link>
@@ -270,12 +270,15 @@ const Navbar = () => {
           <a href="#" className="hover:opacity-60 transition-all">
             <User size={22} className="text-gray-900" />
           </a>
-          <Link href="/wishlist" className="hover:opacity-60 transition-all" aria-label="Wishlist">
+          <Link href="/wishlist" className="hover:opacity-60 transition-all relative" aria-label="Wishlist">
             <Heart size={22} className="text-gray-900" />
+            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+              5
+            </span>
           </Link>
           <Link href="/cart/items" className="hover:opacity-60 transition-all relative" aria-label="Shopping cart">
             <ShoppingCart size={22} className="text-gray-900" />
-            <span className="absolute -top-1.5 -right-1.5 bg-black text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
               2
             </span>
           </Link>
