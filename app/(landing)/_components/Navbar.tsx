@@ -97,8 +97,11 @@ const Navbar = () => {
 
         <div className="flex items-center justify-end gap-3">
           <Gift size={22} className="text-gray-900" />
-          <Link href="/cart/items" className="text-gray-900" aria-label="Shopping cart">
+          <Link href="/cart/items" className="text-gray-900 relative" aria-label="Shopping cart">
             <ShoppingCart size={22} />
+            <span className="absolute -top-1.5 -right-1.5 bg-black text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+              2
+            </span>
           </Link>
         </div>
       </div>
@@ -270,8 +273,11 @@ const Navbar = () => {
           <Link href="/wishlist" className="hover:opacity-60 transition-all" aria-label="Wishlist">
             <Heart size={22} className="text-gray-900" />
           </Link>
-          <Link href="/cart/items" className="hover:opacity-60 transition-all" aria-label="Shopping cart">
+          <Link href="/cart/items" className="hover:opacity-60 transition-all relative" aria-label="Shopping cart">
             <ShoppingCart size={22} className="text-gray-900" />
+            <span className="absolute -top-1.5 -right-1.5 bg-black text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+              2
+            </span>
           </Link>
           <a href="#" className="hover:opacity-60 transition-all">
             <Gift size={22} className="text-gray-900" />
