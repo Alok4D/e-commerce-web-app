@@ -194,9 +194,24 @@ const ProductDetailsPage = () => {
               
               <div className="flex items-center gap-4 py-4">
                 <div className="flex border border-gray-300">
-                  <button className="px-3 py-2 hover:bg-[#DEDAD2]"><Minus size={16} /></button>
-                  <input type="number" defaultValue="1" className="w-12 text-center border-x border-gray-300 focus:outline-none" />
-                  <button className="px-3 py-2 hover:bg-[#DEDAD2]"><Plus size={16} /></button>
+                  <button 
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="px-3 py-2 hover:bg-brand-beige"
+                  >
+                    <Minus size={16} />
+                  </button>
+                  <input 
+                    type="number" 
+                    value={quantity}
+                    onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                    className="w-12 text-center border-x border-gray-300 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" 
+                  />
+                  <button 
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="px-3 py-2 hover:bg-brand-beige"
+                  >
+                    <Plus size={16} />
+                  </button>
                 </div>
               </div>
 
