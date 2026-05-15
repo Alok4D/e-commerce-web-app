@@ -22,17 +22,17 @@ export default function page() {
       <Navbar />
       <HeroSection />
       <Blog />
-      <AboutSection />
-      <RegistrySection />
-      <ExploreProduct />
-      <ServicesSection />
-      <ChristmasCollection />
       <ProductGridLanding />
-      <TestimonialSection />
+      <ServicesSection />
       <GiftCardSection />
+      {/* <AboutSection /> */}
+      <RegistrySection />
       <InstagramFeed />
-      <BlogFeaturedSection />
       <NewsletterSection />
+      {/* <ExploreProduct />
+      <ChristmasCollection />
+      <TestimonialSection />
+      <BlogFeaturedSection /> */}
       <Footer />
     </main>
   );
