@@ -107,13 +107,12 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Drawer (Image 7 structure) */}
-      {isMenuOpen && (
-        <>
-          <div
-            className="fixed inset-0 bg-black/50 z-40 transition-opacity"
-            onClick={() => setIsMenuOpen(false)}
-          />
-          <div className="fixed inset-y-0 left-0 w-[280px] bg-[#D5D0C9] z-50 p-6 flex flex-col shadow-2xl overflow-y-auto">
+      <div className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div
+          className="absolute inset-0 bg-black/50"
+          onClick={() => setIsMenuOpen(false)}
+        />
+        <div className={`absolute inset-y-0 left-0 w-[280px] bg-[#D5D0C9] p-6 flex flex-col shadow-2xl overflow-y-auto transform transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
             <div className="flex flex-col items-center mb-10">
               <div className="flex justify-between items-center w-full mb-8">
                 <div className="w-6"></div>
@@ -204,8 +203,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-        </>
-      )}
+        </div>
 
       {/* Desktop Navbar (Original Structure) */}
       <div className="hidden md:flex w-full bg-white border-b border-gray-200 py-4 px-6 md:px-12 items-center justify-between max-w-[1239px] mx-auto">
